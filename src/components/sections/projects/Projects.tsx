@@ -18,7 +18,7 @@ export default async function Projects() {
   const featuredProjects = (await fetchFeaturedRepos(GITHUB_USERNAME, 4)) as GithubRepo[];
 
   const finalProjects = featuredProjects.map((project: GithubRepo) => {
-    const details = (extraProjectDetails as any)[project.name];
+    const details = (extraProjectDetails as Record<string, Partial<GithubRepo>>)[project.name];
 
     return {
       ...project,

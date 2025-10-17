@@ -5,7 +5,6 @@ interface LogoCodeByPittanaProps {
   bodyGradient?: [string, string, string];
   fillGradient?: [string, string, string, string];
   strokeColor?: string;
-  innerColor?: string;
   className?: string;
 }
 
@@ -13,7 +12,6 @@ const LogoCodeByPittana: React.FC<LogoCodeByPittanaProps> = ({
   neonColors = ["#f0f", "#9e99ff", "#0ff"],
   bodyGradient = ["#af48d5", "#9d9ae1", "#d3c4a6"],
   fillGradient = ["#241b21", "#0f0e08", "#010404", "#000"],
-  innerColor = "#202",
   className = "w-24 h-24",
 }) => {
   return (

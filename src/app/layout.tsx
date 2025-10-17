@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="es" className={josefinSans.variable}>
       <body className={`relative mx-auto bg-bgDark overflow-x-hidde text-text font-josefin`}>
         <Background />
         <Navbar />

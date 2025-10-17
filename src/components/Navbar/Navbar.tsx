@@ -29,7 +29,6 @@ export default function Navbar() {
             bodyGradient={["#d4a1ff", "#bca3f5", "#e0d2ff"]}
             fillGradient={["#1a1a1a", "#0c0c0c", "#000", "#000"]}
             className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20"
-            innerColor="#111"
           />
         </Link>
       </li>

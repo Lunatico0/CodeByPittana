@@ -1,29 +1,37 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
+import type { ProjectCardData } from "@/src/types/projects-ui";
 
-interface ProjectCardProps {
-  name: string;
-  description: string;
-  gitUrl?: string;
-  siteUrl?: string;
+interface ProjectCardProps extends ProjectCardData {
   index?: number;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ name, description, gitUrl, siteUrl, index = 0 }) => {
 
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        delay: i * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    }),
+  };
 
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
+      custom={index}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
       whileHover={{
-        y: -8, // equivale a translateY(-8px)
+        y: -8,
         borderColor: "var(--color-primary)",
-        boxShadow: "0 0 15px rgba(158, 153, 255, 0.3)"
-      }}
-      transition={{
-        layout: { duration: 0.4, ease: "easeOut" },
-        default: { duration: 0.3, ease: "easeOut" }
+        boxShadow: "0 0 15px rgba(158, 153, 255, 0.3)",
+        transition: { duration: 0.25, ease: "easeOut", delay: 0 }
       }}
       className="group relative p-6 rounded-xl bg-secondary/50 border border-secondary/70 overflow-hidden"
     >

@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import ProjectCard from "./ProjectCard";
+import type { ProjectCardData } from "@/src/types/projects-ui";
 
 interface ProjectListClientProps {
-  finalProjects: any[];
+  finalProjects: ProjectCardData[];
   title: string;
   moreProjects: boolean;
 }
