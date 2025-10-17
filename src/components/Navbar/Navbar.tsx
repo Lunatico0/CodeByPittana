@@ -1,16 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import LogoCodeByPittana from "@/src/components/ui/LogoCodeByPittana";
+import LogoCodeByPittana from "@components/ui/LogoCodeByPittana";
+import useClickOutside from "@hooks/useClickOutside";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  useClickOutside(navRef, () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  });
 
   const links = [
     { href: "/projects", label: "Proyectos" },
@@ -19,7 +27,10 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex items-center justify-between px-6 py-2 bg-secondary/40 backdrop-blur-md sticky top-0 z-50 border-b border-accent/40 max-w-6xl mx-auto">
+    <nav
+      ref={navRef}
+      className="flex items-center justify-between px-6 py-2 bg-secondary/40 backdrop-blur-md sticky top-0 z-50 border-b border-accent/40 max-w-6xl mx-auto"
+    >
 
       {/* === LOGO === */}
       <li className="list-none">
@@ -82,28 +93,36 @@ export default function Navbar() {
         {isOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="absolute top-full left-0 right-0 bg-secondary/90 backdrop-blur-xl border-t border-accent/40 p-6 flex flex-col items-center gap-4 md:hidden"
+            initial={{ opacity: 0, rotateX: -90, scaleY: 0.8 }}
+            animate={{ opacity: 1, rotateX: 0, scaleY: 1 }}
+            exit={{ opacity: 0, rotateX: -90, scaleY: 0.8 }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 30,
+              duration: 0.35
+            }}
+
+            className="absolute top-full left-0 right-0 bg-secondary border-t border-accent/40 p-6 flex flex-col items-center gap-4 md:hidden"
+            style={{ transformOrigin: 'top center' }}
           >
-            {links.map(({ href, label }) => {
-              const isActive = pathname === href;
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={() => setIsOpen(false)}
-                  className={`w-full text-center py-3 rounded-md transition-colors duration-200 ${isActive
-                    ? "text-text bg-primary/20"
-                    : "text-text/60 hover:text-text hover:bg-primary/10"
-                    }`}
-                >
-                  {label}
-                </Link>
-              );
-            })}
+            {
+              links.map(({ href, label }) => {
+                const isActive = pathname === href;
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={() => setIsOpen(false)}
+                    className={`w-full text-center py-3 rounded-md transition-colors duration-200 ${isActive
+                      ? "text-text bg-primary/20"
+                      : "text-text/60 hover:text-text hover:bg-primary/10"
+                      }`}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
           </motion.div>
         )}
       </AnimatePresence>
