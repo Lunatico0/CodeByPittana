@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    @apply box-border;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+:root {
+  font-family: Josefin Sans, system-ui, Avenir, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+@theme {
+  --font-josefin: var(--font-josefin-sans);
+
+  --color-accent: #21E4D7;
+  --color-bgDark: #0E0E10;
+  --color-bgLight: #ededed;
+  --color-primary: #9E99FF;
+  --color-secondary: #1C1C21;
+  --color-text: #E8E8E8;
+
+  --shadow-custom-3d: '8px 8px 30px rgba(0, 0, 0, 0.5), -8px -8px 30px rgba(255, 255, 255, 0.1)';
+}
