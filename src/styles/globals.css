@@ -15,7 +15,7 @@ html {
 
 
 :root {
-  font-family: Josefin Sans, system-ui, Avenir, Helvetica, sans-serif;
+  font-family: var(--font-josefin), system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
