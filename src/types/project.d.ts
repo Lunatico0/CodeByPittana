@@ -5,6 +5,8 @@ export interface GithubRepo {
   gitUrl: string;
   siteUrl: string;
   topics?: string[];
+  html_url: string;
+  homepage: string;
 }
 
 export interface LocalProjectDetails {

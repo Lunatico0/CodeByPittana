@@ -12,7 +12,7 @@ export async function fetchGithubRepos(username: string): Promise<GithubRepo[]> 
 
   const repos = await response.json();
 
-  return repos.map((repo: any) => ({
+  return repos.map((repo: GithubRepo) => ({
     id: repo.id,
     name: repo.name,
     description: repo.description,
@@ -24,7 +24,7 @@ export async function fetchGithubRepos(username: string): Promise<GithubRepo[]> 
 
 export async function fetchFeaturedRepos(username: string, limit = 4): Promise<GithubRepo[]> {
   const allRepos = await fetchGithubRepos(username);
-  const featuredRepos = allRepos.filter((repo: any) =>
+  const featuredRepos = allRepos.filter((repo: GithubRepo) =>
     repo.topics && repo.topics.includes(FEATURED_TOPIC)
   );
   return featuredRepos.slice(0, limit);
