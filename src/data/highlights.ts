@@ -1,3 +1,4 @@
+import { HighlightItem } from '@typings/highlight.js';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import DesignServicesRoundedIcon from '@mui/icons-material/DesignServicesRounded';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
@@ -5,14 +6,7 @@ import PsychologyRoundedIcon from '@mui/icons-material/PsychologyRounded';
 import RocketLaunchRoundedIcon from '@mui/icons-material/RocketLaunchRounded';
 import SearchIcon from '@mui/icons-material/Search';
 
-interface Highlight {
-  Icon: React.ElementType;
-  title: string;
-  paragraph: string;
-}
-
-
-export const highlights: Highlight[] = [
+export const highlights: HighlightItem[] = [
   // {
   //   icon: LayersRoundedIcon,
   //   title: 'Efficient Full-Stack Design',
@@ -49,4 +43,4 @@ export const highlights: Highlight[] = [
     title: 'Lanzamiento y Crecimiento',
     paragraph: 'Desplegar tu producto y apoyar su crecimiento y evolución.',
   },
-]
+] as const;

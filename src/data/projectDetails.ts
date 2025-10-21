@@ -1,14 +1,45 @@
 export const extraProjectDetails = {
-  // La clave debe coincidir con el campo 'name' del repo de GitHub
   "Artemisa-Landing": {
-    image: "/images/artemisa-landing.jpg", // <--- Imagen local
-    shortDescription: "Landing page moderna para un servicio de e-commerce.", // <--- Descripción pulida
-    technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
+    image: "/images/artemisa.png",
+    shortDescription: "Landing page moderna para un servicio de e-commerce.",
+    technologies: [
+      "figma",
+      "Cursor",
+      "Motion",
+      "React.js",
+      "TailwindCSS",
+    ],
+  },
+  "Canela-Cakes-menu": {
+    image: "/images/Canela.png",
+    shortDescription: "Plataforma SaaS para gestión de inventarios y logística.",
+    technologies: [
+      "figma",
+      "TailwindCSS",
+      "Visual Studio Code",
+    ],
+  },
+  "controlCubiertas": {
+    image: "/images/controlCubiertas.png",
+    shortDescription: "Plataforma SaaS para gestión de inventarios y logística.",
+    technologies: [
+      "Express",
+      "Docker",
+      "MongoDB",
+      "Node.js",
+      "TailwindCSS",
+      "Visual Studio Code",
+    ],
   },
   "DobleL": {
-    image: "/images/doblel.png",
+    image: "/images/dobleL-Hero.png",
     shortDescription: "Plataforma SaaS para gestión de inventarios y logística.",
-    technologies: ["Node.js", "Express", "MongoDB"],
+    technologies: [
+      "MaterialUI",
+      "Motion",
+      "React.js",
+      "TailwindCSS",
+      "Visual Studio Code",
+    ],
   },
-  // ... añade más proyectos aquí
 };
