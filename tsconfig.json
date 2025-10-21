@@ -26,6 +26,8 @@
       "@/*": ["./*"],
       "@data/*": ["./src/data/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@icons/*": ["./src/icons/*"],
+      "@icons": ["./src/icons/index.ts"],
       "@lib/*": ["./src/lib/*"],
       "@styles/*": ["./src/styles/*"],
       "@typings/*": ["./src/types/*"],
