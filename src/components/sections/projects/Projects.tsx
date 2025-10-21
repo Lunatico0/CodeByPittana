@@ -1,9 +1,10 @@
 import { fetchFeaturedRepos } from "@lib/github";
 import { extraProjectDetails } from "@data/projectDetails";
-import ProjectListClient from "@sections/projects/ProjectListClient";
-import type { GithubRepo } from "@typings/project";
+import ProjectListClient from "@/src/components/sections/Projects/ProjectListClient";
+import type { GithubRepo, ProjectCardData } from "@typings/project";
 
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME ?? "";
+
 
 export default async function Projects() {
   if (!GITHUB_USERNAME) {

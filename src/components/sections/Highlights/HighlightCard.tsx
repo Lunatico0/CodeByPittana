@@ -2,40 +2,33 @@
 
 import React from 'react'
 import { motion } from 'framer-motion';
+import { HighlightItem } from '@typings/highlight.js';
 
-type HighlightCardProps = {
-  Icon: React.ElementType;
-  title: string;
-  paragraph: string;
-  index: number;
-};
 
-const HighlightCard = ({ Icon, title, paragraph, index }: HighlightCardProps) => {
+const HighlightCard = ({ Icon, title, paragraph }: HighlightItem) => {
   return (
     <motion.div
-    layout
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    whileHover={{
-      y: -8, // equivale a translateY(-8px)
-      borderColor: "var(--color-primary)",
-      boxShadow: "0 0 15px rgba(158, 153, 255, 0.3)"
-    }}
-    transition={{
-      layout: { duration: 0.4, ease: "easeOut" },
-      default: { duration: 0.3, ease: "easeOut" }
-    }}
-    className="group relative p-6 rounded-xl bg-secondary/50 border border-secondary/70 overflow-hidden"
+      layout
+      whileHover={{
+        y: -8,
+        borderColor: "var(--color-primary)",
+        boxShadow: "0 0 15px rgba(158, 153, 255, 0.3)",
+      }}
+      transition={{
+        layout: { duration: 0.4, ease: "easeOut" },
+        default: { duration: 0.2, ease: "easeOut" }
+      }}
+      className="group relative p-6 rounded-xl bg-secondary/50 border border-secondary/70 overflow-hidden min-h-full"
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[linear-gradient(135deg,rgba(158,153,255,0.05),rgba(0,255,255,0.05))]" />
 
       <div className="flex items-center gap-4 mb-4">
         <div className="p-3 rounded-full bg-primary/10 text-primary-light">
-          <Icon size='30' className='text-primary/80' />
+          <Icon fontSize='medium' className='text-primary/80' />
         </div>
-        <h3 className="text-xl font-semibold text-white">{title}</h3>
+        <h3 className="text-xl font-semibold text-white text-balance">{title}</h3>
       </div>
-      <p className="text-text/70 text-sm">
+      <p className="text-text/70 text-sm text-balance">
         {paragraph}
       </p>
       <div className='absolute -right-10 -bottom-8 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-125'>

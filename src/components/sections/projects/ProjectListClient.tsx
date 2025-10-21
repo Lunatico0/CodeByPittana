@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { motion, type Variants } from "framer-motion";
 import ProjectCard from "./ProjectCard";
-import type { ProjectCardData } from "@/src/types/projects-ui";
+import type { ProjectCardData } from "@/src/types/project";
+import { FadeInSlideUpItem, StaggerContainer } from "@/src/lib/animationPresets";
 
 interface ProjectListClientProps {
   finalProjects: ProjectCardData[];
@@ -10,16 +12,24 @@ interface ProjectListClientProps {
   moreProjects: boolean;
 }
 
+
 export default function ProjectListClient({ finalProjects, title, moreProjects }: ProjectListClientProps) {
   return (
     <>
       <h2 className="text-4xl font-bold text-center my-5">{title}</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full max-w-5xl mx-auto">
-        {finalProjects.map((project, index) => (
-          <ProjectCard key={project.id} index={index} {...project} />
+      <motion.div
+        variants={StaggerContainer}
+        initial="hidden"
+        animate="visible"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full max-w-5xl mx-auto"
+      >
+        {finalProjects.map((project) => (
+          <motion.div key={project.id} variants={FadeInSlideUpItem}>
+            <ProjectCard {...project} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {
         moreProjects &&
