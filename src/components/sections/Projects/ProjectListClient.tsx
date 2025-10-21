@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import type { ProjectCardData } from "@/src/types/project";
 import { FadeInSlideUpItem, StaggerContainer } from "@/src/lib/animationPresets";

@@ -17,7 +17,7 @@ export async function fetchGithubRepos(username: string): Promise<GithubRepo[]> 
 
   const repos = await response.json();
 
-  const mappedRepos: GithubRepo[] = repos.map((repo: any) => ({
+  const mappedRepos: GithubRepo[] = repos.map((repo: GithubRepo) => ({
     id: repo.id,
     name: repo.name,
     description: repo.description,

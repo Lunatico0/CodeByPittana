@@ -1,4 +1,4 @@
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ProjectCardData } from "@/src/types/project";
 import Image from "next/image.js";
 import Link from "next/link.js";
