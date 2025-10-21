@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion';
-import { HighlightItem } from '@typings/highlight.js';
+import { HighlightItem } from '@typings/highlight';
 
 
 const HighlightCard = ({ Icon, title, paragraph }: HighlightItem) => {
