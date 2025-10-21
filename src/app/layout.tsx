@@ -29,7 +29,8 @@ export default function RootLayout({
       <body className={`relative mx-auto bg-bgDark overflow-x-hidde text-text font-josefin`}>
         <Background />
         <Navbar />
-        <main className="flex flex-col gap-6 min-h-screen max-w-6xl mx-auto px-2 py-4 md:py-6 [&>*]:p-3 [&>*]:md:p-6 [&>*]:rounded-2xl [&>*]:bg-secondary/30 [&>*]:backdrop-blur-xs">
+        <main className="flex flex-col gap-6 min-h-[calc(100dvh-142px)] md:min-h-[calc(100dvh-166px)] max-w-6xl mx-auto px-2 py-4 md:py-6
+        [&>*]:p-3 [&>*]:md:p-6 [&>*]:rounded-2xl [&>*]:bg-secondary/30 [&>*]:backdrop-blur-xs">
           {children}
         </main>
         <Footer />
