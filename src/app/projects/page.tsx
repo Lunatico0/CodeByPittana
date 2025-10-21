@@ -1,6 +1,6 @@
 import { fetchGithubRepos } from "@lib/github";
 import { extraProjectDetails } from "@data/projectDetails";
-import ProjectListClient from "@sections/projects/ProjectListClient";
+import ProjectListClient from "@/src/components/sections/Projects/ProjectListClient";
 import type { GithubRepo } from "@typings/project";
 
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME ?? "";
