@@ -1,3 +1,5 @@
+import ButtonPrimary from '@ui/ButtonPrimary';
+import ButtonSecondary from '@ui/ButtonSecondary';
 import Link from 'next/link'
 import React from 'react'
 
@@ -28,18 +30,12 @@ const Intro = ({
       <p className="text-lg text-text/70 mb-8">{subtitle}</p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-        <Link
-          href={ctaHREF}
-          className="px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-accent text-bgDark font-bold shadow-lg shadow-primary/30 hover:opacity-90 transition-opacity"
-        >
+        <ButtonPrimary as="link" href={ctaHREF}>
           {ctaLabel}
-        </Link>
-        <Link
-          href={secondaryHREF}
-          className="px-6 py-3 rounded-xl bg-secondary border border-primary text-primary font-bold hover:bg-primary/10 transition-colors"
-        >
+        </ButtonPrimary>
+        <ButtonSecondary as="link" href={secondaryHREF}>
           {secondaryCta}
-        </Link>
+        </ButtonSecondary>
       </div>
     </div>
   )
