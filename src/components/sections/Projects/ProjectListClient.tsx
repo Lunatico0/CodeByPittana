@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
-import type { ProjectCardData } from "@/src/types/project";
+import type { ProjectCardData } from "@typings/project";
 import { FadeInSlideUpItem, StaggerContainer } from "@/src/lib/animationPresets";
+import ButtonSecondary from "@ui/ButtonSecondary";
 
 interface ProjectListClientProps {
   finalProjects: ProjectCardData[];
@@ -33,12 +34,15 @@ export default function ProjectListClient({ finalProjects, title, moreProjects }
 
       {
         moreProjects &&
-        <Link
-          href="/projects"
-          className="px-8 py-3 md:mt-3 rounded-xl bg-primary/20 border border-primary text-primary font-semibold hover:bg-primary/30 transition-colors shadow-lg"
-        >
+
+        <ButtonSecondary as='link' href="/projects" className="md:mt-3">
           Ver Todos los Proyectos
-        </Link>
+        </ButtonSecondary>
+
+        // <Link href="/projects" className="px-8 py-3 md:mt-3 rounded-xl bg-primary/20 border border-primary text-primary font-semibold hover:bg-primary/30 transition-colors shadow-lg"
+        // >
+        //   Ver Todos los Proyectos
+        // </Link >
       }
     </>
   );
