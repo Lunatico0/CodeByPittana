@@ -6,7 +6,11 @@ import { loadFull } from "tsparticles";
 import { loadPolygonPath } from "@tsparticles/path-polygon";
 import type { ISourceOptions } from "@tsparticles/engine";
 
-export default function ParticlesBackground({className}) {
+type Props = {
+  className?: string;
+};
+
+export default function ParticlesBackground({ className }: Props) {
   const [ready, setReady] = useState(false);
   const options: ISourceOptions = useMemo(
     () => ({
