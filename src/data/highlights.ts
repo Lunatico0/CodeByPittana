@@ -1,12 +1,13 @@
-import { HighlightItem } from '@typings/highlight.js';
+import { CardWithIconProps } from '@typings/cardWithIconProps';
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
-import DesignServicesRoundedIcon from '@mui/icons-material/DesignServicesRounded';
-import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
-import PsychologyRoundedIcon from '@mui/icons-material/PsychologyRounded';
 import RocketLaunchRoundedIcon from '@mui/icons-material/RocketLaunchRounded';
 import SearchIcon from '@mui/icons-material/Search';
 
-export const highlights: HighlightItem[] = [
+// import DesignServicesRoundedIcon from '@mui/icons-material/DesignServicesRounded';
+// import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
+// import PsychologyRoundedIcon from '@mui/icons-material/PsychologyRounded';
+
+export const highlights: CardWithIconProps[] = [
   // {
   //   icon: LayersRoundedIcon,
   //   title: 'Efficient Full-Stack Design',

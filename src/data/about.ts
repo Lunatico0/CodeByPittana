@@ -7,33 +7,33 @@ import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRound
 export const About: AboutData = {
   heading: "El código es estructura. La estructura es claridad.",
   paragraphs: [
-    "Creo en la programación como una disciplina donde cada línea cuenta. Detrás de una respuesta HTTP, de una animación fluida o de una base de datos optimizada hay un sistema pensada para ser robusto y predecible.",
-    "Me motiva entender cómo cada pieza encaja: diseñar endpoints seguros, componentes reutilizables y procesos que escalen. No se trata solo de hacer que algo funcione, sino de hacerlo correctamente.",
-    "En cada proyecto priorizo rendimiento, seguridad y coherencia: si el código es limpio y predecible, el resto fluye."
+    "Creo firmemente en la programación como una disciplina donde cada línea tiene su importancia. Detrás de una respuesta HTTP, de una animación fluida o de una base de datos optimizada, hay un sistema diseñado para ser robusto y predecible.",
+    "Me apasiona entender cómo cada pieza se une: crear endpoints seguros, componentes reutilizables y procesos que puedan escalar. No se trata solo de hacer que algo funcione, sino de hacerlo de la manera correcta.",
+    "En cada proyecto, priorizo el rendimiento, la seguridad y la coherencia: si el código es limpio y predecible, todo lo demás fluye sin problemas."
   ],
   pillars: [
     {
       id: "org",
       title: "Organización",
-      description: "Estructuras claras que facilitan mantenimiento y escalado",
+      description: "Estructuras claras que hacen más fácil el mantenimiento y la escalabilidad.",
       Icon: InventoryRoundedIcon
     },
     {
       id: "opt",
       title: "Optimización",
-      description: "Rendimiento pensado desde el diseño, no añadido al final.",
+      description: "Rendimiento diseñado desde el principio, no como un añadido al final.",
       Icon: SettingsSuggestRoundedIcon
     },
     {
       id: "comp",
       title: "Componetización",
-      description: "Piezas pequeñas y reutilizables que componen soluciones grandes.",
+      description: "Componentes pequeños y reutilizables que forman soluciones más grandes.",
       Icon: ExtensionRoundedIcon
     },
     {
       id: "bp",
       title: "Buenas prácticas",
-      description: "Disciplina y estándares para entregar calidad consistente.",
+      description: "Disciplina y estándares para asegurar una calidad constante.",
       Icon: StarsRoundedIcon
     }
   ]
