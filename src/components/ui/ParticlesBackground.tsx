@@ -6,8 +6,7 @@ import { loadFull } from "tsparticles";
 import { loadPolygonPath } from "@tsparticles/path-polygon";
 import type { ISourceOptions } from "@tsparticles/engine";
 
-
-export default function ParticlesBackground() {
+export default function ParticlesBackground({className}) {
   const [ready, setReady] = useState(false);
   const options: ISourceOptions = useMemo(
     () => ({
@@ -316,7 +315,7 @@ export default function ParticlesBackground() {
   }, []);
 
   return (
-    <div className="relative h-96 w-full rounded-2xl overflow-hidden bg-secondary/40 border border-primary/20">
+    <div className={`relative h-96 w-full rounded-2xl overflow-hidden bg-secondary/40 border border-primary/20 ${className}`}>
       {ready && <Particles id="tsparticles" options={options} className="absolute inset-0" />}
     </div>
   );

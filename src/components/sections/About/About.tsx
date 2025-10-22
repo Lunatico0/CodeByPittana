@@ -38,7 +38,7 @@ export default function AboutSection({ data = About }: Props) {
       </div>
 
       <aside className="flex flex-col gap-4 md:gap-6 justify-center items-start">
-        <ParticlesBackground />
+        <ParticlesBackground className={'hidden md:block'} />
         <div className="px-4">
           <h3 className="text-lg font-semibold text-text mb-2">¿Cómo trabajo?</h3>
           <ul className="text-text/80 list-disc list-inside space-y-2">

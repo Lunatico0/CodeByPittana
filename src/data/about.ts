@@ -7,15 +7,15 @@ import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRound
 export const About: AboutData = {
   heading: "El código es estructura. La estructura es claridad.",
   paragraphs: [
-    "Creo firmemente en la programación como una disciplina donde cada línea tiene su importancia. Detrás de una respuesta HTTP, de una animación fluida o de una base de datos optimizada, hay un sistema diseñado para ser robusto y predecible.",
-    "Me apasiona entender cómo cada pieza se une: crear endpoints seguros, componentes reutilizables y procesos que puedan escalar. No se trata solo de hacer que algo funcione, sino de hacerlo de la manera correcta.",
-    "En cada proyecto, priorizo el rendimiento, la seguridad y la coherencia: si el código es limpio y predecible, todo lo demás fluye sin problemas."
+    "La programación es una disciplina donde cada línea tiene su importancia. Detrás de una respuesta HTTP, de una animación fluida o de una base de datos optimizada, hay un sistema diseñado para ser robusto y predecible.",
+    "Entender cómo todo se conecta es parte del proceso: cada endpoint, cada componente y cada decisión. No se trata solo de hacer que algo funcione, sino de hacerlo de la manera correcta.",
+    "En cada proyecto priorizo el rendimiento, la seguridad y la coherencia. Cuando el código es limpio y consistente, todo lo demás fluye de forma natural."
   ],
   pillars: [
     {
       id: "org",
       title: "Organización",
-      description: "Estructuras claras que hacen más fácil el mantenimiento y la escalabilidad.",
+      description: "Estructuras bien definidas que facilitan el mantenimiento, la lectura y la escalabilidad del código.",
       Icon: InventoryRoundedIcon
     },
     {
@@ -27,13 +27,13 @@ export const About: AboutData = {
     {
       id: "comp",
       title: "Componetización",
-      description: "Componentes pequeños y reutilizables que forman soluciones más grandes.",
+      description: "Pequeños componentes reutilizables que forman soluciones más grandes.",
       Icon: ExtensionRoundedIcon
     },
     {
       id: "bp",
       title: "Buenas prácticas",
-      description: "Disciplina y estándares para asegurar una calidad constante.",
+      description: "Disciplina y consistencia para mantener estándares y asegurar una calidad constante: la base de un código confiable.",
       Icon: StarsRoundedIcon
     }
   ]
