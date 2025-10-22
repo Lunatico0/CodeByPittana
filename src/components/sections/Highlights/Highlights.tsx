@@ -1,10 +1,11 @@
 'use client'
 
 import { highlights } from '@/src/data/highlights';
-import HighlightCard from '@/src/components/sections/Highlights/HighlightCard';
+import HighlightCard from '@ui/CardWithIcon';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FadeInSlideUpItem, StaggerContainer } from "@/src/lib/animationPresets";
+import CardWithIcon from '@ui/CardWithIcon';
 
 const Highlights = () => {
 
@@ -26,7 +27,7 @@ const Highlights = () => {
                 key={item.title || index}
                 variants={FadeInSlideUpItem}
               >
-                <HighlightCard {...item} index={counter} />
+                <CardWithIcon {...item} index={counter} />
               </motion.div>
             )
           })
