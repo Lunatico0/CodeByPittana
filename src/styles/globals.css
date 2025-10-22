@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @layer base {
-
   *,
   *::before,
   *::after {
@@ -12,7 +11,6 @@
 html {
   scroll-behavior: smooth;
 }
-
 
 :root {
   font-family: var(--font-josefin), system-ui, sans-serif;
@@ -71,56 +69,12 @@ html {
   }
 }
 
-@keyframes shine {
+@keyframes marquee {
   0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes flow {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%);
-  }
-
-  50% {
-    opacity: 1;
     transform: translateX(0);
   }
 
   100% {
-    opacity: 0;
-    transform: translateX(50%);
-  }
-}
-
-@keyframes infinite-scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
     transform: translateX(-50%);
   }
-}
-
-.animate-infinite-scroll {
-  animation: infinite-scroll 15s linear infinite;
-  display: flex;
-  min-width: fit-content;
-}
-
-/* 🚨 NUEVA REGLA: Pause on Hover */
-.animate-infinite-scroll:hover {
-  animation-play-state: paused;
 }

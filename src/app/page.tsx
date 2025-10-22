@@ -1,7 +1,8 @@
-import Hero from "@components/sections/Hero/Hero";
-import Highlights from "@components/sections/Highlights/Highlights";
-import Projects from "@/src/components/sections/Projects/Projects";
-import MainTechsScroll from "@/src/components/sections/MainTechsScroll/MainTechsScroll";
+import AboutSection from "@sections/About/About";
+import Hero from "@sections/Hero/Hero";
+import Highlights from "@sections/Highlights/Highlights";
+import MainTechsScroll from "@sections/MainTechsScroll/MainTechsScroll";
+import Projects from "@sections/Projects/Projects";
 
 export default function HomePage() {
 
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Highlights />
       <Projects />
       <MainTechsScroll />
+      <AboutSection />
 
     </>
   );

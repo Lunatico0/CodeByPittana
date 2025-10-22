@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { HighlightItem } from '@typings/highlight';
 
 
-const HighlightCard = ({ Icon, title, paragraph }: HighlightItem) => {
+const HighlightCard = ({ Icon, title, paragraph, index = 0 }: HighlightItem) => {
   return (
     <motion.div
       layout
@@ -26,11 +26,19 @@ const HighlightCard = ({ Icon, title, paragraph }: HighlightItem) => {
         <div className="p-3 rounded-full bg-primary/10 text-primary-light">
           <Icon fontSize='medium' className='text-primary/80' />
         </div>
-        <h3 className="text-xl font-semibold text-white text-balance">{title}</h3>
+
+        <h3
+          className="text-xl font-semibold text-text text-balance"
+        >
+          {index !== 0 && <span className='pr-2'>{index}</span>}
+          {title}
+        </h3>
       </div>
+
       <p className="text-text/70 text-sm text-balance">
         {paragraph}
       </p>
+
       <div className='absolute -right-10 -bottom-8 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-125'>
         <Icon sx={{ fontSize: 120 }} className='text-accent/10' />
       </div>

@@ -1,29 +1,27 @@
-'use client';
+import TechPill from "@ui/TechPill"
+import { Marquee } from "@/src/components/ui/marquee"
 
-import React from 'react';
-import TechPill from '@/src/components/ui/TechPill';
+const techs = [
+  "React.js",
+  "Next.js",
+  "Node.js",
+  "Express",
+  "JavaScript",
+  "TypeScript",
+  "MongoDB",
+  "TailwindCSS",
+  "Astro",
+]
 
-const MAIN_TECHNOLOGIES = [
-  'Reactjs', 'Nextjs', 'Nodejs', 'Express', 'JavaScript',
-  'TypeScript', 'MongoDB', 'TailwindCSS', 'Astro', 'NestJS',
-];
-
-const SCROLL_ITEMS = [...MAIN_TECHNOLOGIES, ...MAIN_TECHNOLOGIES];
-
-const MainTechsScroll = () => {
+export default function Home() {
   return (
-    <section>
-
-      <div className="relative flex whitespace-nowrap overflow-hidden">
-        <div className="flex my-2 animate-infinite-scroll items-center gap-6 md:gap-8">
-          {SCROLL_ITEMS.map((tech, index) => (
-            // Usamos una clave única y el TechPill
-            <TechPill key={`${tech}-${index}`} name={tech} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default MainTechsScroll;
+    <div className="flex flex-col w-full max-w-6xl">
+      <h3 className="text-center pb-4 font-semibold py-2 text-base md:text-2xl text-balance">Principales tecnologias con las que trabajo</h3>
+      <Marquee speed="fast" pauseOnHover={true}>
+        {techs.map((tech, index) => (
+          <TechPill key={index} name={tech} />
+        ))}
+      </Marquee>
+    </div>
+  )
+}

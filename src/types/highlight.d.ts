@@ -5,4 +5,5 @@ export interface HighlightItem {
   Icon: OverridableComponent<SvgIconTypeMap<object, "svg">>;
   title: string;
   paragraph: string;
+  index?: number;
 }
