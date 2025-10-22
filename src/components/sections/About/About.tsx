@@ -1,7 +1,6 @@
 "use client";
 
 import type { AboutData } from "@/src/types/about";
-import AboutPillar from "./AboutPillar";
 import { About } from '@data/about';
 import ParticlesBackground from "@ui/ParticlesBackground";
 import ButtonPrimary from "@ui/ButtonPrimary";
