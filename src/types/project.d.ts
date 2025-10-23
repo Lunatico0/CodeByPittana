@@ -1,3 +1,7 @@
+export interface GithubLanguages {
+  [language: string]: number;
+}
+
 export interface GithubRepo {
   id: number;
   name: string;
@@ -28,8 +32,4 @@ export interface ProjectCardData {
   technologies?: string[];
   languages_url?: string;
   languages?: GithubLanguages;
-}
-
-export interface GithubLanguages {
-  [language: string]: number;
 }
