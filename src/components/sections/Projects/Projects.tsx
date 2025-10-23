@@ -1,10 +1,10 @@
 import { fetchFeaturedRepos } from "@lib/github";
 import { extraProjectDetails } from "@data/projectDetails";
-import ProjectListClient from "@/src/components/sections/Projects/ProjectListClient";
-import type { GithubRepo } from "@typings/project";
+import ProjectListClient from "@sections/Projects/ProjectListClient";
+
+import type { GithubRepo, ProjectCardData } from "@typings/project";
 
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME ?? "";
-
 
 export default async function Projects() {
   if (!GITHUB_USERNAME) {
@@ -18,15 +18,14 @@ export default async function Projects() {
 
   const featuredProjects = (await fetchFeaturedRepos(GITHUB_USERNAME, 4)) as GithubRepo[];
 
-  const finalProjects = featuredProjects.map((project: GithubRepo) => {
-    const details = (extraProjectDetails as Record<string, Partial<GithubRepo>>)[project.name];
+  const finalProjects: ProjectCardData[] = featuredProjects.map((project: GithubRepo) => {
+    const details = (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[project.name];
 
     return {
       ...project,
       ...details,
-    }
+    } as ProjectCardData;
   });
-
 
   return (
     <section className="flex flex-col justify-between items-center gap-y-3">

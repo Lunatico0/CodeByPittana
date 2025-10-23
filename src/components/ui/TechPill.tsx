@@ -1,10 +1,6 @@
 import { FC } from "react";
-import { techIcons } from "@/src/data/techIcons";
-
-interface TechPillProps {
-  name: string;
-  value?: string | number;
-}
+import { techIcons } from "@icons/techIcons";
+import { TechPillProps } from '@typings/techPill'
 
 const TechPill: FC<TechPillProps> = ({ name, value }) => {
   const key = name.toLowerCase().replace(/\s+/g, "").replace(/\.+/g, "");

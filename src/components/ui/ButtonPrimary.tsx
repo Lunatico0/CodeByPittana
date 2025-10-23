@@ -1,9 +1,8 @@
 import React from "react";
 import ButtonBase from "./ButtonBase";
+import type { ButtonBaseProps } from "@typings/buttonBase";
 
-type Props = React.ComponentProps<typeof ButtonBase>;
-
-export default function ButtonPrimary({ className, ...props }: Props) {
+export default function ButtonPrimary({ className, ...props }: ButtonBaseProps) {
   return (
     <ButtonBase
       {...props}

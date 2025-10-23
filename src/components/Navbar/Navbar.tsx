@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -11,14 +11,8 @@ import useClickOutside from "@hooks/useClickOutside";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const navRef = useRef<HTMLElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-
-  useClickOutside(navRef, () => {
-    if (isOpen) {
-      setIsOpen(false);
-    }
-  });
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
 
   const links = [
     { href: "/projects", label: "Proyectos" },
@@ -28,7 +22,6 @@ export default function Navbar() {
 
   return (
     <nav
-      ref={navRef}
       className="flex items-center justify-between px-6 py-2 bg-secondary/40 backdrop-blur-md sticky top-0 z-50 border-b border-accent/40 max-w-6xl mx-auto"
     >
 
@@ -36,6 +29,7 @@ export default function Navbar() {
       <li className="list-none">
         <Link href="/" className="relative">
           <LogoCodeByPittana
+            isHeroVisible={isHeroVisible}
             neonColors={["#ff00cc", "#b26fff", "#00ffff"]}
             bodyGradient={["#d4a1ff", "#bca3f5", "#e0d2ff"]}
             fillGradient={["#1a1a1a", "#0c0c0c", "#000", "#000"]}

@@ -1,19 +1,17 @@
 import LogoDefs from "./LogoDefs";
-
-interface LogoCodeByPittanaProps {
-  neonColors?: [string, string, string];
-  bodyGradient?: [string, string, string];
-  fillGradient?: [string, string, string, string];
-  strokeColor?: string;
-  className?: string;
-}
+import type { LogoCodeByPittanaProps } from "@typings/logoCodeByPittana";
 
 const LogoCodeByPittana: React.FC<LogoCodeByPittanaProps> = ({
   neonColors = ["#f0f", "#9e99ff", "#0ff"],
   bodyGradient = ["#af48d5", "#9d9ae1", "#d3c4a6"],
   fillGradient = ["#241b21", "#0f0e08", "#010404", "#000"],
   className = "w-24 h-24",
+  isHeroVisible = true,
 }) => {
+  const neonFilter = isHeroVisible ? "url(#neon-glow)" : "none";
+  const innerStrokeCond = isHeroVisible ? 8 : 4;
+  const outerStrokeCond = isHeroVisible ? 6 : 3;
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +33,7 @@ const LogoCodeByPittana: React.FC<LogoCodeByPittanaProps> = ({
         r="150"
         fill="none"
         stroke="#fff"
-        strokeWidth={6}
+        strokeWidth={innerStrokeCond}
       />
 
       {/* 🟣 Círculo exterior */}
@@ -45,8 +43,8 @@ const LogoCodeByPittana: React.FC<LogoCodeByPittanaProps> = ({
         r="150"
         fill="none"
         stroke="url(#a)"
-        strokeWidth={4}
-        filter="url(#neon-glow)"
+        strokeWidth={outerStrokeCond}
+        filter={neonFilter}
       />
 
       <g transform="translate(-10 -25) scale(1.2)">

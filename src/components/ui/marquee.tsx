@@ -2,13 +2,7 @@
 
 import type React from "react"
 
-interface MarqueeProps {
-  children: React.ReactNode
-  className?: string
-  pauseOnHover?: boolean
-  reverse?: boolean
-  speed?: "slow" | "normal" | "fast"
-}
+import { MarqueeProps } from '@typings/marquee'
 
 export function Marquee({ children, className, pauseOnHover = true, reverse = false, speed = "normal" }: MarqueeProps) {
   const speedMap = {

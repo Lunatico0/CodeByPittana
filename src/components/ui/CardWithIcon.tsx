@@ -2,15 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-
-interface CardWithIconProps {
-  Icon?: React.ElementType;
-  title: string;
-  paragraph?: string;
-  index?: number;
-  variant?: "default" | "compact" | "about";
-  className?: string;
-}
+import type { CardWithIconProps } from "@typings/cardWithIcon";
 
 const CardWithIcon = ({
   Icon,
@@ -28,7 +20,7 @@ const CardWithIcon = ({
   const hoverStyles =
     variant === "about"
       ? ""
-      : "hover:-translate-y-2 hover:border-primary/80 hover:shadow-[0_0_15px_rgba(158,153,255,0.3)]";
+      : "hover:border-primary/80 hover:shadow-[0_0_15px_rgba(158,153,255,0.3)]";
 
   const variantStyles =
     variant === "compact"
@@ -40,10 +32,13 @@ const CardWithIcon = ({
   return (
     <motion.div
       layout
-      whileHover={variant === "about" ? {} : { y: -6 }}
+      whileHover={variant === "about" ? {} : {
+        y: -8,
+
+      }}
       transition={{
-        layout: { duration: 0.4, ease: "easeOut" },
-        default: { duration: 0.2, ease: "easeOut" },
+        layout: { duration: 0.1, ease: "easeOut" },
+        default: { duration: 0.1, ease: "easeOut" },
       }}
       className={`${baseStyles} ${hoverStyles} ${variantStyles} ${className}`}
     >

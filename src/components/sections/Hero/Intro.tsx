@@ -1,16 +1,7 @@
 import ButtonPrimary from '@ui/ButtonPrimary';
 import ButtonSecondary from '@ui/ButtonSecondary';
-import Link from 'next/link'
 import React from 'react'
-
-type IntroProps = {
-  title: string;
-  subtitle: string;
-  ctaLabel: string;
-  ctaHREF: string;
-  secondaryCta: string;
-  secondaryHREF: string;
-};
+import { IntroProps } from '@typings/intro'
 
 const Intro = ({
   title,

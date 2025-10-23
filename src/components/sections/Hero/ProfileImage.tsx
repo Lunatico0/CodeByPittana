@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export const ProfileImage = () => {
+const ProfileImage = () => {
   return (
     <div className="relative max-w-64 mx-auto group hover:scale-110 duration-300"
     >
@@ -13,9 +13,11 @@ export const ProfileImage = () => {
           alt="Foto de Patricio Pittana"
           width={320}
           height={320}
-          className="relative right-3 top-5 scale-150 group-hover:-translate-y-4 duration-300"
+          className="relative right-3 top-5 scale-150 group-hover:-translate-y-4 duration-300 pointer-events-none"
         />
       </div>
     </div>
   )
 }
+
+export default ProfileImage

@@ -1,30 +1,25 @@
 "use client";
 
-import type { AboutData } from "@/src/types/about";
-import { About } from '@data/about';
+import type { AboutProps } from "@/src/types/about";
 import ParticlesBackground from "@ui/ParticlesBackground";
 import ButtonPrimary from "@ui/ButtonPrimary";
 import CardWithIcon from "@ui/CardWithIcon";
 
-type Props = {
-  data?: AboutData;
-};
-
-export default function AboutSection({ data = About }: Props) {
+export default function AboutSection({ heading, paragraphs, pillars }: AboutProps) {
   return (
     <section className="flex flex-col md:flex-row gap-10">
       <div className="flex flex-col gap-4 md:gap-6 justify-between items-start">
 
         <h2 className="text-2xl md:text-4xl font-bold bg-gradient-to-t from-accent to-primary text-transparent bg-clip-text leading-tight md:max-w-[20ch] mx-auto text-center">
-          {data.heading}
+          {heading}
         </h2>
 
         <div className="flex flex-col gap-2 max-w-[80ch] text-text/85 text-pretty">
-          {data.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
+          {paragraphs.map((p, i) => <p key={i}>{p}</p>)}
         </div>
 
         <div className="flex flex-col gap-4 w-full">
-          {data.pillars.map((pill) => (
+          {pillars.map((pill) => (
             <CardWithIcon
               key={pill.id}
               Icon={pill.Icon}

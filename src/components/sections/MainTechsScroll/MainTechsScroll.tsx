@@ -1,5 +1,5 @@
 import TechPill from "@ui/TechPill"
-import { Marquee } from "@/src/components/ui/marquee"
+import { Marquee } from "@ui/Marquee"
 
 const techs = [
   "React.js",
@@ -13,7 +13,7 @@ const techs = [
   "Astro",
 ]
 
-export default function Home() {
+export default function MainTechs() {
   return (
     <div className="flex flex-col w-full max-w-6xl">
       <h3 className="text-center pb-4 font-semibold py-2 text-base md:text-2xl text-balance">Principales tecnologias con las que trabajo</h3>

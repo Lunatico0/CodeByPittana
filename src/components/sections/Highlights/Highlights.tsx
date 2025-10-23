@@ -1,13 +1,12 @@
 'use client'
 
-import { highlights } from '@/src/data/highlights';
-import HighlightCard from '@ui/CardWithIcon';
 import React from 'react';
+import { HighlightsProps } from '@typings/highlight';
 import { motion } from 'framer-motion';
-import { FadeInSlideUpItem, StaggerContainer } from "@/src/lib/animationPresets";
+import { FadeInSlideUpItem, StaggerContainer } from "@lib/animationPresets";
 import CardWithIcon from '@ui/CardWithIcon';
 
-const Highlights = () => {
+const Highlights = ({ highlights }: HighlightsProps) => {
 
   return (
     <section className="w-full mx-auto p-6 rounded-2xl bg-secondary/30 shadow-2xl">
@@ -27,7 +26,7 @@ const Highlights = () => {
                 key={item.title || index}
                 variants={FadeInSlideUpItem}
               >
-                <CardWithIcon {...item} index={counter} />
+                <CardWithIcon {...item} index={counter} className='h-full' />
               </motion.div>
             )
           })

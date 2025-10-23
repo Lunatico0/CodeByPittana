@@ -1,20 +1,8 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
-import clsx from "clsx";
+import type { ButtonBaseProps } from "@typings/buttonBase";
 
-type ButtonBaseProps = {
-  as?: "button" | "a" | "link";
-  href?: string;
-  children: React.ReactNode;
-  className?: string;
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
-};
-
-// 🔹 Estilo base compartido entre todos los botones
 const baseStyles = `
   inline-flex items-center justify-center
   px-6 py-3 rounded-xl font-bold transition-all

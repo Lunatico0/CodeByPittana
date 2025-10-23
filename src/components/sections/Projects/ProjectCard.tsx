@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
-import type { ProjectCardData } from "@/src/types/project";
+import type { ProjectCardProps } from "@/src/types/projectCard";
 import Image from "next/image.js";
 import Link from "next/link.js";
-
-interface ProjectCardProps extends ProjectCardData {
-  index?: number;
-}
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   id,

@@ -1,8 +1,4 @@
-interface LogoDefsProps {
-  neonColors: [string, string, string];
-  bodyGradient: [string, string, string];
-  fillGradient: [string, string, string, string];
-}
+import { LogoDefsProps } from '@typings/logoDefs'
 
 const LogoDefs: React.FC<LogoDefsProps> = ({
   neonColors,
