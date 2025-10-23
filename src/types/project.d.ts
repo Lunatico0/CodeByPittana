@@ -33,3 +33,13 @@ export interface ProjectCardData {
   languages_url?: string;
   languages?: GithubLanguages;
 }
+
+interface GithubApiRepo {
+  id: number;
+  name: string;
+  description: string | null;
+  html_url: string;
+  homepage: string | null;
+  topics: string[] | undefined;
+  languages_url: string;
+}

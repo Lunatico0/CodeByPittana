@@ -1,4 +1,4 @@
-import type { GithubRepo, GithubLanguages } from "@typings/project";
+import type { GithubRepo, GithubLanguages, GithubApiRepo } from "@typings/project";
 const FEATURED_TOPIC = "portfolio-featured";
 
 export async function fetchGithubRepos(username: string): Promise<GithubRepo[]> {
@@ -17,7 +17,7 @@ export async function fetchGithubRepos(username: string): Promise<GithubRepo[]> 
 
   const repos = await response.json();
 
-  const mappedRepos: GithubRepo[] = repos.map((repo: any) => ({
+  const mappedRepos: GithubRepo[] = repos.map((repo: GithubApiRepo) => ({
     id: repo.id,
     name: repo.name,
     description: repo.description,
