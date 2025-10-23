@@ -35,6 +35,7 @@ html {
   --color-bgLight: #ededed;
   --color-primary: #9E99FF;
   --color-secondary: #1C1C21;
+  --color-tertiary: #99dfff;
   --color-text: #E8E8E8;
 
   --shadow-custom-3d: '8px 8px 30px rgba(0, 0, 0, 0.5), -8px -8px 30px rgba(255, 255, 255, 0.1)';
