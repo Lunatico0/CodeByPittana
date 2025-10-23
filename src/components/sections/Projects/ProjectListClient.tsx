@@ -1,10 +1,10 @@
 "use client";
 
+import { FadeInSlideUpItem, StaggerContainer } from "@/src/lib/animationPresets";
 import { motion } from "framer-motion";
+import ButtonSecondary from "@ui/ButtonSecondary";
 import ProjectCard from "./ProjectCard";
 import type { ProjectListClientProps } from "@/src/types/projectListClient";
-import { FadeInSlideUpItem, StaggerContainer } from "@/src/lib/animationPresets";
-import ButtonSecondary from "@ui/ButtonSecondary";
 
 
 export default function ProjectListClient({ finalProjects, title, moreProjects }: ProjectListClientProps) {
@@ -20,7 +20,7 @@ export default function ProjectListClient({ finalProjects, title, moreProjects }
       >
         {finalProjects.map((project) => (
           <motion.div key={project.id} variants={FadeInSlideUpItem}>
-            <ProjectCard {...project} />
+            <ProjectCard {...project} className='h-full' />
           </motion.div>
         ))}
       </motion.div>

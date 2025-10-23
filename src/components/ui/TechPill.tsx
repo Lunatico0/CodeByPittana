@@ -3,7 +3,7 @@ import { techIcons } from "@icons/techIcons";
 import { TechPillProps } from '@typings/techPill'
 
 const TechPill: FC<TechPillProps> = ({ name, value }) => {
-  const key = name.toLowerCase().replace(/\s+/g, "").replace(/\.+/g, "");
+  const key = name.toLowerCase().replace(/\s+/g, "").replace(/\.+/g, "").replace(/\/+/g, "");
   const Icon = techIcons[key];
 
   return (

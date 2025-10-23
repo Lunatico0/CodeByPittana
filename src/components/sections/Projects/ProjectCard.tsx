@@ -10,8 +10,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   gitUrl,
   siteUrl,
   shortDescription,
-  image = '/favicon.svg'
+  image = '/favicon.svg',
+  className = "",
 }) => {
+  const discordAuthPrefix = 'https://discord.com/oauth2/authorize?';
+  const linkText = siteUrl && siteUrl.startsWith(discordAuthPrefix)
+    ? 'Añadir a Discord →'
+    : 'Visitar sitio →';
 
   return (
     <motion.div
@@ -21,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         boxShadow: "0 0 15px rgba(158, 153, 255, 0.3)",
         transition: { duration: 0.2, ease: "easeOut", delay: 0 },
       }}
-      className="group relative p-3 md:p-6 rounded-xl bg-secondary/50 border border-secondary/70 overflow-hidden"
+      className={`group relative p-3 md:p-6 rounded-xl bg-secondary/50 border border-secondary/70 overflow-hidden ${className}`}
     >
 
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[linear-gradient(135deg,rgba(158,153,255,0.05),rgba(0,255,255,0.05))]" />
@@ -73,7 +78,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               rel="noopener noreferrer"
               className="text-sm text-accent hover:text-primary transition-colors"
             >
-              Visitar sitio →
+              {linkText}
             </a>
           )}
         </div>

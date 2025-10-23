@@ -1,8 +1,10 @@
+import ReactMarkdown from "react-markdown";
 import { extraProjectDetails } from "@data/projectDetails";
 import { fetchGithubRepos } from "@lib/github";
 import Image from "next/image";
 import TechPill from "@ui/TechPill";
-import type { ProjectCardData } from "@/src/types/project";
+import type { ProjectCardData } from "@typings/project";
+import { markdownComponents } from "@lib/markdownComponents";
 
 interface ProjectPageProps {
   params: { slug: string };
@@ -14,6 +16,8 @@ export default async function ProjectDetail(props: ProjectPageProps) {
   const username = process.env.GITHUB_USERNAME ?? "";
   const repos = await fetchGithubRepos(username);
   const project = repos.find((r) => r.id.toString() === slug);
+
+  const discordAuthPrefix = 'https://discord.com/oauth2/authorize?';
 
   if (!project) {
     return <div className="p-8 text-center text-red-400">Proyecto no encontrado</div>;
@@ -27,8 +31,13 @@ export default async function ProjectDetail(props: ProjectPageProps) {
     ...details,
     image: details.image ?? "/favicon.svg",
     shortDescription: details.shortDescription || project.description || "Sin descripción",
+    longDescription: details.longDescription || project.description || "Sin descripción",
     technologies: details.technologies ?? [],
   };
+
+  const linkText = fullProject.siteUrl && fullProject.siteUrl.startsWith(discordAuthPrefix)
+    ? 'Añadir a Discord →'
+    : 'Visitar sitio →';
 
   return (
     <section className="relative flex flex-col justify-center w-full mx-auto gap-4 max-w-5xl text-sm md:text-base">
@@ -63,6 +72,14 @@ export default async function ProjectDetail(props: ProjectPageProps) {
         ))}
       </div>
 
+      {fullProject.longDescription && (
+        <div className="mt-4 prose prose-sm sm:prose-base dark:prose-invert max-w-none">
+          <ReactMarkdown components={markdownComponents}>
+            {fullProject.longDescription}
+          </ReactMarkdown>
+        </div>
+      )}
+
       {/* Links */}
       <div className="flex gap-4">
         {fullProject.gitUrl && (
@@ -82,7 +99,7 @@ export default async function ProjectDetail(props: ProjectPageProps) {
             rel="noopener noreferrer"
             className="text-accent hover:text-primary transition-colors"
           >
-            Visitar sitio →
+            {linkText}
           </a>
         )}
       </div>

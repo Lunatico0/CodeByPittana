@@ -1,7 +1,6 @@
-import { fetchFeaturedRepos } from "@lib/github";
 import { extraProjectDetails } from "@data/projectDetails";
+import { fetchFeaturedRepos } from "@lib/github";
 import ProjectListClient from "@sections/Projects/ProjectListClient";
-
 import type { GithubRepo, ProjectCardData } from "@typings/project";
 
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME ?? "";

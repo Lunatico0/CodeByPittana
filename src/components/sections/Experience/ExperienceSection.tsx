@@ -5,6 +5,8 @@ import type { ExperienceProps } from "@typings/experience";
 import { motion } from "framer-motion";
 import WorkRoundedIcon from '@mui/icons-material/WorkRounded';
 import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
+import ReactMarkdown from "react-markdown";
+import { markdownComponents } from '@lib/markdownComponents'
 
 export default function ExperienceSection({ work, education }: ExperienceProps) {
   return (
@@ -32,10 +34,12 @@ export default function ExperienceSection({ work, education }: ExperienceProps) 
                 <p className="text-sm text-text/60 mb-2">
                   {job.company} • {job.period}
                 </p>
-                <ul className="list-disc list-inside text-text/80 space-y-1">
+                <ul className="list-disc list-outside ml-4 text-text/80 space-y-1">
                   {job.description.map((line, j) => (
                     <li key={j} className="text-sm">
-                      {line}
+                      <ReactMarkdown components={markdownComponents}>
+                        {line}
+                      </ReactMarkdown>
                     </li>
                   ))}
                 </ul>
@@ -70,7 +74,11 @@ export default function ExperienceSection({ work, education }: ExperienceProps) 
                   {edu.institution} • {edu.period}
                 </p>
                 {edu.description && (
-                  <p className="text-sm text-text/80">{edu.description}</p>
+                  <p className="text-sm text-text/80">
+                    <ReactMarkdown components={markdownComponents}>
+                      {edu.description}
+                    </ReactMarkdown>
+                  </p>
                 )}
               </div>
             </motion.div>
