@@ -28,6 +28,7 @@ export interface ProjectCardData {
   gitUrl?: string;
   siteUrl?: string;
   shortDescription?: string;
+  longDescription?: string;
   image?: string;
   technologies?: string[];
   languages_url?: string;
