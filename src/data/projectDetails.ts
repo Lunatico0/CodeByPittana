@@ -1,4 +1,6 @@
-export const extraProjectDetails = {
+import { ExtraProjectDetails } from '@typings/projectDetails';
+
+export const extraProjectDetails: ExtraProjectDetails = {
   "Artemisa-Landing": {
     image: "/images/artemisa.png",
     shortDescription: "Landing page moderna para un servicio de e-commerce.",

@@ -1,10 +1,10 @@
-import type { AboutData } from "@typings/about";
+import type { AboutProps } from "@typings/about";
 import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
 import ExtensionRoundedIcon from '@mui/icons-material/ExtensionRounded';
 import StarsRoundedIcon from '@mui/icons-material/StarsRounded';
 import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
 
-export const About: AboutData = {
+export const AboutData: AboutProps = {
   heading: "El código es estructura. La estructura es claridad.",
   paragraphs: [
     "La programación es una disciplina donde cada línea tiene su importancia. Detrás de una respuesta HTTP, de una animación fluida o de una base de datos optimizada, hay un sistema diseñado para ser robusto y predecible.",
