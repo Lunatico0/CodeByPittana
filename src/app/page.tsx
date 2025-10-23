@@ -1,26 +1,26 @@
 import AboutSection from "@sections/About/About";
+import ExperienceSection from "@sections/Experience/ExperienceSection";
 import Hero from "@sections/Hero/Hero";
 import Highlights from "@sections/Highlights/Highlights";
-import MainTechsScroll from "@sections/MainTechsScroll/MainTechsScroll";
+import MainTechs from "@sections/MainTechsScroll/MainTechsScroll";
 import Projects from "@sections/Projects/Projects";
+
+import { ExperienceData } from "@data/experience";
+import { HeroData } from "@data/hero";
+import { HighlightsData } from '@data/highlights';
+import { AboutData } from '@data/about';
 
 export default function HomePage() {
 
   return (
     <>
-      <Hero
-        title="Code by Pittana"
-        subtitle="Soy Patricio Pittana, desarrollador full stack. Transformo ideas en experiencias digitales claras, funcionales y hechas a medida."
-        ctaLabel="Contactame"
-        ctaHREF='/contact'
-        secondaryCta="Ver proyectos"
-        secondaryHREF='/projects'
-      />
+      <Hero {...HeroData} />
 
-      <Highlights />
+      <Highlights highlights={HighlightsData} />
       <Projects />
-      <MainTechsScroll />
-      <AboutSection />
+      <MainTechs />
+      <AboutSection {...AboutData} />
+      <ExperienceSection {...ExperienceData} />
 
     </>
   );

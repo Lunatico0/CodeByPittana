@@ -1,9 +1,10 @@
 import { useEffect, RefObject } from 'react';
+import { UseClickOutside } from '@typings/useClickOutside'
 
-export default function useClickOutside(
-  ref: RefObject<HTMLElement | null>,
-  handler: (event: Event) => void
-) {
+const useClickOutside: UseClickOutside = (
+  ref,
+  handler
+) => {
   useEffect(() => {
     const listener = (event: Event) => {
 
@@ -23,3 +24,5 @@ export default function useClickOutside(
     };
   }, [ref, handler]);
 }
+
+export default useClickOutside;

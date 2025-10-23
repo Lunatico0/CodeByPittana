@@ -17,12 +17,14 @@ export async function fetchGithubRepos(username: string): Promise<GithubRepo[]> 
 
   const repos = await response.json();
 
-  const mappedRepos: GithubRepo[] = repos.map((repo: GithubRepo) => ({
+  const mappedRepos: GithubRepo[] = repos.map((repo: any) => ({
     id: repo.id,
     name: repo.name,
     description: repo.description,
+
     gitUrl: repo.html_url,
     siteUrl: repo.homepage,
+
     topics: repo.topics ?? [],
     html_url: repo.html_url,
     homepage: repo.homepage,
