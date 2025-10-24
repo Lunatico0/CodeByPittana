@@ -27,7 +27,7 @@ export default async function Projects() {
   });
 
   return (
-    <section className="flex flex-col justify-between items-center gap-y-3">
+    <section id="projects" className="flex flex-col justify-between items-center gap-y-3 scroll-mt-24 md:scroll-mt-28">
       <ProjectListClient finalProjects={finalProjects} title={'Proyectos destacados'} moreProjects={true} />
     </section>
   );

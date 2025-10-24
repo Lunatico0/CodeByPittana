@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import type { ProjectCardProps } from "@/src/types/projectCard";
+import type { ProjectCardProps } from "@typings/projectCard";
 import Image from "next/image.js";
 import Link from "next/link.js";
+import TechPill from "@ui/TechPill";
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   id,
@@ -12,6 +13,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   shortDescription,
   image = '/favicon.svg',
   className = "",
+  languages
 }) => {
   const discordAuthPrefix = 'https://discord.com/oauth2/authorize?';
   const linkText = siteUrl && siteUrl.startsWith(discordAuthPrefix)
@@ -54,10 +56,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             {name}
           </h3>
 
-          <p className="text-text/80 text-sm mb-4">
+          <p className="text-text/80 text-sm">
             {(description ? shortDescription + description : shortDescription) || "Descripción no disponible."}
           </p>
         </Link>
+
+        {/* Pills de tecnologias */}
+        <div className="flex flex-wrap gap-2 my-2">
+          {Object.entries(languages ?? {}).map(([tech, value], _, arr) => {
+            const total = arr.reduce((acc, [, v]) => acc + v, 0);
+            const percentage = ((value / total) * 100).toFixed(1);
+            return <TechPill key={tech} name={tech} value={percentage} />;
+          })}
+        </div>
 
         {/* Botones links */}
         <div className="flex gap-4 items-center">

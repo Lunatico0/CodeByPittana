@@ -9,7 +9,7 @@ import CardWithIcon from '@ui/CardWithIcon';
 const Highlights = ({ highlights }: HighlightsProps) => {
 
   return (
-    <section className="w-full mx-auto p-6 rounded-2xl bg-secondary/30 shadow-2xl">
+    <section id='highlights' className="w-full mx-auto p-6 rounded-2xl bg-secondary/30 shadow-2xl scroll-mt-24 md:scroll-mt-28">
       <h2 className='text-center pb-4 font-semibold py-2 text-base md:text-2xl text-balance'>Mi Proceso de Trabajo</h2>
       <motion.div
         variants={StaggerContainer}

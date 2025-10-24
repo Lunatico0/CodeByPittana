@@ -1,12 +1,21 @@
-import Image from "next/image"
+import Image from "next/image";
+import { motion } from 'framer-motion';
+import { FadeInSlideUpItem } from "@/src/lib/animationPresets";
+
 
 const ProfileImage = () => {
   return (
-    <div className="relative max-w-64 mx-auto group hover:scale-110 duration-300"
+    <motion.div
+      variants={FadeInSlideUpItem}
+      layout
+      style={{ transform: 'translateZ(0)' }}
+      className="relative max-w-64 mx-auto group"
     >
-      <div className="aspect-[3/4] grid items-end rounded-b-full overflow-hidden"
+      <div
+        className="aspect-[3/4] grid items-end rounded-b-full overflow-hidden hover:scale-110 duration-300"
       >
-        <div className="absolute aspect-square mx-auto object-cover inset-[auto_0_0] rounded-full border-4 border-text bg-gradient-to-br from-primary to-accent"
+        <div
+          className="absolute aspect-square mx-auto object-cover inset-[auto_0_0] rounded-full border-4 border-text bg-gradient-to-br from-primary to-accent"
         />
         <Image
           src="/CVImage(1).png"
@@ -16,7 +25,7 @@ const ProfileImage = () => {
           className="relative right-3 top-5 scale-150 group-hover:-translate-y-4 duration-300 pointer-events-none"
         />
       </div>
-    </div>
+    </motion.div>
   )
 }
 
