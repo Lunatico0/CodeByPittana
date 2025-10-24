@@ -33,7 +33,8 @@ Este proyecto demostró la capacidad de transformar un problema logístico compl
       "Node.js",
       "MongoDB",
       "TailwindCSS",
-      "Logistics Management"
+      "Logistics Management",
+      "Material UI"
     ],
   },
   "Canela-Cakes-menu": {
@@ -63,12 +64,12 @@ Debido a que las soluciones comerciales de QR con estilo son costosas y a menudo
 Este proyecto demuestra una profunda comprensión de UX en SPAs y la habilidad para desarrollar herramientas complementarias de nivel empresarial para satisfacer requisitos de *branding* específicos de un cliente.
     `,
     technologies: [
-      "React.js",
       "CSS",
       "HTML",
       "Tailwind CSS",
       "API QR Code Generator",
-      "UI/UX Design"
+      "UI/UX Design",
+      "Material UI"
     ],
   },
   "discordBot-Musicologo": {
