@@ -1,13 +1,24 @@
 import { useState, useEffect } from 'react';
 
-const SECTION_IDS: string[] = [
+export const DESKTOP_SECTION_IDS: string[] = [
   'hero',
   'projects',
   'about',
   'experience',
   'contact',
-]
-export const useActiveSection = () => {
+];
+
+export const MOBILE_SECTION_IDS: string[] = [
+  'hero',
+  'highlights',
+  'projects',
+  'tech',
+  'about',
+  'experience',
+  'contact',
+];
+
+export const useActiveSection = (sectionIds: string[]) => {
   const [activeId, setActiveId] = useState('hero');
 
   useEffect(() => {
@@ -26,7 +37,7 @@ export const useActiveSection = () => {
       }
     );
 
-    SECTION_IDS.forEach((id) => {
+    sectionIds.forEach((id) => {
       const element = document.getElementById(id);
       if (element) {
         observer.observe(element);
@@ -34,7 +45,7 @@ export const useActiveSection = () => {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [sectionIds]);
 
   return activeId;
 };

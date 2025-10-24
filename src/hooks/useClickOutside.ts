@@ -1,4 +1,4 @@
-import { useEffect, RefObject } from 'react';
+import { useEffect } from 'react';
 import { UseClickOutside } from '@typings/useClickOutside'
 
 const useClickOutside: UseClickOutside = (

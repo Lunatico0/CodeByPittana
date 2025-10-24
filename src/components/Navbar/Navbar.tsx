@@ -7,12 +7,17 @@ import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import LogoCodeByPittana from "@components/ui/LogoCodeByPittana";
 import useClickOutside from "@hooks/useClickOutside";
-import { useActiveSection } from "@hooks/useActiveSection";
+import { useActiveSection, DESKTOP_SECTION_IDS, MOBILE_SECTION_IDS } from "@hooks/useActiveSection";
+import { useMediaQuery } from "@hooks/useMediaQuery";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const activeSectionId = useActiveSection();
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
+  const sectionIdsToObserve = isMobile ? MOBILE_SECTION_IDS : DESKTOP_SECTION_IDS;
+
+  const activeSectionId = useActiveSection(sectionIdsToObserve);
 
   const navRef = useRef<HTMLElement>(null);
   const closeMenu = () => setIsOpen(false);
@@ -117,8 +122,7 @@ export default function Navbar() {
                     key={href}
                     href={href}
                     onClick={() => setIsOpen(false)}
-                    // 🎯 CÓDIGO CORREGIDO PARA APLICAR EL ESTADO ACTIVO
-                    className={`w-full text-center py-3 rounded-md transition-colors duration-200 text-text/60 hover:text-text hover:bg-primary/10`}
+                    className={`w-full text-center py-3 rounded-xl transition-colors duration-200 text-text/60 hover:text-text hover:bg-primary/10 ${isActive && 'bg-primary/20 border-tertiary/50 border'}`}
                   >
                     {label}
                   </Link>
