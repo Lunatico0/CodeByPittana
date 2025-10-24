@@ -1,4 +1,5 @@
 import LogoDefs from "./LogoDefs";
+import { motion } from "framer-motion";
 import type { LogoCodeByPittanaProps } from "@typings/logoCodeByPittana";
 
 const LogoCodeByPittana: React.FC<LogoCodeByPittanaProps> = ({
@@ -27,24 +28,32 @@ const LogoCodeByPittana: React.FC<LogoCodeByPittanaProps> = ({
       />
 
       {/* 🟣 Linea blanca sutil */}
-      <circle
+      <motion.circle
         cx="100"
         cy="115"
         r="150"
         fill="none"
         stroke="#fff"
         strokeWidth={innerStrokeCond}
+        animate={{
+          strokeWidth: innerStrokeCond,
+        }}
+        transition={{ duration: 0.2 }}
       />
 
       {/* 🟣 Círculo exterior */}
-      <circle
+      <motion.circle
         cx="100"
         cy="115"
         r="150"
         fill="none"
         stroke="url(#a)"
         strokeWidth={outerStrokeCond}
-        filter={neonFilter}
+        animate={{
+          filter: neonFilter,
+          strokeWidth: outerStrokeCond,
+        }}
+        transition={{ duration: 0.2 }}
       />
 
       <g transform="translate(-10 -25) scale(1.2)">

@@ -16,6 +16,7 @@ export const FadeInSlideUpItem: Variants = {
     opacity: 1,
     y: 0,
     transition: {
+      type: "spring",
       duration: 0.5,
       ease: [0.22, 1, 0.36, 1],
     },

@@ -1,9 +1,10 @@
 import React from 'react'
-
+import { AboutData } from '@data/about';
+import AboutSection from '@sections/About/About';
 const page = () => {
   return (
     <div>
-      <p>Soy desarrollador y me encanta crear cosas que no existen.</p>
+      <AboutSection {...AboutData} />
     </div>
   )
 }

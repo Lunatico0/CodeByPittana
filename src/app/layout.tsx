@@ -1,8 +1,8 @@
 import "@styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
-import Background from '@components/ui/Background';
-import Footer from "@/src/components/Footer/Footer";
-import Navbar from "@/src/components/Navbar/Navbar";
+import Background from '@ui/Background';
+import Footer from "@components/Footer/Footer";
+import Navbar from "@components/Navbar/Navbar";
 import type { Metadata } from "next";
 
 const josefinSans = Josefin_Sans({

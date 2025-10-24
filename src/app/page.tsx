@@ -4,6 +4,7 @@ import Hero from "@sections/Hero/Hero";
 import Highlights from "@sections/Highlights/Highlights";
 import MainTechs from "@sections/MainTechsScroll/MainTechsScroll";
 import Projects from "@sections/Projects/Projects";
+import ContactSection from "@sections/Contact/ContactSection";
 
 import { ExperienceData } from "@data/experience";
 import { HeroData } from "@data/hero";
@@ -21,7 +22,7 @@ export default function HomePage() {
       <MainTechs />
       <AboutSection {...AboutData} />
       <ExperienceSection {...ExperienceData} />
-
+      <ContactSection />
     </>
   );
 }

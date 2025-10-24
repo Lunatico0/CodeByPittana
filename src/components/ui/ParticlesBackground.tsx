@@ -148,32 +148,6 @@ export default function ParticlesBackground({ className }: ParticlesBackgroundPr
             "value": 1
           }
         },
-        // "color": {
-        //   "value": ["#21E4D7", "#9E99FF"],
-        //   "animation": {
-        //     "enable": true,
-        //     "sync": true,
-        //     "speed": 10,
-        //     "count": 0
-        //   }
-        // },
-        // "life": {
-        //   "count": 1,
-        //   "duration": {
-        //     "value": 20,
-        //     "sync": true
-        //   }
-        // },
-        // "opacity": {
-        //   "value": 1,
-        //   "animation": {
-        //     "enable": true,
-        //     "startValue": "max",
-        //     "count": 1,
-        //     "speed": 0.05,
-        //     "sync": true
-        //   }
-        // },
         "color": {
           "value": "#21E4D7",
           "animation": {

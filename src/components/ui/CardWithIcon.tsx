@@ -32,10 +32,7 @@ const CardWithIcon = ({
   return (
     <motion.div
       layout
-      whileHover={variant === "about" ? {} : {
-        y: -8,
-
-      }}
+      whileHover={variant === "about" ? {} : { y: -8, }}
       transition={{
         layout: { duration: 0.1, ease: "easeOut" },
         default: { duration: 0.1, ease: "easeOut" },
