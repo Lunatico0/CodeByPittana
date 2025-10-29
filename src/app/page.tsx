@@ -5,6 +5,10 @@ import Highlights from "@sections/Highlights/Highlights";
 import MainTechs from "@sections/MainTechsScroll/MainTechsScroll";
 import Projects from "@sections/Projects/Projects";
 import ContactSection from "@sections/Contact/ContactSection";
+import { Suspense } from "react";
+import Loading from "@ui/Loading";
+
+
 
 import { ExperienceData } from "@data/experience";
 import { HeroData } from "@data/hero";
@@ -15,7 +19,7 @@ import ValueOfferSection from "@sections/ValueOfferSection/ValueOfferSection";
 export default function HomePage() {
 
   return (
-    <>
+    <Suspense fallback={<Loading />}>
       <Hero {...HeroData} />
 
       <Highlights highlights={HighlightsData} />
@@ -25,6 +29,6 @@ export default function HomePage() {
       <ExperienceSection {...ExperienceData} />
       <ValueOfferSection />
       <ContactSection />
-    </>
+    </Suspense>
   );
 }

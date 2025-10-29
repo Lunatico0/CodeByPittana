@@ -1,10 +1,15 @@
 import React from 'react'
 import { AboutData } from '@data/about';
 import AboutSection from '@sections/About/About';
+import { Suspense } from "react";
+import Loading from "@ui/Loading";
+
 const page = () => {
   return (
     <div>
-      <AboutSection {...AboutData} />
+      <Suspense fallback={<Loading />}>
+        <AboutSection {...AboutData} />
+      </Suspense>
     </div>
   )
 }
