@@ -12,14 +12,6 @@ import { markdownComponents } from "@lib/markdownComponents";
 
 export default function AboutSection({ heading, paragraphs, pillars }: AboutProps) {
 
-  const ParagraphRenderer = (props: HTMLMotionProps<'p'>) => (
-    <motion.p
-      variants={FadeInSlideUpItem}
-      className="mb-4 last:mb-0"
-      {...props}
-    />
-  );
-
   const markdownContent = paragraphs.join('\n\n');
 
   return (
