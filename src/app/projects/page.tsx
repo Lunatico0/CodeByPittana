@@ -28,7 +28,7 @@ export default async function Projects() {
 
   return (
     <section className="p-6">
-      <ProjectListClient finalProjects={finalProjects} title={'Todos mis proyectos'} moreProjects={false} />
+      <ProjectListClient finalProjects={finalProjects} title={'Todos mis proyectos'} moreProjects={false} visivility='animate' />
     </section>
   );
 }

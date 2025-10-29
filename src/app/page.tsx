@@ -10,6 +10,7 @@ import { ExperienceData } from "@data/experience";
 import { HeroData } from "@data/hero";
 import { HighlightsData } from '@data/highlights';
 import { AboutData } from '@data/about';
+import ValueOfferSection from "@sections/ValueOfferSection/ValueOfferSection";
 
 export default function HomePage() {
 
@@ -22,6 +23,7 @@ export default function HomePage() {
       <MainTechs />
       <AboutSection {...AboutData} />
       <ExperienceSection {...ExperienceData} />
+      <ValueOfferSection />
       <ContactSection />
     </>
   );

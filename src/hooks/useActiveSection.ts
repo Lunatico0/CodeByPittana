@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const DESKTOP_SECTION_IDS: string[] = [
   'hero',
   'projects',
+  'tech',
   'about',
   'experience',
+  'value',
   'contact',
 ];
 
@@ -15,13 +17,26 @@ export const MOBILE_SECTION_IDS: string[] = [
   'tech',
   'about',
   'experience',
+  'value',
   'contact',
 ];
 
-export const useActiveSection = (sectionIds: string[]) => {
+export const useActiveSection = (sectionIds: string[], pathname: string) => {
   const [activeId, setActiveId] = useState('hero');
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const rootMargin = '-40% 0px -40% 0px';
 
   useEffect(() => {
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    const isRootPage = pathname === '/';
+    if (!isRootPage) {
+      setActiveId('hero');
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -32,10 +47,12 @@ export const useActiveSection = (sectionIds: string[]) => {
       },
       {
         root: null,
-        rootMargin: '-70px 0px -50% 0px',
+        rootMargin: rootMargin,
         threshold: 0.0,
       }
     );
+
+    observerRef.current = observer;
 
     sectionIds.forEach((id) => {
       const element = document.getElementById(id);
@@ -44,8 +61,13 @@ export const useActiveSection = (sectionIds: string[]) => {
       }
     });
 
-    return () => observer.disconnect();
-  }, [sectionIds]);
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+    };
+  }, [sectionIds, pathname]);
 
   return activeId;
 };
