@@ -4,6 +4,7 @@ import {
   Astro,
   Async,
   Bootstrap,
+  CodeRounded,
   Command,
   CSS,
   Cursor,
@@ -28,6 +29,7 @@ import {
   NodeMailer,
   Postman,
   React,
+  RocketLaunchRounded,
   Sass,
   SearchRounded,
   StarOutlineRounded,
@@ -40,11 +42,13 @@ import {
 } from "@icons";
 
 export const techIcons: TechIconMap = {
+  api: <Api className="size-4 stroke-1" />,
   apiintegration: <Api className="size-4 stroke-1" />,
   apiqrcodegenerator: <Api className="size-4 stroke-1" />,
   astro: <Astro className="size-4 stroke-1" />,
   asynchronouslogic: <Async className="size-4 stroke-1" />,
   bootstrap: <Bootstrap className="size-4 stroke-1" />,
+  code: <CodeRounded className="size-4 stroke-1" />,
   commandhandler: <Command className="size-4 stroke-1" />,
   css: <CSS className="size-4 stroke-1" />,
   cursor: <Cursor className="size-4 stroke-1" />,
@@ -71,6 +75,7 @@ export const techIcons: TechIconMap = {
   nodemailer: <NodeMailer className="size-4 stroke-1" />,
   postman: <Postman className="size-4 stroke-1" />,
   reactjs: <React className="size-4 stroke-1" />,
+  rocket: <RocketLaunchRounded className="size-4 stroke-1" />,
   scss: <Sass className="size-4 stroke-1" />,
   atenciónaldetalle: <SearchRounded className="size-4 stroke-1" />,
   autonomía: <StarOutlineRounded className="size-4 stroke-1" />,
