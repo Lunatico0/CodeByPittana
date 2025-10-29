@@ -7,9 +7,9 @@ import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRound
 export const AboutData: AboutProps = {
   heading: "El código es estructura. La estructura es claridad.",
   paragraphs: [
-    "La programación es una disciplina donde cada línea tiene su importancia. Detrás de una respuesta HTTP, de una animación fluida o de una base de datos optimizada, hay un sistema diseñado para ser robusto y predecible.",
-    "Entender cómo todo se conecta es parte del proceso: cada endpoint, cada componente y cada decisión. No se trata solo de hacer que algo funcione, sino de hacerlo de la manera correcta.",
-    "En cada proyecto priorizo el rendimiento, la seguridad y la coherencia. Cuando el código es limpio y consistente, todo lo demás fluye de forma natural."
+    "Mi pasión por la programación nació al ver cómo líneas de C/C++ se convertían en funcionalidad tangible. Este principio guía mi trabajo hoy: **construir sistemas robustos y predecibles**, asegurando la solidez del backend y la usabilidad impecable del frontend.",
+    "No pongo el foco solo en un lado del stack, sino en el **valor integral**. Me impulsa la obsesión por el detalle visual y la seguridad inquebrantable del código. Creo que una arquitectura limpia y escalable es tan crucial para el desarrollador como una excelente experiencia lo es para el usuario.",
+    "Aporto soluciones creativas a desafíos complejos. Mi filosofía es simple: las ideas del cliente son el motor, pero mi experiencia aporta las **contraideas efectivas** para sorprender y garantizar la viabilidad técnica. Siempre con comunicación abierta y entregas de avances diarios para alinear la visión desde el inicio."
   ],
   pillars: [
     {
