@@ -1,13 +1,18 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
 import { ContactData } from '@data/contact';
-import FormField from '@ui/FormField';
+import { useSearchParams } from 'next/navigation';
 import ButtonPrimary from '@ui/ButtonPrimary';
+import FormField from '@ui/FormField';
+import React, { useState, useRef } from 'react';
+import toast from 'react-hot-toast';
 
 const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  const searchParams = useSearchParams();
+  const sourcePlan = searchParams.get('plan') || 'general';
+  const isPlanSpecific = sourcePlan !== 'general';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,25 +24,28 @@ const ContactForm: React.FC = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
+      const dataWithPlan = { ...data, source_plan: sourcePlan };
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(dataWithPlan),
       });
 
       const result = await response.json();
 
       if (response.ok) {
-        alert('¡Gracias! Tu mensaje ha sido enviado con éxito.');
+        toast.success('¡Mensaje enviado! Me pondré en contacto contigo pronto.', {
+          duration: 6000
+        });
         formRef.current.reset();
       } else {
-        alert(`Error al enviar el mensaje: ${result.message}`);
+        toast.error(`Error al enviar el mensaje: ${result.message || 'Intenta de nuevo más tarde.'}`);
       }
     } catch (error) {
       console.error('Error de red/servidor:', error);
-      alert('Ocurrió un error inesperado. Intenta de nuevo más tarde.');
+      toast.error('Ocurrió un error inesperado. Revisa tu conexión.');
     } finally {
       setIsSubmitting(false);
     }
@@ -48,16 +56,31 @@ const ContactForm: React.FC = () => {
       <h4 className="text-xl font-bold text-primary mb-8">
         Envíame un email
       </h4>
+
+      {isPlanSpecific && (
+        <div className="p-4 mb-6 rounded-lg bg-accent/20 border border-primary/50 text-text">
+          <p className="font-semibold">
+            Estás consultando por el Plan: <span className="text-primary capitalize">{sourcePlan}</span>
+          </p>
+          <p className="text-sm text-text/80">
+            Por favor, proporciona detalles clave en tu mensaje para iniciar la cotización.
+          </p>
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-4" ref={formRef}>
+        {isPlanSpecific && (<FormField label="Tu Nombre Completo*" name="name" />)}
         <FormField label="Tu Email*" name="email" />
-        <FormField label="Asunto (Ej: Propuesto de Proyecto)" name="subject" />
+        <FormField
+          label="Asunto (Ej: Propuesta de Proyecto)"
+          name="subject"
+          defaultValue={isPlanSpecific ? `Consulta por Plan ${sourcePlan}` : ''}
+        />
         <FormField label="Tu Mensaje*" name="message" isTextArea />
 
         <ButtonPrimary
           as='button'
           type='submit'
           disabled={isSubmitting}
-          className='!items-end'
         >
           {isSubmitting ? 'Enviando...' : ContactData.ctaLabel}
         </ButtonPrimary>

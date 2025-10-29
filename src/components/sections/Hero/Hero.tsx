@@ -10,7 +10,7 @@ export default function Hero({ ...props }: HeroProps) {
   return (
     <motion.section
       id="hero"
-      className="flex flex-col md:flex-row items-center justify-between gap-6 scroll-mt-32"
+      className="flex flex-col md:flex-row items-center gap-6 scroll-mt-32"
       variants={StaggerContainer}
       initial="hidden"
       animate="visible"
