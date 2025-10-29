@@ -29,6 +29,7 @@
       "@icons/*": ["./src/icons/*"],
       "@icons": ["./src/icons/index.ts"],
       "@lib/*": ["./src/lib/*"],
+      "@utils/*": ["./src/utils/*"],
       "@styles/*": ["./src/styles/*"],
       "@typings/*": ["./src/types/*"],
       "@components/*": ["./src/components/*"],

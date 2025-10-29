@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patricio Ángel Pittana - CV (International Elite)</title>
+  <style>
+    :root {
+      --primary: #1b1f3b;
+      --accent: #0a84ff;
+      --text: #333;
+      --bg: #ffffff;
+      --muted: #666;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-top: 0;
+    }
+
+    h2 {
+      font-size: 18px;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 4px;
+      margin-top: 28px;
+    }
+
+    h3 {
+      font-size: 15px;
+      margin-top: 18px;
+    }
+
+    p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 6px 0 6px 18px;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .contact {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .contact a {
+      color: var(--muted);
+    }
+
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .project {
+      margin-bottom: 18px;
+    }
+
+    .project strong {
+      color: var(--primary);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .skills-list span {
+      background: #f2f5ff;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .container {
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+      }
+
+      @page {
+        size: A4;
+        margin: 10mm;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- ================= HEADER ================= -->
+    <div class="header">
+      <!-- 👇 Future note:
+           In version #3 (with photo), insert profile image here.
+           Example:
+           <img src="profile.jpg" alt="Patricio Pittana" class="profile-pic">
+      -->
+      <h1>Patricio Ángel Pittana</h1>
+      <p class="subtitle">Full Stack & Systems Developer | Hardware Integration & Automation Experience</p>
+      <p class="contact">
+        Paraná, Entre Ríos, Argentina ·
+        <a href="mailto:pittanapatricio@gmail.com">pittanapatricio@gmail.com</a> ·
+        +54 9 3435 417146 <br>
+        <a href="https://pittanapatricio.vercel.app">pittanapatricio.vercel.app</a> ·
+        <a href="https://github.com/Lunatico0">github.com/Lunatico0</a> ·
+        <a href="https://www.linkedin.com/in/patricio-pittana-2185b6177">linkedin.com/in/patricio-pittana</a>
+      </p>
+    </div>
+
+    <!-- ================= PROFESSIONAL SUMMARY ================= -->
+    <div class="section">
+      <h2>Professional Summary</h2>
+      <p>
+        Full Stack & Systems Developer with strong expertise in <strong>React, Next.js, Node.js, and
+          TypeScript</strong>, highly specialized Full Stack & Systems Developer focused on delivering high-performance,
+        scalable applications that <strong>seamlessly bridge software and real-world operations</strong>.
+      </p>
+      <p>
+        Skilled in designing end-to-end systems — from APIs and business logic to modern UIs and desktop integrations — using technologies such as <strong>MongoDB, Tailwind, Astro, and Electron</strong>. Proven experience designing and delivering end-to-end systems for logistics and retail, specializing in <strong>optimizing operational inefficiencies into elegant and measurable software systems</strong> (MERN, Next.js, Electron).
+      </p>
+      <p>
+        Recognized for technical precision, delivering MVPs in <strong>record time</strong>, and operating successfully in remote, cross-functional global teams.
+        Open to <strong>remote or relocation opportunities</strong> in global tech environments.
+      </p>
+    </div>
+
+    <!-- ================= TECHNICAL SKILLS ================= -->
+    <div class="section">
+      <h2>Technical Skills</h2>
+      <div class="skills-list">
+        <span>React.js (TypeScript)</span>
+        <span>Next.js</span>
+        <span>Node.js</span>
+        <span>Express</span>
+        <span>MongoDB</span>
+        <span>Tailwind CSS</span>
+        <span>Astro</span>
+        <span>Electron</span>
+        <span>Docker</span>
+        <span>JWT / OAuth2</span>
+        <span>Vercel</span>
+        <span>Firebase</span>
+      </div>
+    </div>
+
+    <!-- ================= KEY PROJECTS ================= -->
+    <div class="section">
+      <h2>Key Projects</h2>
+
+      <div class="project">
+        <strong>Control de Cubiertas (Fleet Tire Management System)</strong><br>
+        <em>Electron.js · React · Tailwind · MongoDB</em>
+        <p>
+          Developed a desktop asset management system for a logistics company to track and optimize tire usage across
+          vehicle fleets.
+          Migrated from a web app to a Windows desktop environment for offline stability and improved performance.
+          Implemented predictive maintenance tracking, lifecycle analytics, and cost-optimization algorithms.
+        </p>
+      </div>
+
+      <div class="project">
+        <strong>Artemisa E-Commerce + ERP Light</strong><br>
+        <em>Node.js · Express · MongoDB · React · Electron</em>
+        <p>
+          Created a hybrid e-commerce and internal management system for a PVC retail business.
+          Integrated dynamic pricing via Banco Nación API and built a secure backend with JWT and Google Login.
+          Implemented advanced budgeting and stock management tools used as the company’s operational core.
+        </p>
+      </div>
+
+      <div class="project">
+        <strong>CanelaCakes Digital Menu & Custom QR Tool</strong><br>
+        <em>React · Tailwind · Custom QR Generator</em>
+        <p>
+          Developed a single-page digital menu accessible via QR code with a focus on user experience and branding.
+          Built an open-source custom QR generator for stylized, brand-specific designs.
+        </p>
+      </div>
+
+      <div class="project">
+        <strong>Musicólogo Discord Bot</strong><br>
+        <em>Node.js · Discord.js · REST API Integration</em>
+        <p>
+          Created a modular, scalable Discord bot for community management and entertainment.
+          Implemented async event handling, command loading, and a music queue system with ticket management tools.
+        </p>
+      </div>
+    </div>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <div class="section">
+      <h2>Professional Experience</h2>
+
+      <h3>Backend Developer & Technical Assistant - Artemisa</h3>
+      <p><em>Jan 2025 - Present</em></p>
+      <ul>
+        <li>Developed REST APIs using Node.js and Express.</li>
+        <li>Integrated MercadoPago API and optimized MongoDB queries for performance.</li>
+        <li>Assisted with technical setup and physical structure assembly.</li>
+      </ul>
+
+      <h3>Independent Developer / Freelancer</h3>
+      <p><em>Ongoing</em></p>
+      <ul>
+        <li>Delivered custom software and technical solutions for local clients.</li>
+        <li>Worked on projects involving welding, carpentry, and hardware integration.</li>
+      </ul>
+    </div>
+
+    <!-- ================= EDUCATION ================= -->
+    <div class="section">
+      <h2>Education</h2>
+      <p><strong>Full Stack Developer (Top 10 Cohort)</strong> — CoderHouse (Nov 2023 - Dec 2024)</p>
+      <p><strong>Electronic Engineering (Incomplete)</strong> — UTN (up to 3rd year)</p>
+      <p><strong>English Training (B2 Level)</strong> — 6 years of formal study</p>
+    </div>
+
+    <!-- ================= SOFT SKILLS ================= -->
+    <div class="section">
+      <h2>Soft Skills</h2>
+      <p>Problem Solving · Analytical Thinking · Autonomy · Effective Communication · Adaptability · Continuous Learning
+      </p>
+    </div>
+
+    <!-- ================= FUTURE COMMENTS ================= -->
+    <!--
+      🧩 Version #2: Two-column layout idea:
+      - Left column (sidebar): Contact info, Skills, Soft Skills, Languages.
+      - Right column: Summary, Projects, Experience, Education.
+
+      🧩 Version #3: Two-column + image:
+      - Add photo at top of left sidebar.
+      - Use a balanced grid layout (sidebar 30%, main 70%).
+    -->
+  </div>
+</body>
+
+</html>
