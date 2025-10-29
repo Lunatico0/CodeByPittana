@@ -9,7 +9,6 @@ import { Suspense } from "react";
 import Loading from "@ui/Loading";
 
 
-
 import { ExperienceData } from "@data/experience";
 import { HeroData } from "@data/hero";
 import { HighlightsData } from '@data/highlights';
