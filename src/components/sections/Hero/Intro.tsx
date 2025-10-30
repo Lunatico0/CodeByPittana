@@ -1,9 +1,10 @@
 import ButtonPrimary from '@ui/ButtonPrimary';
 import ButtonSecondary from '@ui/ButtonSecondary';
-import React from 'react'
+import React, { useState } from 'react'
 import { IntroProps } from '@typings/intro'
 import { motion } from 'framer-motion';
 import { FadeInSlideUpItem } from "@lib/animationPresets";
+import { useCVModal } from "@context/CVModalContext";
 
 const Intro = ({
   title,
@@ -13,6 +14,9 @@ const Intro = ({
   secondaryCta,
   secondaryHREF
 }: IntroProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { openModal } = useCVModal();
+
   return (
     <motion.div
       variants={FadeInSlideUpItem}
@@ -26,6 +30,12 @@ const Intro = ({
       <p className="text-lg text-text/70 mb-8">{subtitle}</p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+        <ButtonSecondary
+          as="button"
+          onClick={openModal}
+        >
+          Descargar CV
+        </ButtonSecondary>
         <ButtonSecondary as="link" href={secondaryHREF}>
           {secondaryCta}
         </ButtonSecondary>

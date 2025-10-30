@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FadeInSlideUpItem } from "@lib/animationPresets";
 import { DualCTACardProps } from "@typings/valueOffer";
 import ButtonSecondary from "@ui/ButtonSecondary";
+import { useCVModal } from '@context/CVModalContext';
 
 export default function DualCTACard({
   title,
@@ -11,8 +12,11 @@ export default function DualCTACard({
   ctaText,
   ctaLink,
   isPrimary = false,
-  className
+  className,
+  Icon,
 }: DualCTACardProps) {
+  const { openModal } = useCVModal();
+  const isDownloadCV = ctaText.includes('Descargar CV');
 
   const baseBorderClass = isPrimary ? 'border-primary/60' : 'border-accent/60';
   const hoverBorderClass = isPrimary ? 'hover:border-primary' : 'hover:border-accent';
@@ -39,15 +43,22 @@ export default function DualCTACard({
         </p>
       </div>
 
-      {/* Botón CTA - Utilizamos el ButtonSecondary para mantener la consistencia */}
-      <ButtonSecondary
-        as="link"
-        href={ctaLink}
-        className="mt-4 w-full md:w-auto text-center"
-
-      >
-        {ctaText}
-      </ButtonSecondary>
-    </motion.div>
+      {isDownloadCV ? (
+        <ButtonSecondary
+          as="button"
+          onClick={openModal}
+          className='flex gap-3'
+        >
+          <span className="inline-block mr-2 size-5 text-tertiary">
+            {Icon && Icon}
+          </span>
+          {ctaText}
+        </ButtonSecondary>
+      ) : (
+        <ButtonSecondary as="a" href={ctaLink} className='flex gap-3'>
+          {ctaText}
+        </ButtonSecondary>
+      )}
+    </motion.div >
   );
 }

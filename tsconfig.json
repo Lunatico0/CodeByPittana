@@ -33,6 +33,7 @@
       "@styles/*": ["./src/styles/*"],
       "@typings/*": ["./src/types/*"],
       "@components/*": ["./src/components/*"],
+      "@context/*": ["./src/context/*"],
       "@sections/*": ["./src/components/sections/*"],
       "@ui/*": ["./src/components/ui/*"],
     }

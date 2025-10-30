@@ -22,7 +22,7 @@ const ContactSection: React.FC = () => {
 
       <motion.div
         variants={FadeInSlideUpItem}
-        className="bg-primary/5 p-6 rounded-2xl border border-primary/10"
+        className="bg-primary/5 p-6 h-full rounded-2xl border border-primary/10"
       >
         <ContactForm />
       </motion.div>

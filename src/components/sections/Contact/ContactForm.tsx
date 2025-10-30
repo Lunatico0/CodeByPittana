@@ -52,8 +52,8 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <>
-      <h4 className="text-xl font-bold text-primary mb-8">
+    <div className='h-full flex flex-col justify-evenly'>
+      <h4 className="text-2xl font-bold text-primary mb-8">
         Envíame un email
       </h4>
 
@@ -85,7 +85,7 @@ const ContactForm: React.FC = () => {
           {isSubmitting ? 'Enviando...' : ContactData.ctaLabel}
         </ButtonPrimary>
       </form>
-    </>
+    </div>
   );
 };
 
