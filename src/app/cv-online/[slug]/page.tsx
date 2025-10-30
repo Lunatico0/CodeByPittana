@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getCvData, CVData } from '@lib/cvData';
 import CvRenderer from '@components/cv/CvRenderer';
-import { CvContent } from '@lib/cvData.js';
 
 interface CvPageProps {
   params: {

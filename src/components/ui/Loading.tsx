@@ -1,8 +1,7 @@
 "use client";
 
 import React from 'react';
-import { motion, Variants, HTMLMotionProps } from 'framer-motion';
-import LogoCodeByPittana from './LogoCodeByPittana';
+import { motion, Variants } from 'framer-motion';
 import LogoDefs from './LogoDefs';
 
 

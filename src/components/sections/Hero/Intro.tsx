@@ -1,10 +1,9 @@
-import ButtonPrimary from '@ui/ButtonPrimary';
-import ButtonSecondary from '@ui/ButtonSecondary';
-import React, { useState } from 'react'
+import { FadeInSlideUpItem } from "@lib/animationPresets";
 import { IntroProps } from '@typings/intro'
 import { motion } from 'framer-motion';
-import { FadeInSlideUpItem } from "@lib/animationPresets";
 import { useCVModal } from "@context/CVModalContext";
+import ButtonPrimary from '@ui/ButtonPrimary';
+import ButtonSecondary from '@ui/ButtonSecondary';
 
 const Intro = ({
   title,
@@ -14,7 +13,6 @@ const Intro = ({
   secondaryCta,
   secondaryHREF
 }: IntroProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { openModal } = useCVModal();
 
   return (
