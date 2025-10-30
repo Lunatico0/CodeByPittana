@@ -1,5 +1,17 @@
 export interface LogoDefsProps {
-  neonColors: [string, string, string];
-  bodyGradient: [string, string, string];
-  fillGradient: [string, string, string, string];
+  neonColors: neonColor[];
+  bodyGradient: bodyColor[];
+  fillGradient: fillColor[];
+}
+
+export interface neonProps {
+  neonColor: string
+}
+
+export interface bodyProps {
+  bodyColor: string
+}
+
+export interface fillProps {
+  fillColor: string
 }

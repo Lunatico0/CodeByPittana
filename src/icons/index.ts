@@ -6,6 +6,7 @@ export * from './Code';
 export * from './Command';
 export * from './CSS';
 export * from './Cursor';
+export * from './Diploma';
 export * from './Discordjs';
 export * from './Docker';
 export * from './Electron';

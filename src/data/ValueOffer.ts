@@ -1,9 +1,10 @@
 import type { PillarData, CTAData, ValueOfferSectionProps } from "@typings/valueOffer";
-
 import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
 import ApiRoundedIcon from '@mui/icons-material/ApiRounded';
 import RocketLaunchRoundedIcon from '@mui/icons-material/RocketLaunchRounded';
+import { techIcons } from '@icons/techIcons';
 
+const Diploma = techIcons['diploma']
 
 export const PILLARS_DATA: PillarData[] = [
   {
@@ -38,8 +39,8 @@ export const CTAS_DATA: CTAData[] = [
     id: "fulltime",
     title: "Roles Full-Time (Empleo)",
     description: "Busco integrarme a equipos de alto rendimiento. Mi enfoque es la disciplina, calidad y compromiso a largo plazo con desafíos innovadores.",
-    ctaText: "Descargar CV y Trayectoria",
-    ctaLink: "/downloads/patricio_pittana_cv.pdf",
+    Icon: Diploma,
+    ctaText: "Descargar CV",
   },
 ];
 

@@ -1,16 +1,19 @@
+import { ElementType, ReactNode } from "react";
+
 export interface PillarData {
   id: string;
   title: string;
   description: string;
-  Icon: React.ElementType;
+  Icon: ElementType;
 }
 
 export interface CTAData {
   id: string;
   title: string;
   description: string;
+  Icon?: ReactNode;
   ctaText: string;
-  ctaLink: string;
+  ctaLink?: string;
 }
 
 export interface ValueOfferSectionProps {
