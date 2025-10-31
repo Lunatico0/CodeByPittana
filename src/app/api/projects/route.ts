@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
 import { fetchGithubRepos } from "@lib/github";
-import { useState } from "react";
 
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME ?? "";
 
 export async function GET() {
-  const [error, setError] = useState<string | null>(null);
   if (!GITHUB_USERNAME) {
     return NextResponse.json(
       { error: "Usuario de GitHub no configurado." },
@@ -23,10 +21,19 @@ export async function GET() {
       },
     });
   } catch (err) {
+    console.error("Error al obtener proyectos:", err);
+
+    let errorMessage = "Error interno del servidor";
+
     if (err instanceof Error) {
-      setError(`Error al cargar proyectos: ${err.message}`);
-    } else {
-      setError("Error desconocido al cargar proyectos");
+      errorMessage = err.message;
+    } else if (typeof err === "string") {
+      errorMessage = err;
     }
+
+    return NextResponse.json(
+      { error: errorMessage },
+      { status: 500 }
+    );
   }
 }
