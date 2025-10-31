@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     const data: FormData = await request.json();
     console.log("🧩 [API] Datos recibidos:", data);
 
-    const { email, subject, message } = data;
+    const { email, message } = data;
 
     if (!email || !message) {
       console.warn("⚠️ [API] Campos faltantes:", { email, message });
