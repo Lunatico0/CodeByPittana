@@ -16,11 +16,6 @@
 # next.js
 /.next/
 /out/
-src/app/video
-src/app/video/*
-src/app/api
-src/app/api/*
-src/components/AppShell
 
 # production
 /build
