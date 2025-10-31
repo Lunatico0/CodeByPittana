@@ -1,11 +1,11 @@
 import { fetchGithubRepos } from "@lib/github";
 import { extraProjectDetails } from "@data/projectDetails";
-import ProjectListClient from "@sections/Projects/ProjectListClient";
 import type { GithubRepo } from "@typings/project";
+import Projects from "@sections/Projects/Projects";
 
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME ?? "";
 
-export default async function Projects() {
+export default async function ProjectsPage() {
   if (!GITHUB_USERNAME) {
     console.error("Error: La variable de entorno GITHUB_USERNAME no está definida.");
     return (
@@ -28,7 +28,7 @@ export default async function Projects() {
 
   return (
     <section className="p-6">
-      <ProjectListClient finalProjects={finalProjects} title={'Todos mis proyectos'} moreProjects={false} visivility='animate' />
+      <Projects title="Todos los Proyectos" animate={true} limit={0} />
     </section>
   );
 }

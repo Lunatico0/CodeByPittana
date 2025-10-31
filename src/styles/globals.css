@@ -38,6 +38,9 @@ html {
   --color-tertiary: #99dfff;
   --color-text: #E8E8E8;
 
+  --color-nav: hsl(243, 100, 80);
+  --color-cardBorder: rgba(28, 28, 33, 0.7);
+
   --shadow-custom-3d: '8px 8px 30px rgba(0, 0, 0, 0.5), -8px -8px 30px rgba(255, 255, 255, 0.1)';
 }
 

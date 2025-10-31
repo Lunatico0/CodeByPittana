@@ -1,19 +1,19 @@
+import { Suspense } from "react";
 import AboutSection from "@sections/About/About";
+import ContactSection from "@sections/Contact/ContactSection";
 import ExperienceSection from "@sections/Experience/ExperienceSection";
 import Hero from "@sections/Hero/Hero";
 import Highlights from "@sections/Highlights/Highlights";
+import Loading from "@ui/Loading";
 import MainTechs from "@sections/MainTechsScroll/MainTechsScroll";
 import Projects from "@sections/Projects/Projects";
-import ContactSection from "@sections/Contact/ContactSection";
-import { Suspense } from "react";
-import Loading from "@ui/Loading";
+import ValueOfferSection from "@sections/ValueOfferSection/ValueOfferSection";
 
 
+import { AboutData } from '@data/about';
 import { ExperienceData } from "@data/experience";
 import { HeroData } from "@data/hero";
 import { HighlightsData } from '@data/highlights';
-import { AboutData } from '@data/about';
-import ValueOfferSection from "@sections/ValueOfferSection/ValueOfferSection";
 
 export default function HomePage() {
 
@@ -22,7 +22,7 @@ export default function HomePage() {
       <Hero {...HeroData} />
 
       <Highlights highlights={HighlightsData} />
-      <Projects />
+      <Projects title="Proyectos destacados" moreProjects={true} animate={false} limit={4} />
       <MainTechs />
       <AboutSection {...AboutData} />
       <ExperienceSection {...ExperienceData} />

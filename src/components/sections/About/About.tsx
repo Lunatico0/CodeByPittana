@@ -10,10 +10,12 @@ import CardWithIcon from "@ui/CardWithIcon";
 import ParticlesBackground from "@ui/ParticlesBackground";
 import ReactMarkdown from "react-markdown";
 import type { AboutProps } from "@typings/about";
+import { techIcons } from "@icons/techIcons";
 
 export default function AboutSection({ heading, paragraphs, pillars }: AboutProps) {
   const markdownContent = paragraphs.join('\n\n');
   const { openModal } = useCVModal();
+  const Icon = techIcons['diploma'];
 
   return (
     <>
@@ -78,7 +80,9 @@ export default function AboutSection({ heading, paragraphs, pillars }: AboutProp
               <ButtonSecondary
                 as="button"
                 onClick={openModal}
+                className="text-nowrap gap-2 !px-4"
               >
+                {Icon}
                 Descargar CV
               </ButtonSecondary>
               <ButtonPrimary as='a' href="/contact">

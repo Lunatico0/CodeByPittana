@@ -24,11 +24,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <motion.div
       whileHover={{
         y: -8,
-        borderColor: "var(--color-primary)",
+        borderColor: "#9e99ff",
         boxShadow: "0 0 15px rgba(158, 153, 255, 0.3)",
         transition: { duration: 0.2, ease: "easeOut", delay: 0 },
       }}
-      className={`group relative p-3 md:p-6 rounded-xl bg-secondary/50 border border-secondary/70 overflow-hidden ${className}`}
+      className={`group relative p-3 md:p-6 rounded-xl bg-secondary/50 border border-cardBorder overflow-hidden ${className}`}
     >
 
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[linear-gradient(135deg,rgba(158,153,255,0.05),rgba(0,255,255,0.05))]" />

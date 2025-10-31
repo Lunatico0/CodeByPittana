@@ -3,16 +3,17 @@ export interface GithubLanguages {
 }
 
 export interface GithubRepo {
-  id: number;
-  name: string;
   description: string | null;
+  fork: boolean;
   gitUrl: string;
-  siteUrl: string;
-  topics?: string[];
-  html_url: string;
   homepage: string;
+  html_url: string;
+  id: number;
   languages_url?: string;
   languages?: GithubLanguages;
+  name: string;
+  siteUrl: string;
+  topics?: string[];
 }
 
 export interface LocalProjectDetails {
@@ -36,11 +37,19 @@ export interface ProjectCardData {
 }
 
 interface GithubApiRepo {
-  id: number;
-  name: string;
   description: string | null;
-  html_url: string;
+  fork: boolean;
   homepage: string | null;
-  topics: string[] | undefined;
+  html_url: string;
+  id: number;
   languages_url: string;
+  name: string;
+  topics: string[] | undefined;
+}
+
+export interface ProjectProps {
+  title?: string;
+  moreProjects?: boolean;
+  animate?: boolean;
+  limit?: number;
 }
