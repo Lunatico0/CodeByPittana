@@ -25,48 +25,50 @@ export default function Projects({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function loadProjects() {
+    async function loadProjects(): Promise<void> {
       try {
-        const endpoint =
-          limit === 0 ? "/api/projects" : "/api/featured-projects";
-
+        const endpoint = limit === 0 ? "/api/projects" : "/api/featured-projects";
         const res = await fetch(endpoint);
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Error desconocido");
 
-        const mappedProjects = data.map((project: GithubRepo) => {
+        // Tipamos la respuesta esperada
+        if (!res.ok) {
+          const errorData: { error?: string } = await res.json();
+          throw new Error(errorData.error ?? "Error desconocido");
+        }
+
+        const data: GithubRepo[] = await res.json();
+
+        const mappedProjects: ProjectCardData[] = data.map((project) => {
           const details =
-            (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[project.name];
-          return { ...project, ...details } as ProjectCardData;
+            (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[project.name] ?? {};
+          return { ...project, ...details };
         });
 
-        // Si hay límite, recortar
-        const finalProjects =
-          limit > 0 ? mappedProjects.slice(0, limit) : mappedProjects;
-
+        const finalProjects = limit > 0 ? mappedProjects.slice(0, limit) : mappedProjects;
         setProjects(finalProjects);
-      } catch (err: any) {
-        setError(`Error al cargar proyectos: ${err.message}`);
+      } catch (err) {
+        if (err instanceof Error) {
+          setError(`Error al cargar proyectos: ${err.message}`);
+        } else {
+          setError("Error desconocido al cargar proyectos");
+        }
       }
     }
 
-    loadProjects();
+    void loadProjects();
   }, [limit]);
 
   const hasProjects = projects.length > 0;
 
-  const containerAnimationProps = hasProjects
-    ? animate
+  const containerAnimationProps =
+    hasProjects && animate
       ? { animate: "visible" as const }
-      : { whileInView: "visible" as const, viewport: { once: true, amount: 0.1 } }
-    : {};
+      : hasProjects
+        ? { whileInView: "visible" as const, viewport: { once: true, amount: 0.1 } }
+        : {};
 
   if (error) {
-    return (
-      <section className="p-6 text-center text-red-400">
-        {error}
-      </section>
-    );
+    return <section className="p-6 text-center text-red-400">{error}</section>;
   }
 
   return (
@@ -78,10 +80,7 @@ export default function Projects({
         className="flex flex-col"
         {...containerAnimationProps}
       >
-        <motion.h2
-          variants={FadeInSlideUpItem}
-          className="text-4xl font-bold text-center my-5"
-        >
+        <motion.h2 variants={FadeInSlideUpItem} className="text-4xl font-bold text-center my-5">
           {title}
         </motion.h2>
 
@@ -94,10 +93,7 @@ export default function Projects({
         </div>
 
         {moreProjects && limit > 0 && (
-          <motion.div
-            variants={FadeInSlideUpItem}
-            className="my-3 md:mt-8 w-fit mx-auto"
-          >
+          <motion.div variants={FadeInSlideUpItem} className="my-3 md:mt-8 w-fit mx-auto">
             <ButtonSecondary as="link" href="/projects">
               Ver todos los proyectos
             </ButtonSecondary>

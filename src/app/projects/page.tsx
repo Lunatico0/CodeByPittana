@@ -1,6 +1,4 @@
-import { fetchGithubRepos } from "@lib/github";
-import { extraProjectDetails } from "@data/projectDetails";
-import type { GithubRepo } from "@typings/project";
+
 import Projects from "@sections/Projects/Projects";
 
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME ?? "";
@@ -14,17 +12,6 @@ export default async function ProjectsPage() {
       </section>
     );
   }
-
-  const featuredProjects = (await fetchGithubRepos(GITHUB_USERNAME)) as GithubRepo[];
-
-  const finalProjects = featuredProjects.map((project: GithubRepo) => {
-    const details = (extraProjectDetails as Record<string, Partial<GithubRepo>>)[project.name];
-
-    return {
-      ...project,
-      ...details,
-    }
-  });
 
   return (
     <section className="p-6">

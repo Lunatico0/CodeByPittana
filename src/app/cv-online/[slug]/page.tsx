@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getCvData, CVData } from '@lib/cvData';
+import { getCvData } from '@lib/cvData';
 import CvRenderer from '@components/cv/CvRenderer';
 
 interface CvPageProps {
