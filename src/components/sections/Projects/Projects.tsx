@@ -12,7 +12,7 @@ interface ProjectsProps {
   title?: string;
   moreProjects?: boolean;
   animate?: boolean;
-  limit?: number; // 0 = todos los proyectos, >0 = destacados
+  limit?: number;
 }
 
 export default function Projects({
@@ -30,7 +30,6 @@ export default function Projects({
         const endpoint = limit === 0 ? "/api/projects" : "/api/featured-projects";
         const res = await fetch(endpoint);
 
-        // Tipamos la respuesta esperada
         if (!res.ok) {
           const errorData: { error?: string } = await res.json();
           throw new Error(errorData.error ?? "Error desconocido");

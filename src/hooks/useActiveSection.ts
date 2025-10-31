@@ -71,7 +71,6 @@ export const useActiveSection = (sectionIds: string[], pathname: string) => {
     );
     observerRef.current = io;
 
-    let started = Date.now();
     let attachedAny = false;
 
     const tryAttach = () => {
