@@ -40,7 +40,7 @@ export default async function ProjectDetail(props: ProjectPageProps) {
     : 'Visitar sitio →';
 
   return (
-    <section className="relative flex flex-col justify-center w-full mx-auto gap-4 max-w-5xl text-sm md:text-base">
+    <section className="relative flex flex-col justify-center w-full mx-auto gap-4 text-sm md:text-base">
       {/* Imagen */}
       <div className={`${fullProject.image === '/favicon.svg' ? 'aspect-square max-w-md w-full mx-auto' : 'aspect-[3/2] w-full '} relative rounded-xl overflow-hidden`}
       >

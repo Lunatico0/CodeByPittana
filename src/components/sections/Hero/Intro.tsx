@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useCVModal } from "@context/CVModalContext";
 import ButtonPrimary from '@ui/ButtonPrimary';
 import ButtonSecondary from '@ui/ButtonSecondary';
-
+import { techIcons } from "@icons/techIcons";
 const Intro = ({
   title,
   subtitle,
@@ -14,7 +14,7 @@ const Intro = ({
   secondaryHREF
 }: IntroProps) => {
   const { openModal } = useCVModal();
-
+  const Icon = techIcons['diploma'];
   return (
     <motion.div
       variants={FadeInSlideUpItem}
@@ -31,7 +31,9 @@ const Intro = ({
         <ButtonSecondary
           as="button"
           onClick={openModal}
+          className="text-nowrap gap-2 !px-4"
         >
+          {Icon}
           Descargar CV
         </ButtonSecondary>
         <ButtonSecondary as="link" href={secondaryHREF}>

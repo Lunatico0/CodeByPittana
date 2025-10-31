@@ -71,7 +71,7 @@ export default function Projects({
   }
 
   return (
-    <section id="projects" className="flex flex-col gap-3 scroll-mt-24 md:scroll-mt-28">
+    <section id="projects" className={`flex flex-col gap-3 scroll-mt-24 md:scroll-mt-28`}>
       <motion.div
         key={hasProjects ? "loaded" : "loading"}
         variants={StaggerContainer}
@@ -83,7 +83,7 @@ export default function Projects({
           {title}
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full mx-auto">
+        <div className={`grid ${limit !== 0 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-3'}  gap-4 md:gap-8 w-full mx-auto`}>
           {projects.map((project) => (
             <motion.div key={project.id} variants={FadeInSlideUpItem}>
               <ProjectCard {...project} className="h-full" />
