@@ -4,11 +4,20 @@ import ReactMarkdown from 'react-markdown';
 import { markdownComponents } from '@lib/markdownComponents';
 import { TimeLineCardProps } from '@typings/timeLineCard';
 
+interface ExtendedTimeLineCardProps extends TimeLineCardProps {
+  onFullStackClick?: () => void;
+}
 
-
-export default function TimeLineCard({ data, index }: TimeLineCardProps) {
+export default function TimeLineCard({ data, index, onFullStackClick }: ExtendedTimeLineCardProps) {
+  const id = data.id || data.id;
   const title = data.role || data.title;
   const subtitle = data.company || data.institution;
+
+  const isFullStack = id === "fullstack";
+
+  const handleClick = () => {
+    if (isFullStack && onFullStackClick) onFullStackClick();
+  };
 
   const renderDescription = () => {
     if (!data.description) {
@@ -47,7 +56,12 @@ export default function TimeLineCard({ data, index }: TimeLineCardProps) {
       className="relative pl-2"
     >
       <TimeLine />
-      <div className="p-4 rounded-xl bg-secondary/40 border border-secondary/60">
+      <div
+        onClick={handleClick}
+        className={`p-4 rounded-xl bg-secondary/40 border border-secondary/60 duration-300 ${isFullStack
+          ? "cursor-pointer hover:bg-primary/10 hover:border-primary/60 hover:-translate-y-1"
+          : ""
+          }`}>
         <h3 className="font-semibold text-text">{title}</h3>
         <p className="text-sm text-text/60 mb-2">
           {subtitle} • {data.period}

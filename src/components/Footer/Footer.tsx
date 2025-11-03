@@ -49,7 +49,7 @@ export default function Footer() {
 
             {/* Crédito Tecnológico */}
             <div className="text-xs text-text/50 pt-2">
-              Construido con Next.js, Tailwind CSS y Framer Motion.
+              Construido con Next.js, React.js, Tailwind CSS y Framer Motion.
             </div>
           </div>
         </div>

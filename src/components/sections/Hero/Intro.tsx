@@ -1,7 +1,7 @@
 import { FadeInSlideUpItem } from "@lib/animationPresets";
 import { IntroProps } from '@typings/intro'
 import { motion } from 'framer-motion';
-import { useCVModal } from "@context/CVModalContext";
+import { useGlobalModal } from "@context/GlobalModalContext";
 import ButtonPrimary from '@ui/ButtonPrimary';
 import ButtonSecondary from '@ui/ButtonSecondary';
 import { techIcons } from "@icons/techIcons";
@@ -13,7 +13,7 @@ const Intro = ({
   secondaryCta,
   secondaryHREF
 }: IntroProps) => {
-  const { openModal } = useCVModal();
+  const { openModal } = useGlobalModal();
   const Icon = techIcons['diploma'];
   return (
     <motion.div
@@ -30,7 +30,7 @@ const Intro = ({
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
         <ButtonSecondary
           as="button"
-          onClick={openModal}
+          onClick={() => openModal("cv")}
           className="text-nowrap gap-2 !px-4"
         >
           {Icon}

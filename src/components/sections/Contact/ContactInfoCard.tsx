@@ -1,10 +1,10 @@
 import ButtonSecondary from '@ui/ButtonSecondary';
 import { ContactData } from '@data/contact';
-import { useCVModal } from "@context/CVModalContext";
+import { useGlobalModal } from "@context/GlobalModalContext";
 import { techIcons } from '@icons/techIcons';
 
 const ContactInfoCard: React.FC = () => {
-  const { openModal } = useCVModal();
+  const { openModal } = useGlobalModal();
   const key = 'diploma';
   const Icon = techIcons[key];
 
@@ -43,7 +43,7 @@ const ContactInfoCard: React.FC = () => {
           })}
           <ButtonSecondary
             as="button"
-            onClick={openModal}
+            onClick={() => openModal("cv")}
             className='flex gap-3'
           >
             <div className='text-tertiary'>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FadeInSlideUpItem } from "@lib/animationPresets";
 import { DualCTACardProps } from "@typings/valueOffer";
 import ButtonSecondary from "@ui/ButtonSecondary";
-import { useCVModal } from '@context/CVModalContext';
+import { useGlobalModal } from "@context/GlobalModalContext";
 
 export default function DualCTACard({
   title,
@@ -15,7 +15,7 @@ export default function DualCTACard({
   className,
   Icon,
 }: DualCTACardProps) {
-  const { openModal } = useCVModal();
+  const { openModal } = useGlobalModal();
   const isDownloadCV = ctaText.includes('Descargar CV');
 
   const baseBorderClass = isPrimary ? 'border-primary/60' : 'border-accent/60';
@@ -46,7 +46,7 @@ export default function DualCTACard({
       {isDownloadCV ? (
         <ButtonSecondary
           as="button"
-          onClick={openModal}
+          onClick={() => openModal("cv")}
           className='flex gap-3'
         >
           <span className="inline-block mr-2 size-5 text-tertiary">

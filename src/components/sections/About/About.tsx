@@ -3,7 +3,7 @@
 import { FadeInSlideUpItem, StaggerContainer } from "@lib/animationPresets";
 import { markdownComponents } from "@lib/markdownComponents";
 import { motion } from "framer-motion";
-import { useCVModal } from "@context/CVModalContext";
+import { useGlobalModal } from "@context/GlobalModalContext";
 import ButtonPrimary from "@ui/ButtonPrimary";
 import ButtonSecondary from "@ui/ButtonSecondary";
 import CardWithIcon from "@ui/CardWithIcon";
@@ -14,7 +14,7 @@ import { techIcons } from "@icons/techIcons";
 
 export default function AboutSection({ heading, paragraphs, pillars }: AboutProps) {
   const markdownContent = paragraphs.join('\n\n');
-  const { openModal } = useCVModal();
+  const { openModal } = useGlobalModal();
   const Icon = techIcons['diploma'];
 
   return (
@@ -79,7 +79,7 @@ export default function AboutSection({ heading, paragraphs, pillars }: AboutProp
             <div className="flex justify-end w-full gap-4">
               <ButtonSecondary
                 as="button"
-                onClick={openModal}
+                onClick={() => openModal("cv")}
                 className="text-nowrap gap-2 !px-4"
               >
                 {Icon}
