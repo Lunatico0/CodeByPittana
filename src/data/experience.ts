@@ -3,6 +3,7 @@ import type { ExperienceProps } from "@typings/experience";
 export const ExperienceData: ExperienceProps = {
   work: [
     {
+      id: 'freelance',
       role: "Desarrollador Full-Stack Independiente & Consultor de Soluciones Digitales",
       company: "Freelance | Remoto (Paraná, Entre Ríos)",
       period: "Diciembre 2024 - Presente",
@@ -17,6 +18,7 @@ export const ExperienceData: ExperienceProps = {
   ],
   education: [
     {
+      id: 'fullstack',
       title: "Desarrollador Full-Stack (Certificado)",
       institution: "CoderHouse | Online",
       period: "Octubre 2023 - Enero 2025",
@@ -24,6 +26,7 @@ export const ExperienceData: ExperienceProps = {
         "Certificación intensiva en Full-Stack Development. Especialización en Backend (Node.js/Express, Autenticación JWT, MongoDB), Frontend (React.js, JavaScript, Tailwind CSS) y Despliegue. **Proyecto final enfocado en la arquitectura de E-commerce y bases de datos**."
     },
     {
+      id: 'engineering',
       title: "Ingeniería Electrónica (Incompleta, 3er Año)",
       institution: "UTN (Universidad Tecnologica Nacional)",
       period: "2018 - 2023",
@@ -31,6 +34,7 @@ export const ExperienceData: ExperienceProps = {
         "Estudios avanzados en electrónica, lógica y matemáticas. Aportando una **sólida base en lógica algorítmica y resolución de problemas complejos**."
     },
     {
+      id: 'bachelor',
       title: "Bachiller en Ciencias Económicas",
       institution: "San Miguel (Hermanos Maristas)",
       period: "2004 - 2017",

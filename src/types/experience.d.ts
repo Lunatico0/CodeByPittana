@@ -1,4 +1,5 @@
 export type ExperienceItem = {
+  id: string;
   role: string;
   company: string;
   period: string;
@@ -6,6 +7,7 @@ export type ExperienceItem = {
 };
 
 export type EducationItem = {
+  id: string;
   title: string;
   institution: string;
   period: string;

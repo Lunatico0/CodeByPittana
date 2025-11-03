@@ -1,5 +1,6 @@
 export type TimeLineCardProps = {
   data: {
+    id: string;
     role?: string;
     company?: string;
     description?: string | string[];
