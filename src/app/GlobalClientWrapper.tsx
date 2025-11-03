@@ -4,7 +4,7 @@ import Background from '@ui/Background';
 import Footer from '@components/Footer/Footer';
 import Navbar from '@components/Navbar/Navbar';
 import { Toaster } from 'react-hot-toast';
-import { CVModalProvider } from '@context/CVModalContext';
+import { GlobalModalProvider } from '@context/GlobalModalContext';
 import { ReactNode } from 'react';
 
 interface GlobalClientWrapperProps {
@@ -13,12 +13,12 @@ interface GlobalClientWrapperProps {
 
 export default function GlobalClientWrapper({ children }: GlobalClientWrapperProps) {
   return (
-    <CVModalProvider>
+    <GlobalModalProvider>
       <LayoutFrame>
         {children}
       </LayoutFrame>
       <ToastConfig />
-    </CVModalProvider>
+    </GlobalModalProvider>
   );
 }
 

@@ -5,17 +5,87 @@ import Image from "next/image";
 import TechPill from "@ui/TechPill";
 import type { ProjectCardData } from "@typings/project";
 import { markdownComponents } from "@lib/markdownComponents";
+import { ProjectPageProps } from '@typings/projectPage';
+import { seoConfig } from '@data/seoConfig';
+import { Metadata } from 'next';
 
-interface ProjectPageProps {
-  params: { slug: string };
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const { slug } = params;
+
+  const username = process.env.GITHUB_USERNAME ?? "";
+
+  const repos = await fetchGithubRepos(username);
+  const project = repos.find((r) => r.id.toString() === slug);
+
+  if (!project) {
+    return {
+      title: `Proyecto no encontrado | ${seoConfig.siteName}`,
+      description: seoConfig.description,
+    };
+  }
+
+  const details =
+    (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[project.name] ?? {};
+
+  const fullProject: Partial<ProjectCardData> = {
+    ...project,
+    ...details,
+    shortDescription: details.shortDescription || project.description || seoConfig.description,
+    image: details.image || seoConfig.ogImage,
+  };
+
+  const pageTitle = `${fullProject.name} | ${seoConfig.author}`;
+  const pageDescription = fullProject.shortDescription;
+  const canonicalUrl = `${seoConfig.url}/projects/${slug}`;
+  const ogImageUrl = fullProject.image
+    ? (fullProject.image.startsWith("http")
+      ? fullProject.image
+      : `${seoConfig.url}${fullProject.image}`)
+    : seoConfig.ogImage;
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: canonicalUrl,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: pageTitle,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      images: [ogImageUrl],
+    },
+  };
 }
 
 export default async function ProjectDetail(props: ProjectPageProps) {
   const { slug } = await props.params;
 
   const username = process.env.GITHUB_USERNAME ?? "";
-  const repos = await fetchGithubRepos(username);
-  const project = repos.find((r) => r.id.toString() === slug);
+  let project = null;
+
+  try {
+    const repos = await fetchGithubRepos(username);
+    project = repos.find((r) => r.id.toString() === slug);
+  } catch (error) {
+    console.error("Error fetching repos:", error);
+  }
 
   const discordAuthPrefix = 'https://discord.com/oauth2/authorize?';
 

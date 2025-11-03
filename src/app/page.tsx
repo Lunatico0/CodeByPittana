@@ -9,7 +9,6 @@ import MainTechs from "@sections/MainTechsScroll/MainTechsScroll";
 import Projects from "@sections/Projects/Projects";
 import ValueOfferSection from "@sections/ValueOfferSection/ValueOfferSection";
 
-
 import { AboutData } from '@data/about';
 import { ExperienceData } from "@data/experience";
 import { HeroData } from "@data/hero";

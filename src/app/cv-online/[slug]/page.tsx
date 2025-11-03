@@ -1,15 +1,65 @@
 import { notFound } from 'next/navigation';
 import { getCvData } from '@lib/cvData';
 import CvRenderer from '@components/cv/CvRenderer';
+import { CvPageProps } from '@typings/cvPage';
+import { seoConfig } from '@data/seoConfig';
+import { Metadata } from 'next';
 
-interface CvPageProps {
-  params: {
-    slug: string;
+export async function generateMetadata({ params }: CvPageProps): Promise<Metadata> {
+  const { slug } = params;
+
+  const parts = slug.split('-');
+  if (parts.length !== 2) {
+    return {
+      title: "CV Online | Patricio Pittana",
+      description: "Currículum Vitae profesional de Patricio Pittana.",
+      robots: { index: false },
+    };
+  }
+
+  const [langCode, layoutType] = parts;
+  const lang = langCode === 'es' ? 'Español' : langCode === 'en' ? 'Inglés' : 'Idioma Desconocido';
+  const layout = layoutType === 'visual' ? 'Visual' : layoutType === 'harvard' ? 'Harvard' : 'Formato Desconocido';
+
+  const pageTitle = `CV Online (${lang} - ${layout}) | ${seoConfig.author}`;
+  const pageDescription = `Currículum Vitae profesional de ${seoConfig.author} en formato ${layout} (${langCode.toUpperCase()}). Experiencia en desarrollo Full Stack.`;
+  const canonicalUrl = `${seoConfig.url}/cv-online/${slug}`;
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: canonicalUrl,
+      images: [
+        {
+          url: seoConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: `Vista previa del CV de ${seoConfig.author}`,
+        },
+      ],
+    },
+    twitter: {
+      title: pageTitle,
+      description: pageDescription,
+      images: [seoConfig.ogImage],
+    },
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+      noarchive: true,
+      nosnippet: true,
+    }
   };
 }
 
 export default async function CvOnlinePage({ params }: CvPageProps) {
-  // const { slug } = params;
   const finalParams = await params;
   const { slug } = finalParams;
 

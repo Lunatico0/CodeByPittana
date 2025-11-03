@@ -9,12 +9,8 @@ export async function POST(request: Request) {
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
   };
 
-  console.log("📩 [API] /api/contact - Nueva solicitud recibida");
-
   try {
     const data: FormData = await request.json();
-    console.log("🧩 [API] Datos recibidos:", data);
-
     const { email, message } = data;
 
     if (!email || !message) {
@@ -25,11 +21,7 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("📨 [API] Construyendo plantilla de correo...");
     const emailTemplate = mailOptions(data);
-    console.log("✅ [API] Plantilla creada correctamente.");
-
-    console.log("🔐 [API] Creando transporte nodemailer...");
     const user = process.env.EMAIL_USER;
     const pass = process.env.EMAIL_PASS;
 
@@ -46,10 +38,8 @@ export async function POST(request: Request) {
       auth: { user, pass },
     });
 
-    console.log("📦 [API] Verificando conexión con el servidor SMTP...");
     try {
       await transporter.verify();
-      console.log("✅ [API] Conexión SMTP verificada correctamente.");
     } catch (verifyError) {
       console.error("❌ [API] Error al verificar transporte SMTP:", verifyError);
       return NextResponse.json(
@@ -58,17 +48,7 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("🚀 [API] Enviando correo a través de Nodemailer...");
     const result = await transporter.sendMail(emailTemplate);
-
-    console.log("✅ [API] Correo enviado con éxito:");
-    console.log({
-      from: result.envelope?.from,
-      to: result.envelope?.to,
-      messageId: result.messageId,
-      accepted: result.accepted,
-      rejected: result.rejected,
-    });
 
     return NextResponse.json(
       { message: "Mensaje enviado con éxito." },
