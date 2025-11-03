@@ -11,9 +11,14 @@ const cvOptions = [
   { lang: "English", layout: "Harvard (Simple)", fileName: "/downloads/cv/patricio_pittana_cv(EN)-harvard.pdf", onlineLink: "/cv-online/en-harvard" },
 ];
 
+type Lang = "Español" | "English";
+type LayoutType = "Sidebar (Visual)" | "Harvard (Simple)";
+const languages: Lang[] = ["Español", "English"];
+const layouts: LayoutType[] = ["Sidebar (Visual)", "Harvard (Simple)"];
+
 export default function CVContent() {
-  const [selectedLang, setSelectedLang] = useState<"Español" | "English">("Español");
-  const [selectedLayout, setSelectedLayout] = useState<"Sidebar (Visual)" | "Harvard (Simple)">("Sidebar (Visual)");
+  const [selectedLang, setSelectedLang] = useState<Lang>("Español");
+  const [selectedLayout, setSelectedLayout] = useState<LayoutType>("Sidebar (Visual)");
 
   const selectedOption = cvOptions.find(opt => opt.lang === selectedLang && opt.layout === selectedLayout);
 
@@ -39,7 +44,7 @@ export default function CVContent() {
           {["Español", "English"].map(lang => (
             <button
               key={lang}
-              onClick={() => setSelectedLang(lang as any)}
+              onClick={() => setSelectedLang(lang as Lang)}
               className={`flex items-center gap-2 p-2 rounded-lg transition-colors ${selectedLang === lang ? "bg-accent/20 text-accent font-semibold" : "bg-secondary/50 text-text/80 hover:bg-secondary"
                 }`}
             >
@@ -57,7 +62,7 @@ export default function CVContent() {
           {["Sidebar (Visual)", "Harvard (Simple)"].map(layout => (
             <button
               key={layout}
-              onClick={() => setSelectedLayout(layout as any)}
+              onClick={() => setSelectedLayout(layout as LayoutType)}
               className={`flex justify-start items-center gap-2 p-2 rounded-lg transition-colors text-sm ${selectedLayout === layout ? "bg-accent/20 text-accent font-semibold" : "bg-secondary/50 text-text/80 hover:bg-secondary"
                 }`}
             >

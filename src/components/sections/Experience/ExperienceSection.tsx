@@ -2,7 +2,6 @@
 
 import { FadeInSlideUpItem, StaggerContainer } from "@lib/animationPresets";
 import { motion } from "framer-motion";
-import { ModalBase, CertificatesContent } from "@ui/modals";
 import SchoolRoundedIcon from '@mui/icons-material/SchoolRounded';
 import TimeLineCard from "@ui/TimeLineCard";
 import type { ExperienceProps } from "@typings/experience";
