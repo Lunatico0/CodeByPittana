@@ -83,7 +83,7 @@ export default function Projects({
           {title}
         </motion.h2>
 
-        <div className={`grid ${limit !== 0 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-3'}  gap-4 md:gap-8 w-full mx-auto`}>
+        <div className={`grid ${limit !== 0 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'}  gap-4 md:gap-8 w-full mx-auto`}>
           {projects.map((project) => (
             <motion.div key={project.id} variants={FadeInSlideUpItem}>
               <ProjectCard {...project} className="h-full" />
