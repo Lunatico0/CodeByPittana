@@ -184,5 +184,3 @@ Este proyecto es privado y de uso personal.
 ## 🙏 Agradecimientos
 
 Construido con Next.js 15, React 19, y Tailwind CSS 4.
-<cite />
-```
