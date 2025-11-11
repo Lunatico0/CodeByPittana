@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getCvData } from '@lib/cvData';
+import { getCvData } from '@/src/lib/cvData';
 import CvRenderer from '@components/cv/CvRenderer';
 import { CvPageProps } from '@typings/cvPage';
 import { seoConfig } from '@data/seoConfig';

@@ -1,6 +1,6 @@
 "use client"
 
-import { CVData, CvSection } from '@lib/cvData';
+import { CVData, CvSection } from '@/src/lib/cvData';
 import RoomRoundedIcon from '@mui/icons-material/RoomRounded';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import PhoneCallbackRoundedIcon from '@mui/icons-material/PhoneCallbackRounded';

@@ -58,8 +58,8 @@ export default function TimeLineCard({ data, index, onFullStackClick }: Extended
       <TimeLine />
       <div
         onClick={handleClick}
-        className={`p-4 rounded-xl bg-secondary/40 border border-secondary/60 duration-300 ${isFullStack
-          ? "cursor-pointer hover:bg-primary/10 hover:border-primary/60 hover:-translate-y-1"
+        className={`relative p-4 rounded-xl bg-secondary/40 border border-secondary/60 duration-300 ${isFullStack
+          ? "pb-8 cursor-pointer hover:bg-primary/10 hover:border-primary/60 hover:-translate-y-1"
           : ""
           }`}>
         <h3 className="font-semibold text-text">{title}</h3>
@@ -67,6 +67,7 @@ export default function TimeLineCard({ data, index, onFullStackClick }: Extended
           {subtitle} • {data.period}
         </p>
         {renderDescription()}
+        {isFullStack && <p className='absolute right-0 mr-4'>Ver certificados →</p>}
       </div>
     </motion.div>
   );

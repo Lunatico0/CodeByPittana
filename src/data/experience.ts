@@ -19,7 +19,7 @@ export const ExperienceData: ExperienceProps = {
   education: [
     {
       id: 'fullstack',
-      title: "Desarrollador Full-Stack (Certificado)",
+      title: "Desarrollador Full-Stack",
       institution: "CoderHouse | Online",
       period: "Octubre 2023 - Enero 2025",
       description:
