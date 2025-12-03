@@ -56,7 +56,7 @@ export default function Footer() {
 
         {/* --- Fila Inferior (Base) --- */}
         <div className="mt-4 text-center text-xs text-text/40">
-          Desarrollado con pasiencia desde Argentina 🇦🇷
+          Desarrollado con paciencia desde Argentina 🇦🇷
         </div>
 
       </div>

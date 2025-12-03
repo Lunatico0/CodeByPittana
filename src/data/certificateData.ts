@@ -45,7 +45,7 @@ export const certificateData: CertificateProps[] = [
     id: "backend1",
     title: "Backend I",
     date: '06/2024 - 08/2024',
-    image: '/images/certificates/backend-1.png',
+    image: '/images/certificates/Backend-1.png',
     description:
       "Desarrollo con Node.js, Socket.io, CRUD, Postman.",
     skills: ["Node.js", "Express", "Socket.io"],
@@ -55,7 +55,7 @@ export const certificateData: CertificateProps[] = [
     id: "backend2",
     title: "Backend II",
     date: '08/2024 - 10/2024',
-    image: '/images/certificates/backend-2top.png',
+    image: '/images/certificates/Backend-2top.png',
     description:
       "Autenticación, JWT, MongoDB, Handlebars.",
     skills: ["JWT", "MongoDB", "Handlebars"],
@@ -65,7 +65,7 @@ export const certificateData: CertificateProps[] = [
     id: "backend3",
     title: "Backend III",
     date: '10/2024 - 01/2025',
-    image: '/images/certificates/backend-3.png',
+    image: '/images/certificates/Backend-3.png',
     description:
       "Contenedores con Docker, estructura modular con Nest.js, integración con MongoDB.",
     skills: ["Docker", "Nest.js", "MongoDB"],
