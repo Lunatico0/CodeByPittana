@@ -6,62 +6,51 @@ import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRound
 
 export const AboutData: AboutProps = {
   heading: "Sobre mí.",
-  paragraphs: [
-    `Soy **Frontend Engineer**, especializado en construir interfaces claras, escalables y centradas en la experiencia del usuario. Trabajo principalmente con **React**, **TypeScript** y patrones que aseguran código mantenible, predecible y fácil de extender.
-    Me interesa especialmente la arquitectura del frontend: cómo se estructura un sistema de componentes, cómo fluye el estado y cómo lograr que una interfaz sea confiable incluso cuando la lógica detrás es compleja.`,
-    `También cuento con habilidades *full-stack* que me permiten entender el ciclo completo de un producto: desde la definición del modelo de datos hasta la capa de presentación. Esa visión integral me ayuda a tomar mejores decisiones técnicas, comunicarme bien con otros roles y anticipar problemas antes de que aparezcan.`,
-    `He trabajado en proyectos reales con datos, lógica operativa, filtros avanzados, dashboards y funcionalidades donde la precisión importa. Mi enfoque siempre es el mismo: **claridad, eficiencia y una base sólida que permita iterar sin fricción**.`,
+  paragraphs: [`
+Soy **Frontend Engineer** con enfoque en construir interfaces claras, escalables y centradas en el usuario. Trabajo con **React**, **TypeScript** y patrones que priorizan la mantenibilidad y la previsibilidad del sistema. Me interesa especialmente la **arquitectura del frontend**: diseño de componentes, flujos de estado y decisiones que permiten que una UI siga siendo confiable incluso bajo lógica compleja.
+
+Mi formación también incluye experiencia *full-stack*, lo que me permite entender cómo se conectan la capa de datos, la lógica del negocio y la interfaz. Esa visión global me ayuda a tomar decisiones técnicas más acertadas, comunicarme mejor con otros roles y anticipar puntos críticos antes de que se conviertan en problemas.
+
+He trabajado en proyectos con datos, lógica operativa, dashboards, filtros avanzados y entornos donde la exactitud importa. Mi enfoque siempre es el mismo: claridad en el diseño, eficiencia en la ejecución y una base sólida que permita iterar rápido sin romper nada.
+
+En mi trabajo valoro cuatro principios que guían cómo diseño y mantengo sistemas:
+`,
   ],
   pillars: [
     {
       id: "arch",
       title: "Arquitectura",
-      description: "Sistemas pensados desde la estructura: escalables, coherentes y fáciles de razonar.",
+      description:
+        "Sistemas pensados desde la estructura: escalables, coherentes y fáciles de mantener a largo plazo.",
       Icon: InventoryRoundedIcon
     },
     {
       id: "org",
       title: "Organización",
-      description: "Código ordenado, predecible y fácil de seguir para cualquier miembro del equipo.",
+      description:
+        "Código claro y predecible, con convenciones que facilitan el trabajo en equipo y la evolución del proyecto.",
       Icon: ExtensionRoundedIcon
     },
     {
       id: "perf",
       title: "Performance",
-      description: "Optimización basada en medición, focalizada en UX real.",
+      description:
+        "Optimización guiada por datos reales: medición, análisis de cuellos de botella y mejoras progresivas.",
       Icon: SettingsSuggestRoundedIcon
     },
     {
       id: "bp",
       title: "Buenas prácticas",
-      description: "Consistencia, tipado fuerte y documentación clara que facilitan la colaboración.",
+      description:
+        "Diseño consistente, tipado fuerte y documentación simple que reduce errores y acelera la colaboración.",
       Icon: StarsRoundedIcon
     }
   ],
   workStyleTitle: "Mi forma de trabajar",
   workStyle: [
-    "Código modular y componentes reutilizables.",
-    "Estructuras claras orientadas al mantenimiento a largo plazo.",
-    "Optimización del rendimiento basada en medición y no intuición.",
-    "Comunicación directa y decisiones técnicas fundamentadas.",
-  ],
-  valuesTitle: "Principios que aplico",
-  values: [
-    {
-      title: "Arquitectura",
-      text: "Sistemas pensados desde la estructura: escalables, coherentes y fáciles de razonar.",
-    },
-    {
-      title: "Organización",
-      text: "Código ordenado, predecible y fácil de seguir para cualquier miembro del equipo.",
-    },
-    {
-      title: "Performance",
-      text: "Optimización basada en medición, focalizada en UX real.",
-    },
-    {
-      title: "Buenas prácticas",
-      text: "Consistencia, tipado fuerte y documentación clara que facilitan la colaboración.",
-    },
+    "Componentes modulares y sistemas UI predecibles.",
+    "Decisiones de arquitectura orientadas al mantenimiento a largo plazo.",
+    "Optimización basada en métricas, no en intuición.",
+    "Comunicación clara y criterio técnico fundamentado.",
   ],
 }

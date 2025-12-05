@@ -12,7 +12,7 @@ import ReactMarkdown from "react-markdown";
 import type { AboutProps } from "@typings/about";
 import { techIcons } from "@icons/techIcons";
 
-export default function AboutSection({ heading, paragraphs, pillars, workStyleTitle, workStyle, valuesTitle, values }: AboutProps) {
+export default function AboutSection({ heading, paragraphs, pillars, workStyleTitle, workStyle }: AboutProps) {
   const markdownContent = paragraphs.join('\n\n');
   const { openModal } = useGlobalModal();
   const Icon = techIcons['diploma'];

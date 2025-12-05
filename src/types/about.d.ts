@@ -4,6 +4,4 @@ export interface AboutProps {
   pillars: AboutPillar[];
   workStyleTitle: string;
   workStyle: string[];
-  valuesTitle: string;
-  values: AboutValue[];
 }

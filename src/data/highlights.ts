@@ -6,17 +6,20 @@ import SearchIcon from '@mui/icons-material/Search';
 export const HighlightsData: HighlightsDataArray = [
   {
     Icon: SearchIcon,
-    title: 'Descubrimiento',
-    paragraph: 'Comprender tu visión y objetivos para establecer una base sólida.',
+    title: 'Arquitectura y Diseño Inicial',
+    paragraph:
+      'Antes de codificar, defino el flujo del sistema, modelo los datos y establezco la estructura del frontend. Esto evita retrabajos y garantiza una base predecible y escalable.',
   },
   {
     Icon: CodeRoundedIcon,
-    title: 'Desarrollo',
-    paragraph: 'Construir tu producto con código limpio y tecnologías modernas.',
+    title: 'Desarrollo Enfocado e Iterativo',
+    paragraph:
+      'Implemento componentes reutilizables y lógica clara, priorizando mantenibilidad. Avanzo en ciclos cortos: primero lo funcional, luego la refinación basada en pruebas y observación.',
   },
   {
     Icon: RocketLaunchRoundedIcon,
-    title: 'Lanzamiento y Crecimiento',
-    paragraph: 'Desplegar tu producto y apoyar su crecimiento y evolución.',
+    title: 'Entrega, Validación y Mejora Continua',
+    paragraph:
+      'Lanzo versiones tempranas, mido rendimiento y comportamiento del usuario, e introduzco mejoras basadas en datos reales para asegurar evolución sin pérdida de calidad.',
   },
-]
+];
