@@ -15,7 +15,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -23,26 +23,53 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@data/*": ["./src/data/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@icons/*": ["./src/icons/*"],
-      "@icons": ["./src/icons/index.ts"],
-      "@lib/*": ["./src/lib/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@styles/*": ["./src/styles/*"],
-      "@typings/*": ["./src/types/*"],
-      "@components/*": ["./src/components/*"],
-      "@context/*": ["./src/context/*"],
-      "@sections/*": ["./src/components/sections/*"],
-      "@ui/*": ["./src/components/ui/*"],
+      "@/*": [
+        "./*"
+      ],
+      "@data/*": [
+        "./src/data/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@icons/*": [
+        "./src/icons/*"
+      ],
+      "@icons": [
+        "./src/icons/index.ts"
+      ],
+      "@lib/*": [
+        "./src/lib/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@typings/*": [
+        "./src/types/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@context/*": [
+        "./src/context/*"
+      ],
+      "@sections/*": [
+        "./src/components/sections/*"
+      ],
+      "@ui/*": [
+        "./src/components/ui/*"
+      ]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

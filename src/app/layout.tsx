@@ -4,6 +4,8 @@ import { seoConfig } from "@data/seoConfig";
 import GlobalClientWrapper from "@/src/app/GlobalClientWrapper";
 import type { Metadata, Viewport } from "next";
 import JsonLdPerson from "@components/seo/JsonLdPerson";
+import Script from "next/script";
+
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],
@@ -63,11 +65,7 @@ export const viewport: Viewport = {
   themeColor: "#1C1C21"
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={josefinSans.variable} data-scroll-behavior="smooth">
       <body
@@ -76,6 +74,23 @@ export default function RootLayout({
       >
         <GlobalClientWrapper>
           <JsonLdPerson />
+
+          {/* GOOGLE ANALYTICS */}
+          <Script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-LS9DY1E9MR"
+            strategy="afterInteractive"
+          />
+
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-LS9DY1E9MR');
+            `}
+          </Script>
+
           <main
             className="flex flex-col gap-6 min-h-[calc(100dvh-142px)] md:min-h-[calc(100dvh-166px)]
                    max-w-7xl mx-auto px-2 py-4 md:py-6
