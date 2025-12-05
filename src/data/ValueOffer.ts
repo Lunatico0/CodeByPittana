@@ -10,38 +10,44 @@ export const PILLARS_DATA: PillarData[] = [
   {
     id: 'frontend',
     title: 'Experiencias Frontend',
-    description: 'Diseño interfaces intuitivas y veloces. Me enfoco en React/Next.js para una experiencia de usuario (UX) accesible y moderna.',
+    description:
+      'Desarrollo interfaces claras, escalables y centradas en el usuario. Trabajo con React/Next.js aplicando patrones modernos, tipado fuerte y diseño de componentes reutilizables.',
     Icon: CodeRoundedIcon,
   },
   {
     id: "backend",
-    title: "Arquitectura de Datos y APIs",
-    description: "Construyo el cimiento robusto de tu aplicación: APIs seguras, lógica de negocio escalable y modelos de base de datos optimizados.",
+    title: "Arquitectura y Datos",
+    description:
+      'Diseño APIs y lógica de negocio bien estructurada, priorizando escalabilidad, consistencia de datos y claridad en el flujo entre frontend y backend.',
     Icon: ApiRoundedIcon,
   },
   {
     id: "performance",
     title: "Optimización y Rendimiento",
-    description: "Auditoría de código y refactorización para garantizar tiempos de carga ultrarrápidos y máxima eficiencia, de principio a fin.",
+    description:
+      'Refactorizo y optimizo código para mejorar velocidad, legibilidad y eficiencia. Me enfoco en medir, entender y mejorar el rendimiento real de las aplicaciones.',
     Icon: RocketLaunchRoundedIcon,
   },
 ];
+
 
 export const CTAS_DATA: CTAData[] = [
   {
     id: "freelance",
     title: "Proyectos y Consultoría (Freelance)",
-    description: "Colaboremos en tu idea específica. Ofrezco cotización detallada basada en horas de análisis, diseño y desarrollo, adaptada a tu presupuesto.",
+    description:
+      "Puedo colaborar en proyectos puntuales aportando diseño de interfaces, arquitectura frontend y desarrollo basado en buenas prácticas. Trabajo con estimaciones claras y comunicación directa.",
     ctaText: "Detallar mi Proyecto",
     ctaLink: "/services",
   },
   {
     id: "fulltime",
-    title: "Roles Full-Time (Empleo)",
-    description: "Busco integrarme a equipos de alto rendimiento. Mi enfoque es la disciplina, calidad y compromiso a largo plazo con desafíos innovadores.",
+    title: "Roles Full-Time",
+    description:
+      "Busco integrarme a equipos que valoren la ingeniería frontend, la claridad en el código y la mejora continua. Aporto disciplina, enfoque y capacidad para resolver problemas reales con impacto.",
     Icon: Diploma,
     ctaText: "Descargar CV",
-  },
+  }
 ];
 
 export const VALUE_OFFER_SECTION_DATA: ValueOfferSectionProps = {

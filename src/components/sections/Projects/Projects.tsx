@@ -19,10 +19,30 @@ export default function Projects({
   title = "Proyectos destacados",
   moreProjects = false,
   animate = false,
-  limit = 4,
+  limit = 8,
 }: ProjectsProps) {
   const [projects, setProjects] = useState<ProjectCardData[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const WHITELIST = [
+    "controlCubiertas",
+    "Artemisa",
+    "QRStyle",
+    "Canela-Cakes-menu",
+    "DobleL",
+    "discordBot-Musicologo",
+    "CodeByPittana",
+    "Artemisa-Landing"
+  ];
+  const ORDER = [
+    "controlCubiertas",
+    "Artemisa",
+    "QRStyle",
+    "Canela-Cakes-menu",
+    "DobleL",
+    "Artemisa-Landing",
+    "CodeByPittana",
+    "discordBot-Musicologo",
+  ];
 
   useEffect(() => {
     async function loadProjects(): Promise<void> {
@@ -37,7 +57,11 @@ export default function Projects({
 
         const data: GithubRepo[] = await res.json();
 
-        const mappedProjects: ProjectCardData[] = data.map((project) => {
+        const filtered = data.filter(repo => WHITELIST.includes(repo.name));
+
+        filtered.sort((a, b) => ORDER.indexOf(a.name) - ORDER.indexOf(b.name));
+
+        const mappedProjects: ProjectCardData[] = filtered.map((project) => {
           const details =
             (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[project.name] ?? {};
           return { ...project, ...details };
@@ -84,11 +108,15 @@ export default function Projects({
         </motion.h2>
 
         <div className={`grid ${limit !== 0 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'}  gap-4 md:gap-8 w-full mx-auto`}>
-          {projects.map((project) => (
-            <motion.div key={project.id} variants={FadeInSlideUpItem}>
-              <ProjectCard {...project} className="h-full" />
-            </motion.div>
-          ))}
+          {projects.map((project) => {
+            console.log(projects)
+            return (
+              <motion.div key={project.id} variants={FadeInSlideUpItem}>
+                <ProjectCard {...project} className="h-full" />
+              </motion.div>
+            )
+          }
+          )}
         </div>
 
         {moreProjects && limit > 0 && (

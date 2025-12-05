@@ -55,10 +55,14 @@ export default function Footer() {
         </div>
 
         {/* --- Fila Inferior (Base) --- */}
-        <div className="mt-4 text-center text-xs text-text/40">
-          Desarrollado con paciencia desde Argentina 🇦🇷
+        <div className='flex justify-between'>
+          <p className="mt-4 text-center text-xs text-text/50">
+            Hecho con dedicación desde Argentina 🇦🇷
+          </p>
+          <p className="mt-4 text-center text-xs text-text/50">
+            Última actualización: Dic 2025
+          </p>
         </div>
-
       </div>
     </footer>
   );

@@ -1,8 +1,9 @@
 export interface HeroProps {
   title: string;
-  subtitle: string;
+  paragraph: string;
+  subtitle?: string;
   ctaLabel: string;
   ctaHREF: string;
-  secondaryCta: string;
-  secondaryHREF: string;
+  secondaryCta?: string;
+  secondaryHREF?: string;
 }

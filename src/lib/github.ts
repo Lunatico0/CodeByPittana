@@ -64,9 +64,31 @@ export async function fetchFeaturedRepos(
   limit = 4
 ): Promise<GithubRepo[]> {
   const allRepos = await fetchGithubRepos(username);
-  const featuredRepos = allRepos.filter((repo) =>
+
+  // Lista de repos que deben aparecer primero, en este orden exacto
+  const FEATURED_ORDER = [
+    "controlCubiertas",
+    "Artemisa",
+    "QRStyle",
+    "Canela-Cakes-menu"
+  ];
+
+  // Filtrar solo repos con topic "portfolio-featured"
+  let featuredRepos = allRepos.filter((repo) =>
     repo.topics?.includes(FEATURED_TOPIC)
   );
+
+  // Ordenar según la prioridad que definimos manualmente
+  featuredRepos = featuredRepos.sort((a, b) => {
+    const iA = FEATURED_ORDER.indexOf(a.name);
+    const iB = FEATURED_ORDER.indexOf(b.name);
+
+    if (iA === -1 && iB === -1) return a.name.localeCompare(b.name);
+    if (iA === -1) return 1;
+    if (iB === -1) return -1;
+
+    return iA - iB;
+  });
 
   return featuredRepos.slice(0, limit);
 }

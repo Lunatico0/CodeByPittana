@@ -12,7 +12,7 @@ import ReactMarkdown from "react-markdown";
 import type { AboutProps } from "@typings/about";
 import { techIcons } from "@icons/techIcons";
 
-export default function AboutSection({ heading, paragraphs, pillars }: AboutProps) {
+export default function AboutSection({ heading, paragraphs, pillars, workStyleTitle, workStyle, valuesTitle, values }: AboutProps) {
   const markdownContent = paragraphs.join('\n\n');
   const { openModal } = useGlobalModal();
   const Icon = techIcons['diploma'];
@@ -65,11 +65,13 @@ export default function AboutSection({ heading, paragraphs, pillars }: AboutProp
         >
           <ParticlesBackground className={'hidden md:block'} />
           <motion.div variants={FadeInSlideUpItem} className="px-4">
-            <h3 className="text-lg font-semibold text-text mb-2">¿Cómo trabajo?</h3>
-            <ul className="text-text/80 list-disc list-inside space-y-2">
-              <li>Desarrollo APIs sólidas con validaciones y autenticaciones efectivas.</li>
-              <li>Creo componentes que están desacoplados y bien documentados.</li>
-              <li>Me enfoco en medir el rendimiento y realizar mejoras de manera continua.</li>
+            <h3 className="text-lg font-semibold text-text mb-2">{workStyleTitle}</h3>
+            <ul className="text-text/80 list-disc list-inside space-y-2 pl-3">
+              {workStyle.map((item) => (
+                <li key={item} className="list-disc list-outside pl-1">
+                  <ReactMarkdown components={markdownComponents}>{item}</ReactMarkdown>
+                </li>
+              ))}
             </ul>
           </motion.div>
 

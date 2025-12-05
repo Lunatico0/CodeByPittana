@@ -41,23 +41,35 @@ const ValueOfferSection = () => {
         ))}
       </div>
 
-      {/* === GRID 2: CTA Dual (2 columnas) === */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <DualCTACard
-          key={ctas[0].id}
-          {...ctas[0]}
-          isPrimary={false}
-          className='hover:border-tertiary'
-        />
-        <DualCTACard
-          key={ctas[1].id}
-          {...ctas[1]}
-          isPrimary={true}
-          className='hover:border-tertiary'
-        />
-      </div>
-
-    </motion.section>
+      {
+        false ?
+          (
+            < div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <DualCTACard
+                key={ctas[0].id}
+                {...ctas[0]}
+                isPrimary={false}
+                className='hover:border-tertiary'
+              />
+              <DualCTACard
+                key={ctas[1].id}
+                {...ctas[1]}
+                isPrimary={true}
+                className='hover:border-tertiary'
+              />
+            </div>
+          ) : (
+            < div className="flex justify-center items-center w-3/5 mx-auto" >
+              <DualCTACard
+                key={ctas[1].id}
+                {...ctas[1]}
+                isPrimary={false}
+                className='hover:border-tertiary'
+              />
+            </div >
+          )
+      }
+    </motion.section >
   );
 }
 

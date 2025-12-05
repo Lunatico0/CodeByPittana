@@ -21,7 +21,7 @@ export default function HomePage() {
       <Hero {...HeroData} />
 
       <Highlights highlights={HighlightsData} />
-      <Projects title="Proyectos destacados" moreProjects={true} animate={false} limit={4} />
+      <Projects title="Proyectos destacados" moreProjects={true} animate={false} limit={8} />
       <MainTechs />
       <AboutSection {...AboutData} />
       <ExperienceSection {...ExperienceData} />

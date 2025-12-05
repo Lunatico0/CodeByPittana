@@ -1,10 +1,14 @@
 import type { HeroProps } from "@typings/hero";
 
 export const HeroData: HeroProps = {
-  "title": "Code by Pittana",
-  "subtitle": "Soy Patricio Pittana, desarrollador full stack. Transformo ideas en experiencias digitales claras, funcionales y hechas a medida.",
-  "ctaLabel": "Contactame",
-  "ctaHREF": '/contact',
-  "secondaryCta": "Ver todos los proyectos",
-  "secondaryHREF": '/projects'
-}
+  title: "Patricio Pittana",
+  subtitle: `## Frontend Engineer`,
+  paragraph: `
+Construyo **interfaces claras, escalables y centradas en el usuario**, usando React y TypeScript. Me especializo en **arquitectura frontend**, diseño de componentes y sistemas UI mantenibles. También cuento con visión **full-stack**, lo que me permite integrar datos y lógica de manera precisa cuando el proyecto lo requiere.
+
+  `,
+  ctaLabel: "Contactame",
+  ctaHREF: "/contact",
+  secondaryCta: "Ver proyectos",
+  secondaryHREF: "#projects",
+};

@@ -5,9 +5,12 @@ import { useGlobalModal } from "@context/GlobalModalContext";
 import ButtonPrimary from '@ui/ButtonPrimary';
 import ButtonSecondary from '@ui/ButtonSecondary';
 import { techIcons } from "@icons/techIcons";
+import ReactMarkdown from "react-markdown";
+import { markdownComponents } from "@lib/markdownComponents";
 const Intro = ({
   title,
   subtitle,
+  paragraph,
   ctaLabel,
   ctaHREF,
   secondaryCta,
@@ -21,11 +24,17 @@ const Intro = ({
       className="md:w-3/5 text-center md:text-left"
     >
 
-      <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-4 bg-gradient-to-t from-accent to-primary text-transparent bg-clip-text inline-block">
+      <h1 className="text-4xl md:text-6xl font-bold leading-tight bg-gradient-to-t from-accent to-primary text-transparent bg-clip-text inline-block">
         {title}
       </h1>
 
-      <p className="text-lg text-text/70 mb-8">{subtitle}</p>
+      <div className="text-2xl md:text-3xl font-bold leading-tight mb-4 -mt-4">
+        <ReactMarkdown components={markdownComponents}>{subtitle}</ReactMarkdown>
+      </div>
+
+      <div className="text-lg text-text/70 mb-8">
+        <ReactMarkdown components={markdownComponents}>{paragraph}</ReactMarkdown>
+      </div>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
         <ButtonSecondary

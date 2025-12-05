@@ -26,7 +26,7 @@ export const pricingPlans: Plan[] = [
   {
     id: 2,
     name: 'Pro',
-    price: 850,
+    price: 590,
     title: 'Aplicación Dinámica & Backend (CRUD)',
     subtitle: 'La solución completa para gestionar datos, contenido o usuarios.',
     deliveryTime: "6-10 semanas",
@@ -45,7 +45,7 @@ export const pricingPlans: Plan[] = [
   {
     id: 3,
     name: 'Growth',
-    price: 1500,
+    price: 970,
     title: 'E-commerce, SaaS & Consultoría Estratégica',
     subtitle: 'Para proyectos de alta complejidad o necesidad de escalabilidad avanzada.',
     deliveryTime: "A definir",
