@@ -6,7 +6,8 @@ import { seoConfig } from '@data/seoConfig';
 import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: CvPageProps): Promise<Metadata> {
-  const { slug } = params;
+  const finalParams = await params;
+  const { slug } = finalParams;
 
   const parts = slug.split('-');
   if (parts.length !== 2) {

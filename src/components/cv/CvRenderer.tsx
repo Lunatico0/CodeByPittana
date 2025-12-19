@@ -42,7 +42,7 @@ const SidebarSection: React.FC<{ data: CvRendererProps['data'] }> = ({ data }) =
         Patricio Ángel Pittana
       </h1>
       <p className="text-lg font-semibold text-tertiary/80">
-        Full Stack & Systems Developer
+        Frontend Engineer — React & TypeScript
       </p>
     </div>
 
@@ -197,7 +197,7 @@ const CvRenderer: React.FC<CvRendererProps> = ({ data }) => {
         {!isVisual && (
           <header className="bg-tertiary/20 text-text p-6 text-center">
             <h1 className="text-3xl font-bold">{headerText}</h1>
-            <p className="text-lg">Full Stack & Systems Developer</p>
+            <p className="text-lg">Frontend Engineer — React & TypeScript</p>
             <div className="flex gap-2 justify-center items-center text-xs mt-2 text-text/80 border-t border-text/20 pt-2">
               <a href={`mailto:${data.contact.email}`}>
                 Email
