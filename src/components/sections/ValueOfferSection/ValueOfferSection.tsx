@@ -2,7 +2,6 @@
 
 import { FadeInSlideUpItem, StaggerContainer } from '@lib/animationPresets';
 import { motion } from 'framer-motion';
-import React from 'react';
 import DualCTACard from '@ui/DualCTACard'
 import { VALUE_OFFER_SECTION_DATA } from '@data/ValueOffer';
 import CardWithIcon from '@/src/components/ui/CardWithIcon';

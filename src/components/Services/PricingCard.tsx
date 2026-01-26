@@ -4,7 +4,6 @@ import { Plan } from '@typings/services';
 import ButtonPrimary from '@ui/ButtonPrimary';
 import ButtonSecondary from '@ui/ButtonSecondary';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
-import React from 'react';
 import TrendingUpRoundedIcon from '@mui/icons-material/TrendingUpRounded';
 
 export default function PricingCard({ name, price, isRecommended, ctaText, features, ctaLink }: Plan) {
@@ -40,10 +39,10 @@ export default function PricingCard({ name, price, isRecommended, ctaText, featu
 
       <div className="text-4xl font-extrabold my-4">
         <h3 className="text-2xl font-bold text-text">
-          Desde <span className={`text-5xl ${styles.priceColor} font-josefin`}>
+        {price == 'Segun el proyecto' ? '' : 'Desde'} <span className={`text-5xl ${styles.priceColor} font-josefin`}>
             {price}
           </span>
-          <span className="text-lg text-text/60 ml-1">USD</span>
+          <span className="text-lg text-text/60 ml-1">{price == 'Segun el proyecto' ? '' : 'USD'}</span>
           <p className="text-sm text-text/50 mt-1">
             Pago único por el proyecto.
           </p>

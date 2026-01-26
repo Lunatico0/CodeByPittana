@@ -8,7 +8,7 @@ export interface Plan {
   name?: 'Starter' | 'Pro' | 'Growth';
   title?: string;
   subtitle?: string;
-  price?: number;
+  price?: string;
   deliveryTime?: string;
   features?: PackageFeature[];
   ctaText?: string;
