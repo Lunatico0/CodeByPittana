@@ -2,13 +2,17 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import mailOptions, { FormData } from "@data/emailTemplate";
 
-export async function POST(request: Request) {
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
-  };
+const headers = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
 
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers });
+}
+
+export async function POST(request: Request) {
   try {
     const data: FormData = await request.json();
     const { email, message } = data;
