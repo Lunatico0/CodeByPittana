@@ -7,11 +7,13 @@ import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRound
 export const AboutData: AboutProps = {
   heading: "Sobre mí.",
   paragraphs: [`
-Soy **Frontend Engineer** con enfoque en construir interfaces claras, escalables y centradas en el usuario. Trabajo con **React**, **TypeScript** y patrones que priorizan la mantenibilidad y la previsibilidad del sistema. Me interesa especialmente la **arquitectura del frontend**: diseño de componentes, flujos de estado y decisiones que permiten que una UI siga siendo confiable incluso bajo lógica compleja.
+Soy **Full Stack Engineer** y trabajo con **TypeScript** en todo el producto: **React y Next.js** en la web, **NestJS y Express con MongoDB** en el backend, y **Flutter** en mobile. En **Vela1** entré con trabajo de frontend y hoy desarrollo servicios de backend y dos apps en Flutter: **VelaGo**, un punto de venta en producción con comercios reales, y **VelaHair**, una app de clientes para salones que construyo casi en solitario, desde el discovery y el diseño.
 
-Mi formación también incluye experiencia *full-stack*, lo que me permite entender cómo se conectan la capa de datos, la lógica del negocio y la interfaz. Esa visión global me ayuda a tomar decisiones técnicas más acertadas, comunicarme mejor con otros roles y anticipar puntos críticos antes de que se conviertan en problemas.
+Mi diferencial es el **mobile offline-first**: investigué, propuse y construí la capa de persistencia local y sincronización del punto de venta (**SQLite con Drift**, un outbox durable, migraciones versionadas y manejo de conflictos), para que una venta cobrada sobreviva a una caída de red o a un reinicio de la app.
 
-He trabajado en proyectos con datos, lógica operativa, dashboards, filtros avanzados y entornos donde la exactitud importa. Mi enfoque siempre es el mismo: claridad en el diseño, eficiencia en la ejecución y una base sólida que permita iterar rápido sin romper nada.
+Por fuera de Vela1 desarrollo **TireOps**, un SaaS multi-tenant de gestión de cubiertas para flotas, en producción, del que soy el único desarrollador; y **Verōk**, mi producto propio de finanzas personales y compartidas, en producción y con uso diario.
+
+Me importa la exactitud donde hay dinero e identidad de por medio: cobros idempotentes, saldos actualizados de forma atómica, concurrencia entre dispositivos, sesiones, rate limiting, RBAC y aislamiento multi-tenant. Trabajo con **TDD** y **SDD** (spec-driven development), y con desarrollo asistido por IA (**Claude Code**): yo decido y la herramienta ejecuta.
 
 En mi trabajo valoro cuatro principios que guían cómo diseño y mantengo sistemas:
 `,
@@ -21,36 +23,36 @@ En mi trabajo valoro cuatro principios que guían cómo diseño y mantengo siste
       id: "arch",
       title: "Arquitectura",
       description:
-        "Sistemas pensados desde la estructura: escalables, coherentes y fáciles de mantener a largo plazo.",
+        "Sistemas pensados desde la estructura: offline-first, multi-tenant y con las decisiones escritas en ADRs y design docs.",
       Icon: InventoryRoundedIcon
     },
     {
       id: "org",
-      title: "Organización",
+      title: "Testing",
       description:
-        "Código claro y predecible, con convenciones que facilitan el trabajo en equipo y la evolución del proyecto.",
+        "Especificación antes del código (SDD) y test antes del fix (TDD), con tests automatizados en frontend, backend y mobile.",
       Icon: ExtensionRoundedIcon
     },
     {
       id: "perf",
-      title: "Performance",
+      title: "Exactitud",
       description:
-        "Optimización guiada por datos reales: medición, análisis de cuellos de botella y mejoras progresivas.",
+        "Pagos, saldos y sesiones que resisten la concurrencia: cobros idempotentes, operaciones atómicas y permisos por rol.",
       Icon: SettingsSuggestRoundedIcon
     },
     {
       id: "bp",
       title: "Buenas prácticas",
       description:
-        "Diseño consistente, tipado fuerte y documentación simple que reduce errores y acelera la colaboración.",
+        "Tipado fuerte, código predecible y CI en GitHub Actions que corre lint, typecheck y tests.",
       Icon: StarsRoundedIcon
     }
   ],
   workStyleTitle: "Mi forma de trabajar",
   workStyle: [
-    "Componentes modulares y sistemas UI predecibles.",
-    "Decisiones de arquitectura orientadas al mantenimiento a largo plazo.",
-    "Optimización basada en métricas, no en intuición.",
+    "Ownership de punta a punta: del discovery y el diseño al deploy y el mantenimiento.",
+    "Desarrollo asistido por IA con Claude Code: SDD, subagentes, modelo por fase y revisión doble a ciegas.",
+    "Reviso los diffs, corro los tests de cada cambio antes de cada commit y la suite completa antes de cada push.",
     "Comunicación clara y criterio técnico fundamentado.",
   ],
 }

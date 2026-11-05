@@ -70,7 +70,7 @@ export const faqs: FAQItem[] = [
   {
     id: 1,
     question: '¿Qué tecnologías utilizas para el desarrollo?',
-    answer: 'Mi stack principal es Full-Stack: Next.js/React con TypeScript para el Frontend; Node.js/Express o Nest.js API Routes para el Backend. En bases de datos, utilizo MongoDB, Firebase o soluciones como Supabase, priorizando siempre la herramienta más robusta para el proyecto.',
+    answer: 'Mi stack principal es Full-Stack con TypeScript: Next.js/React para el Frontend; Node.js con NestJS o Express para el Backend; MongoDB como base de datos; y Flutter para apps móviles, con soporte offline-first cuando el proyecto lo necesita.',
   },
   {
     id: 2,

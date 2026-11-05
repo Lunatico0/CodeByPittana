@@ -19,7 +19,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold text-text">Patricio Pittana</h3>
 
             <p className="text-sm text-text/60">
-              Desarrollador Fullstack.
+              Full Stack Engineer.
             </p>
 
             {/* Aviso de Copyright y Atribución */}
@@ -60,7 +60,7 @@ export default function Footer() {
             Hecho con dedicación desde Argentina 🇦🇷
           </p>
           <p className="mt-4 text-center text-xs text-text/50">
-            Última actualización: Dic 2025
+            Última actualización: Nov 2026
           </p>
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function JsonLdService() {
       "name": seoConfig.author,
       "url": seoConfig.url,
     },
-    "description": "Custom web and system solutions integrating hardware, automation, and scalable architectures.",
+    "description": "Custom web, backend and mobile development: React / Next.js, NestJS / Node.js with MongoDB, and offline-first Flutter apps.",
     "areaServed": {
       "@type": "Place",
       "name": "Argentina",

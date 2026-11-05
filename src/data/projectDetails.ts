@@ -3,21 +3,22 @@ import { ExtraProjectDetails } from '@typings/projectDetails';
 export const extraProjectDetails: ExtraProjectDetails = {
   "controlCubiertas": {
     image: "/images/controlCubiertas.png",
-    shortDescription: "Aplicación de escritorio (React + Electron) para gestión de flotas, con inventario, historial y lógica operativa real.",
+    shortDescription: "Origen de TireOps: app de escritorio (React + Electron) para gestión de cubiertas de flotas, hoy evolucionada a un SaaS multi-tenant en producción.",
     longDescription: `
-Aplicación de gestión para flotas que administra el ciclo de vida de cubiertas, inventario, historial y asignación por vehículo, diseñada para uso operativo en depósitos y talleres.
+Primera versión de **TireOps**, el software de gestión de cubiertas para flotas que desarrollo para TMBC: administra el ciclo de vida de cada cubierta, el inventario, el historial y la asignación por vehículo, pensado para uso operativo en depósitos y talleres.
 
 ### Qué construí
 - UI completa en **React + TypeScript**, optimizada para tareas repetitivas.
-- Migración de Web App a **Electron** para ofrecer entorno estable offline.
+- Migración de Web App a **Electron** para ofrecer un entorno de escritorio estable.
 - Manejo de datos complejos: vehículos, cubiertas, historial, recapados.
 - Sistema de filtros y vistas rápidas para minimizar errores operativos.
-- Arquitectura modular con componentes reutilizables y estado predecible.
 
-### Qué demuestra este proyecto
-- Capacidad para desarrollar **aplicaciones internas reales**.
-- Diseño de interfaces orientadas a eficiencia operativa.
-- Dominio de React + TS en contextos con lógica empresarial.
+### Cómo evolucionó: TireOps
+- Hoy es un **SaaS multi-tenant en producción**, con app de escritorio Windows y app web contra el mismo backend. Soy el único desarrollador del producto completo.
+- Una base de datos por empresa: el tenant se resuelve desde el **JWT** firmado en cada request, con permisos por rol (**RBAC**).
+- Backend en **Node.js, Express y Mongoose** sobre **MongoDB Atlas**, desplegado en Vercel.
+- App **Electron** con actualizaciones automáticas, comprobantes impresos, reportes de desgaste y monitoreo de errores con Sentry.
+- Historial auditable: cada movimiento se puede corregir o deshacer sin pisar el original.
   `,
     technologies: [
       "React.js",
@@ -79,31 +80,30 @@ Herramienta visual para crear códigos QR estilizados, con previsualización en 
   },
   "Artemisa": {
     image: "/images/artemisa-dashboard.png",
-    shortDescription: "E-commerce + panel administrativo con gestión de inventario, presupuestos y actualización automática por tipo de cambio.",
+    shortDescription: "E-commerce MERN completo con pagos por MercadoPago y un ERP simple para gestionar productos y stock.",
     longDescription: `
-Plataforma full-stack con tienda pública y panel de administración para manejo de productos, precios, ventas y presupuestos en tiempo real.
+Mi primer proyecto grande: una plataforma full-stack con tienda pública y panel de administración para manejar productos, stock, ventas y presupuestos, con un catálogo de unos 350 productos.
 
 ### Qué construí
 - Frontend en **React + TS** con componentes escalables y formularios complejos.
-- Backend en **Node.js** con modelos para productos, ventas, inventario y usuarios.
-- Presupuestador dinámico con cálculo en ARS/USD según cotización actual.
-- Panel administrativo convertido a **Windows App (Electron)**.
-- Flujo de ventas con actualización automática del stock.
+- API REST en **Node.js y Express** con **MongoDB**, autenticación **JWT** y manejo de imágenes.
+- Integración de pagos con **MercadoPago**.
+- ERP simple: gestión de productos y stock, presupuestos y dashboards en el panel administrativo.
 
 ### Qué demuestra este proyecto
-- Experiencia real construyendo **productos completos** (UI + lógica).
-- Integración frontend/backend sólida.
+- Experiencia real construyendo **productos completos** (UI + lógica + pagos).
+- Integración frontend/backend sólida sobre el stack **MERN**.
 - Manejo de inventario, estados complejos y flujos administrativos.
   `,
     technologies: [
       "React.js",
       "TypeScript",
       "Node.js",
+      "Express",
       "MongoDB",
-      "Electron.js",
       "Tailwind CSS",
       "JWT",
-      "API Integration"
+      "MercadoPago"
     ],
   },
   "DobleL": {
@@ -133,7 +133,7 @@ Página institucional creada para un estudio de arquitectura, enfocada en transm
   },
   "CodeByPittana": {
     image: "/images/CodeByPittana.png",
-    shortDescription: "Repositorio del portfolio personal, diseñado para presentar experiencia, proyectos y narrativa profesional como Frontend Engineer.",
+    shortDescription: "Repositorio del portfolio personal, diseñado para presentar experiencia, proyectos y narrativa profesional como Full Stack Engineer.",
     longDescription: `
 Portfolio desarrollado para comunicar habilidades técnicas, experiencia y proyectos destacados, con un diseño moderno centrado en claridad y estructura.
 

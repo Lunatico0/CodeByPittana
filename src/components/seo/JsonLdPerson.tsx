@@ -15,7 +15,7 @@ export default function JsonLdPerson() {
     "name": "Patricio Ángel Pittana",
     "url": seoConfig.url,
     "image": `${seoConfig.url}/favicon.svg`,
-    "jobTitle": "Full Stack Developer & Systems Integrator",
+    "jobTitle": "Full Stack Engineer",
     "description": seoConfig.description,
     "email": "mailto:contacto@codebypittana.com",
     "nationality": "Argentina",
@@ -36,12 +36,12 @@ export default function JsonLdPerson() {
     "knowsLanguage": ["Spanish", "English"],
     "occupation": {
       "@type": "Occupation",
-      "name": "Full Stack Developer",
+      "name": "Full Stack Engineer",
       "description": seoConfig.description
     },
     "hasOccupation": {
       "@type": "Occupation",
-      "name": "Full Stack Developer"
+      "name": "Full Stack Engineer"
     }
   };
 

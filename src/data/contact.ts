@@ -18,7 +18,7 @@ export const ContactData: ContactProps = {
     {
       Icon: LinkedInIcon,
       name: "LinkedIn",
-      href: "https://linkedin.com/in/patricio-pittana-2185b6177/"
+      href: "https://www.linkedin.com/in/patricio-pittana"
     },
     {
       Icon: EmailIcon,

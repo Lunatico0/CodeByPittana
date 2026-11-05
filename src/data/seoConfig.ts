@@ -2,9 +2,9 @@ const siteUrl = "https://codebypittana.vercel.app";
 
 export const seoConfig = {
   siteName: "Code by Pittana",
-  title: "Patricio Pittana | Full Stack Developer",
+  title: "Patricio Pittana | Full Stack Engineer",
   description:
-    "Desarrollador Full Stack especializado en soluciones modernas con Node.js, React y Next.js. Experiencia en integración de sistemas, automatización y diseño funcional.",
+    "Full Stack Engineer: TypeScript (React / Next.js, NestJS / Node.js) y mobile offline-first en Flutter. Productos en producción con pagos, multi-tenancy y testing automatizado.",
   url: siteUrl,
   author: "Patricio Ángel Pittana",
   locale: "es_AR",
