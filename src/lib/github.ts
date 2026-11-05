@@ -67,7 +67,6 @@ export async function fetchFeaturedRepos(
 
   // Lista de repos que deben aparecer primero, en este orden exacto
   const FEATURED_ORDER = [
-    "controlCubiertas",
     "Artemisa",
     "QRStyle",
     "Canela-Cakes-menu"

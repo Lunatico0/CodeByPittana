@@ -89,7 +89,7 @@ Producto que diseñé, construí y opero, **en producción y con uso diario**. H
     longDescription: `
 Software de gestión de cubiertas para talleres y empresas de transporte, que desarrollo como **freelance para TMBC** desde mayo de 2025. Está **en producción** y sigo sumando fixes y features. Soy el único desarrollador del producto completo: backend, app de escritorio Electron y dos apps web en React. El repositorio es privado.
 
-Nació como **controlCubiertas**, la app de escritorio que también está en esta sección con su código público, y evolucionó a un SaaS.
+Nació como **controlCubiertas**, una app de escritorio para un solo cliente ([su código es público](https://github.com/Lunatico0/controlCubiertas)), y evolucionó a un SaaS.
 
 ### Qué construí
 - **SaaS multi-tenant** con una base de datos de MongoDB por empresa: un plano de control (tenants y usuarios) y un plano de datos donde cada request resuelve la conexión de su tenant desde el JWT firmado, revalidado contra el plano de control en cada llamada.

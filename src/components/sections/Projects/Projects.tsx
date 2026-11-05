@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FadeInSlideUpItem, StaggerContainer } from "@lib/animationPresets";
 import { extraProjectDetails } from "@data/projectDetails";
 import { privateProjects } from "@data/privateProjects";
+import { GITHUB_ORDER, GITHUB_WHITELIST } from "@data/githubProjects";
 import { buildGithubCards, loadProjectCards, projectSlug } from "@lib/projectList";
 import ButtonSecondary from "@ui/ButtonSecondary";
 import ProjectCard from "./ProjectCard";
@@ -25,26 +26,8 @@ export default function Projects({
 }: ProjectsProps) {
   const [projects, setProjects] = useState<ProjectCardData[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const WHITELIST = [
-    "controlCubiertas",
-    "Artemisa",
-    "QRStyle",
-    "Canela-Cakes-menu",
-    "DobleL",
-    "discordBot-Musicologo",
-    "CodeByPittana",
-    "Artemisa-Landing"
-  ];
-  const ORDER = [
-    "controlCubiertas",
-    "Artemisa",
-    "QRStyle",
-    "Canela-Cakes-menu",
-    "DobleL",
-    "Artemisa-Landing",
-    "CodeByPittana",
-    "discordBot-Musicologo",
-  ];
+  const WHITELIST = GITHUB_WHITELIST;
+  const ORDER = GITHUB_ORDER;
 
   useEffect(() => {
     async function loadGithubProjects(): Promise<ProjectCardData[]> {

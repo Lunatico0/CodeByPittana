@@ -13,6 +13,7 @@ import {
   projectSlug,
 } from "./projectList.ts";
 import { privateProjects } from "../data/privateProjects.ts";
+import { GITHUB_ORDER, GITHUB_WHITELIST } from "../data/githubProjects.ts";
 
 const PRIVATE_FIXTURE = [
   { id: "vela1", name: "Vela1", isPrivate: true, shortDescription: "a", longDescription: "a", technologies: [] },
@@ -132,6 +133,13 @@ test("datos reales: Vela1, Verōk y TireOps privados, en ese orden, sin repo ni 
     assert.ok(p.longDescription.length > 0);
   }
   assert.equal(privateProjects[0].image, undefined, "Vela1 va sin imagen (sin permiso de la empresa)");
+});
+
+test("datos reales: controlCubiertas no se muestra aparte de TireOps", () => {
+  assert.equal(GITHUB_WHITELIST.includes("controlCubiertas"), false);
+  assert.equal(GITHUB_ORDER.includes("controlCubiertas"), false);
+  const tireops = privateProjects.find((p) => projectSlug(p) === "tireops");
+  assert.doesNotMatch(tireops.longDescription, /también está en esta sección/);
 });
 
 test("datos reales: sin em dash ni en dash en los textos", () => {
