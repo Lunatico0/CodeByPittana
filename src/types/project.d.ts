@@ -23,8 +23,11 @@ export interface LocalProjectDetails {
 }
 
 export interface ProjectCardData {
-  id: number;
+  /** Numérico para repos de GitHub; slug de texto para proyectos privados. Es el segmento de /projects/[slug]. */
+  id: number | string;
   name: string;
+  /** Repositorio privado: no tiene link al código y muestra el badge "Repositorio privado". */
+  isPrivate?: boolean;
   description?: string | null;
   gitUrl?: string;
   siteUrl?: string;
@@ -34,6 +37,22 @@ export interface ProjectCardData {
   technologies?: string[];
   languages_url?: string;
   languages?: GithubLanguages;
+}
+
+/**
+ * Proyecto cargado a mano (no viene de la API de GitHub), con repositorio privado.
+ * `image` es opcional: sin imagen, la tarjeta y el detalle se muestran solo con texto.
+ * `siteUrl` (demo) es opcional: si no existe, no se muestra ningún link.
+ */
+export interface PrivateProject extends ProjectCardData {
+  id: string;
+  isPrivate: true;
+  shortDescription: string;
+  longDescription: string;
+  technologies: string[];
+  image?: string;
+  siteUrl?: string;
+  gitUrl?: undefined;
 }
 
 interface GithubApiRepo {

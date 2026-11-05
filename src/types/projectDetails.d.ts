@@ -1,5 +1,5 @@
 interface ProjectDetail {
-  image: string;
+  image?: string;
   shortDescription: string;
   longDescription?: string;
   technologies: string[];

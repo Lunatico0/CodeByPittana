@@ -1,21 +1,47 @@
 import ReactMarkdown from "react-markdown";
 import { extraProjectDetails } from "@data/projectDetails";
+import { privateProjects } from "@data/privateProjects";
 import { fetchGithubRepos } from "@lib/github";
+import { findProjectBySlug, getProjectLinks } from "@lib/projectList";
 import Image from "next/image";
 import TechPill from "@ui/TechPill";
-import type { ProjectCardData } from "@typings/project";
+import PrivateRepoBadge from "@sections/Projects/PrivateRepoBadge";
+import type { GithubRepo, ProjectCardData } from "@typings/project";
 import { markdownComponents } from "@lib/markdownComponents";
 import { ProjectPageProps } from '@typings/projectPage';
 import { seoConfig } from '@data/seoConfig';
 import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const { slug } = params;
+/**
+ * Busca el proyecto del slug: primero entre los privados (sin llamar a GitHub)
+ * y después entre los repos de GitHub, sumando sus detalles locales.
+ * Si GitHub falla, los privados igual se encuentran.
+ */
+async function getProject(slug: string): Promise<ProjectCardData | undefined> {
+  const privateProject = findProjectBySlug<ProjectCardData>(slug, privateProjects, []);
+  if (privateProject) return privateProject;
 
   const username = process.env.GITHUB_USERNAME ?? "";
+  let repos: GithubRepo[] = [];
 
-  const repos = await fetchGithubRepos(username);
-  const project = repos.find((r) => r.id.toString() === slug);
+  try {
+    repos = await fetchGithubRepos(username);
+  } catch (error) {
+    console.error("Error fetching repos:", error);
+  }
+
+  const repo = findProjectBySlug(slug, [], repos);
+  if (!repo) return undefined;
+
+  const details =
+    (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[repo.name] ?? {};
+
+  return { ...repo, ...details };
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProject(slug);
 
   if (!project) {
     return {
@@ -24,14 +50,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
   }
 
-  const details =
-    (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[project.name] ?? {};
-
   const fullProject: Partial<ProjectCardData> = {
     ...project,
-    ...details,
-    shortDescription: details.shortDescription || project.description || seoConfig.description,
-    image: details.image || seoConfig.ogImage,
+    shortDescription: project.shortDescription || project.description || seoConfig.description,
+    image: project.image || seoConfig.ogImage,
   };
 
   const pageTitle = `${fullProject.name} | ${seoConfig.author}`;
@@ -76,53 +98,39 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectDetail(props: ProjectPageProps) {
   const { slug } = await props.params;
-
-  const username = process.env.GITHUB_USERNAME ?? "";
-  let project = null;
-
-  try {
-    const repos = await fetchGithubRepos(username);
-    project = repos.find((r) => r.id.toString() === slug);
-  } catch (error) {
-    console.error("Error fetching repos:", error);
-  }
-
-  const discordAuthPrefix = 'https://discord.com/oauth2/authorize?';
+  const project = await getProject(slug);
 
   if (!project) {
     return <div className="p-8 text-center text-red-400">Proyecto no encontrado</div>;
   }
 
-  const details =
-    (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[project.name] ?? {};
-
   const fullProject: ProjectCardData = {
     ...project,
-    ...details,
-    image: details.image ?? "/favicon.svg",
-    shortDescription: details.shortDescription || project.description || "Sin descripción",
-    longDescription: details.longDescription || project.description || "Sin descripción",
-    technologies: details.technologies ?? [],
+    // Los repos públicos sin captura usan el logo; los privados sin imagen van solo con texto.
+    image: project.image ?? (project.isPrivate ? undefined : "/favicon.svg"),
+    shortDescription: project.shortDescription || project.description || "Sin descripción",
+    longDescription: project.longDescription || project.description || "Sin descripción",
+    technologies: project.technologies ?? [],
   };
 
-  const linkText = fullProject.siteUrl && fullProject.siteUrl.startsWith(discordAuthPrefix)
-    ? 'Añadir a Discord →'
-    : 'Visitar sitio →';
+  const { repoUrl, showPrivateBadge, site } = getProjectLinks(fullProject);
 
   return (
     <section className="relative flex flex-col justify-center w-full mx-auto gap-4 text-sm md:text-base">
       {/* Imagen */}
-      <div className={`${fullProject.image === '/favicon.svg' ? 'aspect-square max-w-md w-full mx-auto' : 'aspect-[3/2] w-full '} relative rounded-xl overflow-hidden`}
-      >
-        <Image
-          src={fullProject.image ?? "/favicon.svg"}
-          alt={fullProject.name}
-          fill
-          className="object-cover object-center rounded-xl"
-          data-view-transition-name={`project-image-${fullProject.id}`}
-          priority
-        />
-      </div>
+      {fullProject.image && (
+        <div className={`${fullProject.image === '/favicon.svg' ? 'aspect-square max-w-md w-full mx-auto' : 'aspect-[3/2] w-full '} relative rounded-xl overflow-hidden`}
+        >
+          <Image
+            src={fullProject.image}
+            alt={fullProject.name}
+            fill
+            className="object-cover object-center rounded-xl"
+            data-view-transition-name={`project-image-${slug}`}
+            priority
+          />
+        </div>
+      )}
 
       {/* Informacion */}
       <div className="flex flex-col">
@@ -151,10 +159,11 @@ export default async function ProjectDetail(props: ProjectPageProps) {
       )}
 
       {/* Links */}
-      <div className="flex gap-4">
-        {fullProject.gitUrl && (
+      <div className="flex gap-4 items-center">
+        {showPrivateBadge && <PrivateRepoBadge />}
+        {repoUrl && (
           <a
-            href={fullProject.gitUrl}
+            href={repoUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:text-primary transition-colors"
@@ -162,14 +171,14 @@ export default async function ProjectDetail(props: ProjectPageProps) {
             Ver en GitHub →
           </a>
         )}
-        {fullProject.siteUrl && (
+        {site && (
           <a
-            href={fullProject.siteUrl}
+            href={site.href}
             target="_blank"
             rel="noopener noreferrer"
             className="text-accent hover:text-primary transition-colors"
           >
-            {linkText}
+            {site.label}
           </a>
         )}
       </div>

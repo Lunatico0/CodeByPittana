@@ -3,6 +3,8 @@ import type { ProjectCardProps } from "@typings/projectCard";
 import Image from "next/image.js";
 import Link from "next/link.js";
 import TechPill from "@ui/TechPill";
+import { getProjectLinks, projectSlug } from "@lib/projectList";
+import PrivateRepoBadge from "./PrivateRepoBadge";
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   id,
@@ -11,14 +13,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   gitUrl,
   siteUrl,
   shortDescription,
-  image = '/favicon.svg',
+  image,
+  isPrivate,
   className = "",
-  languages
+  languages,
+  technologies
 }) => {
-  const discordAuthPrefix = 'https://discord.com/oauth2/authorize?';
-  const linkText = siteUrl && siteUrl.startsWith(discordAuthPrefix)
-    ? 'Añadir a Discord →'
-    : 'Visitar sitio →';
+  const { repoUrl, showPrivateBadge, site } = getProjectLinks({ gitUrl, siteUrl, isPrivate });
+  // Los repos públicos sin captura usan el logo; los privados sin imagen van solo con texto.
+  const cardImage = image ?? (isPrivate ? null : '/favicon.svg');
+  const slug = projectSlug({ id });
 
   return (
     <motion.div
@@ -36,19 +40,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* Contenido */}
       <div className="relative z-10 flex flex-col justify-between items-start w-full h-full">
 
-        <Link href={`/projects/${id}`} className="w-full">
-          <div
-            className="relative w-full aspect-[3/2] rounded-lg overflow-hidden"
-          >
-            <Image
-              src={image}
-              alt={name}
-              fill
-              className={`${image === '/favicon.svg' ? 'object-contain group-hover:-translate-y-0.5' : 'object-cover'} object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105`}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              data-view-transition-name={`project-image-${id}`}
-            />
-          </div>
+        <Link href={`/projects/${slug}`} className="w-full">
+          {cardImage && (
+            <div
+              className="relative w-full aspect-[3/2] rounded-lg overflow-hidden"
+            >
+              <Image
+                src={cardImage}
+                alt={name}
+                fill
+                className={`${cardImage === '/favicon.svg' ? 'object-contain group-hover:-translate-y-0.5' : 'object-cover'} object-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105`}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                data-view-transition-name={`project-image-${slug}`}
+              />
+            </div>
+          )}
 
           <h3
             className="text-2xl font-bold bg-gradient-to-t from-accent to-primary text-transparent bg-clip-text inline-block my-4"
@@ -68,13 +74,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             const percentage = ((value / total) * 100).toFixed(1);
             return <TechPill key={tech} name={tech} value={percentage} />;
           })}
+          {/* Los privados no tienen lenguajes de GitHub: se muestran sus tecnologías. */}
+          {isPrivate && technologies?.map((tech) => (
+            <TechPill key={tech} name={tech} />
+          ))}
         </div>
 
         {/* Botones links */}
         <div className="flex gap-4 items-center">
-          {gitUrl && (
+          {showPrivateBadge && <PrivateRepoBadge />}
+          {repoUrl && (
             <a
-              href={gitUrl}
+              href={repoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-accent hover:text-primary transition-colors"
@@ -82,14 +93,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               Ver en GitHub →
             </a>
           )}
-          {siteUrl && (
+          {site && (
             <a
-              href={siteUrl}
+              href={site.href}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-accent hover:text-primary transition-colors"
             >
-              {linkText}
+              {site.label}
             </a>
           )}
         </div>

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FadeInSlideUpItem, StaggerContainer } from "@lib/animationPresets";
 import { extraProjectDetails } from "@data/projectDetails";
+import { privateProjects } from "@data/privateProjects";
+import { buildGithubCards, loadProjectCards, projectSlug } from "@lib/projectList";
 import ButtonSecondary from "@ui/ButtonSecondary";
 import ProjectCard from "./ProjectCard";
 import type { GithubRepo, ProjectCardData } from "@typings/project";
@@ -45,37 +47,29 @@ export default function Projects({
   ];
 
   useEffect(() => {
-    async function loadProjects(): Promise<void> {
-      try {
-        const endpoint = limit === 0 ? "/api/projects" : "/api/featured-projects";
-        const res = await fetch(endpoint);
+    async function loadGithubProjects(): Promise<ProjectCardData[]> {
+      const endpoint = limit === 0 ? "/api/projects" : "/api/featured-projects";
+      const res = await fetch(endpoint);
 
-        if (!res.ok) {
-          const errorData: { error?: string } = await res.json();
-          throw new Error(errorData.error ?? "Error desconocido");
-        }
-
-        const data: GithubRepo[] = await res.json();
-
-        const filtered = data.filter(repo => WHITELIST.includes(repo.name));
-
-        filtered.sort((a, b) => ORDER.indexOf(a.name) - ORDER.indexOf(b.name));
-
-        const mappedProjects: ProjectCardData[] = filtered.map((project) => {
-          const details =
-            (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[project.name] ?? {};
-          return { ...project, ...details };
-        });
-
-        const finalProjects = limit > 0 ? mappedProjects.slice(0, limit) : mappedProjects;
-        setProjects(finalProjects);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(`Error al cargar proyectos: ${err.message}`);
-        } else {
-          setError("Error desconocido al cargar proyectos");
-        }
+      if (!res.ok) {
+        const errorData: { error?: string } = await res.json().catch(() => ({}));
+        throw new Error(errorData.error ?? "Error desconocido");
       }
+
+      const data: GithubRepo[] = await res.json();
+      return buildGithubCards(
+        data,
+        extraProjectDetails as Record<string, Partial<ProjectCardData>>,
+        WHITELIST,
+        ORDER,
+      );
+    }
+
+    async function loadProjects(): Promise<void> {
+      // Los privados se muestran siempre, aunque falle la API de GitHub.
+      const result = await loadProjectCards(privateProjects, loadGithubProjects, limit);
+      setProjects(result.projects);
+      setError(result.error ? `Error al cargar proyectos de GitHub: ${result.error}` : null);
     }
 
     void loadProjects();
@@ -89,10 +83,6 @@ export default function Projects({
       : hasProjects
         ? { whileInView: "visible" as const, viewport: { once: true, amount: 0.1 } }
         : {};
-
-  if (error) {
-    return <section className="p-6 text-center text-red-400">{error}</section>;
-  }
 
   return (
     <section id="projects" className={`flex flex-col gap-3 scroll-mt-24 md:scroll-mt-28`}>
@@ -108,16 +98,16 @@ export default function Projects({
         </motion.h2>
 
         <div className={`grid ${limit !== 0 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'}  gap-4 md:gap-8 w-full mx-auto`}>
-          {projects.map((project) => {
-            console.log(projects)
-            return (
-              <motion.div key={project.id} variants={FadeInSlideUpItem}>
-                <ProjectCard {...project} className="h-full" />
-              </motion.div>
-            )
-          }
-          )}
+          {projects.map((project) => (
+            <motion.div key={projectSlug(project)} variants={FadeInSlideUpItem}>
+              <ProjectCard {...project} className="h-full" />
+            </motion.div>
+          ))}
         </div>
+
+        {error && (
+          <p className="mt-4 text-center text-sm text-red-400">{error}</p>
+        )}
 
         {moreProjects && limit > 0 && (
           <motion.div variants={FadeInSlideUpItem} className="my-3 md:mt-8 w-fit mx-auto">

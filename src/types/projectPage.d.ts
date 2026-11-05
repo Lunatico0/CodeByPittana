@@ -1,3 +1,3 @@
 export interface ProjectPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
