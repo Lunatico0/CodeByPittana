@@ -31,6 +31,11 @@ interface CvRendererProps {
   data: RenderedCVData;
 }
 
+const cvHeadline: Record<'es' | 'en', string> = {
+  es: "Full Stack Engineer: TypeScript (React / Next.js, NestJS / Node.js) y mobile offline-first en Flutter",
+  en: "Full Stack Engineer: TypeScript (React / Next.js, NestJS / Node.js) and offline-first mobile in Flutter",
+};
+
 
 const SidebarSection: React.FC<{ data: CvRendererProps['data'] }> = ({ data }) => (
   <aside className="w-full lg:w-1/3 bg-tertiary/30 p-6 text-secondary flex flex-col gap-6">
@@ -42,7 +47,7 @@ const SidebarSection: React.FC<{ data: CvRendererProps['data'] }> = ({ data }) =
         Patricio Ángel Pittana
       </h1>
       <p className="text-lg font-semibold text-tertiary/80">
-        Frontend Engineer — React & TypeScript
+        {cvHeadline[data.lang]}
       </p>
     </div>
 
@@ -189,7 +194,7 @@ const MainContent: React.FC<{ data: CvRendererProps['data'] }> = ({ data }) => (
 const CvRenderer: React.FC<CvRendererProps> = ({ data }) => {
   const isVisual = data.layout === 'visual';
   const headerText = "Patricio Ángel Pittana";
-  const downloadURL = '/downloads/cv/patricio_pittana_cv(' + data.lang + ')-' + data.layout + '.pdf'
+  const downloadURL = '/downloads/cv/patricio_pittana_cv(' + data.lang.toUpperCase() + ')-' + data.layout + '.pdf'
 
   return (
     <div className='flex gap-4 flex-col'>
@@ -197,7 +202,7 @@ const CvRenderer: React.FC<CvRendererProps> = ({ data }) => {
         {!isVisual && (
           <header className="bg-tertiary/20 text-text p-6 text-center">
             <h1 className="text-3xl font-bold">{headerText}</h1>
-            <p className="text-lg">Frontend Engineer — React & TypeScript</p>
+            <p className="text-lg">{cvHeadline[data.lang]}</p>
             <div className="flex gap-2 justify-center items-center text-xs mt-2 text-text/80 border-t border-text/20 pt-2">
               <a href={`mailto:${data.contact.email}`}>
                 Email
