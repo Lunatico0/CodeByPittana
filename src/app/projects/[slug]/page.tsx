@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import { extraProjectDetails } from "@data/projectDetails";
 import { privateProjects } from "@data/privateProjects";
 import { fetchGithubRepos } from "@lib/github";
-import { findProjectBySlug, getProjectLinks } from "@lib/projectList";
+import { findProjectBySlug, getProjectLinks, projectSlug } from "@lib/projectList";
 import Image from "next/image";
 import TechPill from "@ui/TechPill";
 import PrivateRepoBadge from "@sections/Projects/PrivateRepoBadge";
@@ -36,7 +36,8 @@ async function getProject(slug: string): Promise<ProjectCardData | undefined> {
   const details =
     (extraProjectDetails as Record<string, Partial<ProjectCardData>>)[repo.name] ?? {};
 
-  return { ...repo, ...details };
+  // El slug sale del nombre del repo, aunque los detalles pisen `name`.
+  return { ...repo, ...details, id: projectSlug(repo) };
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
@@ -58,7 +59,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   const pageTitle = `${fullProject.name} | ${seoConfig.author}`;
   const pageDescription = fullProject.shortDescription;
-  const canonicalUrl = `${seoConfig.url}/projects/${slug}`;
+  const canonicalUrl = `${seoConfig.url}/projects/${projectSlug(project)}`;
   const ogImageUrl = fullProject.image
     ? (fullProject.image.startsWith("http")
       ? fullProject.image

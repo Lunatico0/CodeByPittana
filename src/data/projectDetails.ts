@@ -1,24 +1,21 @@
-import { ExtraProjectDetails } from '@typings/projectDetails';
+import type { ExtraProjectDetails } from '@typings/projectDetails';
 
 export const extraProjectDetails: ExtraProjectDetails = {
   "controlCubiertas": {
-    image: "/images/controlCubiertas.png",
-    shortDescription: "Origen de TireOps: app de escritorio (React + Electron) para gestión de cubiertas de flotas, hoy evolucionada a un SaaS multi-tenant en producción.",
+    // Descripción corta y demo vienen de GitHub (description y homepage del repo).
+    name: "TireOps",
+    image: "/images/tireops.png",
     longDescription: `
-Primera versión de **TireOps**, el software de gestión de cubiertas para flotas que desarrollo para TMBC: administra el ciclo de vida de cada cubierta, el inventario, el historial y la asignación por vehículo, pensado para uso operativo en depósitos y talleres.
+Software de gestión de cubiertas para talleres y empresas de transporte, que desarrollo como **freelance para TMBC** desde mayo de 2025. Está **en producción** y sigo sumando fixes y features. Soy el único desarrollador del producto completo: backend, app de escritorio Electron y dos apps web en React.
+
+Nació como **controlCubiertas**, una app de escritorio para un solo cliente, y evolucionó a un SaaS en este mismo repositorio.
 
 ### Qué construí
-- UI completa en **React + TypeScript**, optimizada para tareas repetitivas.
-- Migración de Web App a **Electron** para ofrecer un entorno de escritorio estable.
-- Manejo de datos complejos: vehículos, cubiertas, historial, recapados.
-- Sistema de filtros y vistas rápidas para minimizar errores operativos.
-
-### Cómo evolucionó: TireOps
-- Hoy es un **SaaS multi-tenant en producción**, con app de escritorio Windows y app web contra el mismo backend. Soy el único desarrollador del producto completo.
-- Una base de datos por empresa: el tenant se resuelve desde el **JWT** firmado en cada request, con permisos por rol (**RBAC**).
-- Backend en **Node.js, Express y Mongoose** sobre **MongoDB Atlas**, desplegado en Vercel.
-- App **Electron** con actualizaciones automáticas, comprobantes impresos, reportes de desgaste y monitoreo de errores con Sentry.
-- Historial auditable: cada movimiento se puede corregir o deshacer sin pisar el original.
+- **SaaS multi-tenant** con una base de datos de MongoDB por empresa: un plano de control (tenants y usuarios) y un plano de datos donde cada request resuelve la conexión de su tenant desde el JWT firmado, revalidado contra el plano de control en cada llamada.
+- Autenticación con access tokens de corta duración y refresh tokens, y permisos por rol (**RBAC**).
+- Backend en **Node.js y Express** con Mongoose, validación con Zod y documentación con Swagger, desplegado como función serverless en Vercel sobre **MongoDB Atlas**.
+- App **Electron** con actualizaciones automáticas desde GitHub Releases, comprobantes impresos por movimiento con numeración correlativa reservada en el backend, reportes de flota y desgaste, y monitoreo de errores con Sentry.
+- Historial auditable: cada movimiento se puede corregir o deshacer, y la corrección queda registrada junto al original en lugar de pisarlo.
   `,
     technologies: [
       "React.js",

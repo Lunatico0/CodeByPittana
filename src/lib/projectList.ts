@@ -6,14 +6,28 @@ type DetailsByName = Record<string, Partial<ProjectCardData>>;
 
 const DISCORD_AUTH_PREFIX = "https://discord.com/oauth2/authorize?";
 
-/** Slug de la URL /projects/[slug]: el id de GitHub o el slug de texto del proyecto privado. */
-export function projectSlug(project: Pick<ProjectCardData, "id">): string {
+/**
+ * Slug de la URL /projects/[slug]: el nombre del repo para los de GitHub (id numérico)
+ * y el slug de texto para los privados. Las tarjetas de GitHub ya traen el nombre del
+ * repo como id (ver buildGithubCards), así el slug no cambia si los detalles pisan `name`.
+ */
+export function projectSlug(project: Pick<ProjectCardData, "id"> & { name?: string }): string {
+  if (typeof project.id === "number" && project.name) return project.name;
   return String(project.id);
+}
+
+/** Texto de la tarjeta: la descripción local seguida de la de GitHub, sin "undefined". */
+export function cardDescription(
+  project: Pick<ProjectCardData, "shortDescription" | "description">,
+): string {
+  const text = `${project.shortDescription ?? ""}${project.description ?? ""}`;
+  return text || "Descripción no disponible.";
 }
 
 /**
  * Repos de GitHub a tarjetas: filtra por whitelist, ordena según `order`
- * y suma los detalles locales (imagen, descripciones, tecnologías) por nombre de repo.
+ * y suma los detalles locales (imagen, nombre visible, descripciones, tecnologías) por nombre de repo.
+ * El id pasa a ser el slug (nombre del repo), que los detalles no pueden pisar.
  */
 export function buildGithubCards(
   repos: GithubRepo[],
@@ -24,7 +38,7 @@ export function buildGithubCards(
   return repos
     .filter((repo) => whitelist.includes(repo.name))
     .sort((a, b) => order.indexOf(a.name) - order.indexOf(b.name))
-    .map((repo) => ({ ...repo, ...(details[repo.name] ?? {}) }));
+    .map((repo) => ({ ...repo, ...(details[repo.name] ?? {}), id: projectSlug(repo) }));
 }
 
 /**
@@ -67,13 +81,18 @@ export async function loadProjectCards(
   }
 }
 
-/** Busca un proyecto por slug, primero entre los privados y después entre los de GitHub. */
-export function findProjectBySlug<T extends Pick<ProjectCardData, "id">>(
+/**
+ * Busca un proyecto por slug, primero entre los privados y después entre los de GitHub.
+ * También acepta el id numérico de GitHub, que fue el slug hasta que pasó a ser el nombre del repo.
+ */
+export function findProjectBySlug<T extends Pick<ProjectCardData, "id" | "name">>(
   slug: string,
   privates: readonly T[],
   github: readonly T[],
 ): T | undefined {
-  return [...privates, ...github].find((project) => projectSlug(project) === slug);
+  return [...privates, ...github].find(
+    (project) => projectSlug(project) === slug || String(project.id) === slug,
+  );
 }
 
 export interface ProjectLinks {

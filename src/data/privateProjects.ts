@@ -78,32 +78,4 @@ Producto que diseñé, construí y opero, **en producción y con uso diario**. H
       "Vitest",
     ],
   },
-  {
-    id: "tireops",
-    name: "TireOps",
-    isPrivate: true,
-    image: "/images/tireops.png",
-    siteUrl: "https://control-cubiertas.vercel.app/login?demo=1",
-    shortDescription:
-      "SaaS multi-tenant de gestión de cubiertas para flotas, en producción: app de escritorio Windows en Electron y app web contra el mismo backend. Soy el único desarrollador.",
-    longDescription: `
-Software de gestión de cubiertas para talleres y empresas de transporte, que desarrollo como **freelance para TMBC** desde mayo de 2025. Está **en producción** y sigo sumando fixes y features. Soy el único desarrollador del producto completo: backend, app de escritorio Electron y dos apps web en React. El repositorio es privado.
-
-Nació como **controlCubiertas**, una app de escritorio para un solo cliente ([su código es público](https://github.com/Lunatico0/controlCubiertas)), y evolucionó a un SaaS.
-
-### Qué construí
-- **SaaS multi-tenant** con una base de datos de MongoDB por empresa: un plano de control (tenants y usuarios) y un plano de datos donde cada request resuelve la conexión de su tenant desde el JWT firmado, revalidado contra el plano de control en cada llamada.
-- Autenticación con access tokens de corta duración y refresh tokens, y permisos por rol (**RBAC**).
-- Backend en **Node.js y Express** con Mongoose, validación con Zod y documentación con Swagger, desplegado como función serverless en Vercel sobre **MongoDB Atlas**.
-- App **Electron** con actualizaciones automáticas desde GitHub Releases, comprobantes impresos por movimiento con numeración correlativa reservada en el backend, reportes de flota y desgaste, y monitoreo de errores con Sentry.
-- Historial auditable: cada movimiento se puede corregir o deshacer, y la corrección queda registrada junto al original en lugar de pisarlo.
-    `,
-    technologies: [
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Electron.js",
-      "React.js",
-    ],
-  },
 ];

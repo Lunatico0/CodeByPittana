@@ -6,6 +6,7 @@ import assert from "node:assert/strict";
 
 import {
   buildGithubCards,
+  cardDescription,
   findProjectBySlug,
   getProjectLinks,
   loadProjectCards,
@@ -14,6 +15,9 @@ import {
 } from "./projectList.ts";
 import { privateProjects } from "../data/privateProjects.ts";
 import { GITHUB_ORDER, GITHUB_WHITELIST } from "../data/githubProjects.ts";
+import { extraProjectDetails } from "../data/projectDetails.ts";
+import { fetchFeaturedRepos } from "./github.ts";
+import nextConfig from "../../next.config.ts";
 
 const PRIVATE_FIXTURE = [
   { id: "vela1", name: "Vela1", isPrivate: true, shortDescription: "a", longDescription: "a", technologies: [] },
@@ -48,7 +52,7 @@ test("los privados se muestran aunque GitHub devuelva vacio", () => {
 });
 
 test("sin duplicados de slug: gana la primera aparicion", () => {
-  const github = [repo(1, "A"), { ...repo(1, "A bis") }, { ...repo(9, "Choca"), id: "verok" }];
+  const github = [repo(1, "A"), { ...repo(2, "A"), description: "repetido" }, { ...repo(9, "Choca"), id: "verok" }];
   const result = mergeProjects(PRIVATE_FIXTURE, github);
   assert.deepEqual(names(result), ["Vela1", "Verōk", "TireOps", "A"]);
   const slugs = result.map(projectSlug);
@@ -87,11 +91,34 @@ test("buildGithubCards filtra por whitelist, ordena por ORDER y suma detalles lo
   assert.equal(cards[0].shortDescription, "detalle A");
 });
 
-test("findProjectBySlug encuentra privados por slug de texto y repos por id numerico", () => {
+test("findProjectBySlug encuentra privados por slug de texto y repos por nombre", () => {
   const github = [repo(42, "A")];
   assert.equal(findProjectBySlug("tireops", PRIVATE_FIXTURE, github)?.name, "TireOps");
-  assert.equal(findProjectBySlug("42", PRIVATE_FIXTURE, github)?.name, "A");
+  assert.equal(findProjectBySlug("A", PRIVATE_FIXTURE, github)?.name, "A");
   assert.equal(findProjectBySlug("nada", PRIVATE_FIXTURE, github), undefined);
+});
+
+test("findProjectBySlug sigue encontrando repos por su id numerico (URLs viejas)", () => {
+  const github = [repo(961110534, "controlCubiertas")];
+  assert.equal(findProjectBySlug("961110534", [], github)?.name, "controlCubiertas");
+});
+
+test("el slug de un repo de GitHub es su nombre, aunque los detalles pisen `name`", () => {
+  const repos = [repo(961110534, "controlCubiertas")];
+  const details = { controlCubiertas: { name: "TireOps", image: "/images/tireops.png" } };
+  const [card] = buildGithubCards(repos, details, ["controlCubiertas"], ["controlCubiertas"]);
+  assert.equal(card.name, "TireOps");
+  assert.equal(projectSlug(card), "controlCubiertas");
+  // ProjectCard arma el link solo con el id.
+  assert.equal(projectSlug({ id: card.id }), "controlCubiertas");
+  assert.equal(projectSlug(repos[0]), "controlCubiertas");
+});
+
+test("cardDescription: sin descripcion local usa la de GitHub, sin texto basura", () => {
+  assert.equal(cardDescription({ description: "De GitHub" }), "De GitHub");
+  assert.equal(cardDescription({ shortDescription: "Local" }), "Local");
+  assert.equal(cardDescription({ shortDescription: "Local", description: " y GitHub" }), "Local y GitHub");
+  assert.equal(cardDescription({ description: null }), "Descripción no disponible.");
 });
 
 test("getProjectLinks: privado muestra badge y nunca link a GitHub", () => {
@@ -112,9 +139,39 @@ test("getProjectLinks: una URL de demo (?demo=1) se rotula Probar demo", () => {
   assert.deepEqual(links.site, { href: "https://app.example/login?demo=1", label: "Probar demo →" });
 });
 
-test("datos reales: TireOps linkea a su demo pública", () => {
-  const tireops = privateProjects.find((p) => projectSlug(p) === "tireops");
-  assert.equal(tireops?.siteUrl, "https://control-cubiertas.vercel.app/login?demo=1");
+test("datos reales: TireOps sale de controlCubiertas, con descripcion y demo de GitHub", () => {
+  const details = extraProjectDetails.controlCubiertas;
+  assert.equal(details.name, "TireOps");
+  assert.equal(details.image, "/images/tireops.png");
+  assert.equal(details.shortDescription, undefined);
+  assert.equal(details.siteUrl, undefined);
+  assert.doesNotMatch(details.longDescription, /repositorio (es )?privado/i);
+});
+
+test("next.config: /projects/tireops redirige de forma permanente a /projects/controlCubiertas", async () => {
+  const redirects = await nextConfig.redirects();
+  assert.ok(
+    redirects.some(
+      (r) =>
+        r.source === "/projects/tireops" &&
+        r.destination === "/projects/controlCubiertas" &&
+        r.permanent === true,
+    ),
+  );
+});
+
+test("home: controlCubiertas entra primero en los 4 destacados", async () => {
+  const featured = ["Artemisa", "Canela-Cakes-menu", "controlCubiertas", "discordBot-Musicologo", "DobleL", "QRStyle"]
+    .map((name, i) => ({ ...repo(i + 1, name), html_url: `https://github.com/x/${name}`, topics: ["portfolio-featured"] }));
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({ ok: true, statusText: "OK", json: async () => featured });
+  try {
+    const result = await fetchFeaturedRepos("x", 4);
+    assert.equal(result[0].name, "controlCubiertas");
+    assert.equal(result.length, 4);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });
 
 test("getProjectLinks: repo publico conserva GitHub y el texto de Discord", () => {
@@ -124,8 +181,8 @@ test("getProjectLinks: repo publico conserva GitHub y el texto de Discord", () =
   assert.equal(links.site?.label, "Añadir a Discord →");
 });
 
-test("datos reales: Vela1, Verōk y TireOps privados, en ese orden, sin repo ni imagen", () => {
-  assert.deepEqual(privateProjects.map(projectSlug), ["vela1", "verok", "tireops"]);
+test("datos reales: Vela1 y Verōk privados, en ese orden, sin repo; Vela1 sin imagen", () => {
+  assert.deepEqual(privateProjects.map(projectSlug), ["vela1", "verok"]);
   for (const p of privateProjects) {
     assert.equal(p.isPrivate, true);
     assert.equal(p.gitUrl, undefined);
@@ -135,15 +192,13 @@ test("datos reales: Vela1, Verōk y TireOps privados, en ese orden, sin repo ni 
   assert.equal(privateProjects[0].image, undefined, "Vela1 va sin imagen (sin permiso de la empresa)");
 });
 
-test("datos reales: controlCubiertas no se muestra aparte de TireOps", () => {
-  assert.equal(GITHUB_WHITELIST.includes("controlCubiertas"), false);
-  assert.equal(GITHUB_ORDER.includes("controlCubiertas"), false);
-  const tireops = privateProjects.find((p) => projectSlug(p) === "tireops");
-  assert.doesNotMatch(tireops.longDescription, /también está en esta sección/);
+test("datos reales: controlCubiertas se muestra, primero entre los de GitHub", () => {
+  assert.equal(GITHUB_WHITELIST.includes("controlCubiertas"), true);
+  assert.equal(GITHUB_ORDER[0], "controlCubiertas");
 });
 
 test("datos reales: sin em dash ni en dash en los textos", () => {
-  const text = JSON.stringify(privateProjects);
+  const text = JSON.stringify([privateProjects, extraProjectDetails.controlCubiertas]);
   const dashes = new RegExp("[" + String.fromCharCode(0x2013, 0x2014) + "]");
   assert.equal(dashes.test(text), false);
 });

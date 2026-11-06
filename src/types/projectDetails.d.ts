@@ -1,6 +1,9 @@
 interface ProjectDetail {
+  /** Nombre visible; si falta, se usa el del repo. No cambia el slug. */
+  name?: string;
   image?: string;
-  shortDescription: string;
+  /** Si falta, la tarjeta usa la descripción del repo en GitHub. */
+  shortDescription?: string;
   longDescription?: string;
   technologies: string[];
 }

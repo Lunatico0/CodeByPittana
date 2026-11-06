@@ -3,7 +3,7 @@ import type { ProjectCardProps } from "@typings/projectCard";
 import Image from "next/image.js";
 import Link from "next/link.js";
 import TechPill from "@ui/TechPill";
-import { getProjectLinks, projectSlug } from "@lib/projectList";
+import { cardDescription, getProjectLinks, projectSlug } from "@lib/projectList";
 import PrivateRepoBadge from "./PrivateRepoBadge";
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -63,7 +63,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </h3>
 
           <p className="text-text/80 text-sm">
-            {(description ? shortDescription + description : shortDescription) || "Descripción no disponible."}
+            {cardDescription({ shortDescription, description })}
           </p>
         </Link>
 

@@ -1,8 +1,9 @@
 /**
  * Repos públicos de GitHub que se muestran en Proyectos, y su orden.
- * controlCubiertas no va: es el origen de TireOps, que ya aparece como proyecto privado.
+ * controlCubiertas es el repo de TireOps: se muestra con ese nombre (ver projectDetails).
  */
 export const GITHUB_WHITELIST = [
+  "controlCubiertas",
   "Artemisa",
   "QRStyle",
   "Canela-Cakes-menu",
@@ -13,6 +14,7 @@ export const GITHUB_WHITELIST = [
 ];
 
 export const GITHUB_ORDER = [
+  "controlCubiertas",
   "Artemisa",
   "QRStyle",
   "Canela-Cakes-menu",
