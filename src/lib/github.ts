@@ -9,7 +9,8 @@ export async function fetchGithubRepos(username: string): Promise<GithubRepo[]> 
   const token = process.env.GITHUB_TOKEN;
   const headers: HeadersInit = token ? { Authorization: `token ${token}` } : {};
 
-  const response = await fetch(`https://api.github.com/users/${username}/repos`, {
+  // per_page=100: GitHub devuelve 30 por defecto y deja repos afuera (por ejemplo QRStyle).
+  const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
     headers,
     next: { revalidate: 3600 },
   });
