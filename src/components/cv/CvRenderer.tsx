@@ -3,7 +3,6 @@
 import { CVData, CvSection } from '@/src/lib/cvData';
 import RoomRoundedIcon from '@mui/icons-material/RoomRounded';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
-import PhoneCallbackRoundedIcon from '@mui/icons-material/PhoneCallbackRounded';
 import LinkRoundedIcon from '@mui/icons-material/LinkRounded';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';

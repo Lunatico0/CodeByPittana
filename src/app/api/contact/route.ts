@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const result = await transporter.sendMail(emailTemplate);
+    await transporter.sendMail(emailTemplate);
 
     return NextResponse.json(
       { message: "Mensaje enviado con éxito." },

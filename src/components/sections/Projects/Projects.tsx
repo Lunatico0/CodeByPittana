@@ -26,8 +26,6 @@ export default function Projects({
 }: ProjectsProps) {
   const [projects, setProjects] = useState<ProjectCardData[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const WHITELIST = GITHUB_WHITELIST;
-  const ORDER = GITHUB_ORDER;
 
   useEffect(() => {
     async function loadGithubProjects(): Promise<ProjectCardData[]> {
@@ -43,8 +41,8 @@ export default function Projects({
       return buildGithubCards(
         data,
         extraProjectDetails as Record<string, Partial<ProjectCardData>>,
-        WHITELIST,
-        ORDER,
+        GITHUB_WHITELIST,
+        GITHUB_ORDER,
       );
     }
 

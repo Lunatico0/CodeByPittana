@@ -13,8 +13,6 @@ const cvOptions = [
 
 type Lang = "Español" | "English";
 type LayoutType = "Sidebar (Visual)" | "Harvard (Simple)";
-const languages: Lang[] = ["Español", "English"];
-const layouts: LayoutType[] = ["Sidebar (Visual)", "Harvard (Simple)"];
 
 export default function CVContent() {
   const [selectedLang, setSelectedLang] = useState<Lang>("Español");

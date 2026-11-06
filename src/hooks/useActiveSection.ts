@@ -23,6 +23,16 @@ export const MOBILE_SECTION_IDS: string[] = [
 
 export const useActiveSection = (sectionIds: string[], pathname: string) => {
   const [activeId, setActiveId] = useState('hero');
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  const isRootPage = pathname === '/';
+
+  // Al salir de la home se resetea a 'hero' durante el render (no en el effect),
+  // así al volver a '/' arranca desde 'hero' como antes.
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    if (!isRootPage) setActiveId('hero');
+  }
+
   const observerRef = useRef<IntersectionObserver | null>(null);
   const mutationRef = useRef<MutationObserver | null>(null);
   const pollingRef = useRef<number | null>(null);
@@ -48,11 +58,7 @@ export const useActiveSection = (sectionIds: string[], pathname: string) => {
     }
     seenElementsRef.current = {};
 
-    const isRootPage = pathname === '/';
-    if (!isRootPage) {
-      setActiveId('hero');
-      return;
-    }
+    if (!isRootPage) return;
 
     // IntersectionObserver principal
     const io = new IntersectionObserver(
@@ -141,7 +147,8 @@ export const useActiveSection = (sectionIds: string[], pathname: string) => {
       }
       window.clearTimeout(timeout);
     };
-  }, [sectionIds, pathname]);
+  }, [sectionIds, isRootPage]);
 
-  return activeId;
+  // Fuera de la home siempre es 'hero', aunque llegue un callback tardío del observer.
+  return isRootPage ? activeId : 'hero';
 };
